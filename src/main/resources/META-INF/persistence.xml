@@ -1,0 +1,21 @@
+<persistence version="2.0"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                       http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="wishlist-unit">
+        <jta-data-source>wishlistDb</jta-data-source>
+        <non-jta-data-source>wishlistDbUnmanaged</non-jta-data-source>
+		<class>model.Comment</class>
+		<class>model.DateModel</class>
+		<class>model.GuestProposition</class>
+		<class>model.Link</class>
+		<class>model.Model</class>
+		<class>model.User</class>
+		<class>model.Wishlist</class>
+		<class>model.WishlistItem</class>
+        <properties>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+        </properties>
+    </persistence-unit>
+</persistence>

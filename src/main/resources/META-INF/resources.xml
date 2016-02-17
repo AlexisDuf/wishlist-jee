@@ -1,0 +1,16 @@
+<resource>
+    <Resource id="wishlistDb" type="javax.sql.DataSource">
+        JdbcDriver = org.hsqldb.jdbcDriver
+        JdbcUrl = jdbc:hsqldb:file:${user.home}/wishlistdb/wishlistdb
+        UserName = SA
+        Password =
+        JtaManaged = true
+    </Resource>
+    <Resource id="wishlistDbUnmanaged" type="javax.sql.DataSource">
+        JdbcDriver = org.hsqldb.jdbcDriver
+        JdbcUrl = jdbc:hsqldb:file:${user.home}/wishlistdb/wishlistdb
+        UserName = SA
+        Password =
+        JtaManaged = false
+    </Resource>
+</resource>
