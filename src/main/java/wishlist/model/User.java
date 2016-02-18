@@ -1,4 +1,4 @@
-package model;
+package wishlist.model;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,12 +11,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
 @NamedQueries({
     @NamedQuery(name = "user.list", query = "select u from User u")
 })
+@XmlRootElement(name = "user")
 public class User extends DateModel{
 	
 	@NotNull

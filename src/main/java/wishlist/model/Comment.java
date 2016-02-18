@@ -1,4 +1,4 @@
-package model;
+package wishlist.model;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -8,11 +8,13 @@ import javax.persistence.NamedQuery;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @NamedQueries({
     @NamedQuery(name = "comment.list", query = "select c from Comment c")
 })
+@XmlRootElement(name = "comment")
 public class Comment extends DateModel {
 	
 	@NotNull

@@ -1,4 +1,4 @@
-package jaxrs;
+package wishlist.service;
 
 import javax.inject.Inject;
 import javax.transaction.HeuristicMixedException;
@@ -7,15 +7,13 @@ import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Response;
 
-import dao.UserDAO;
-import model.User;
+import wishlist.dao.UserDAO;
+import wishlist.model.User;
 
 @Path("users")
 @Consumes({"application/json"})

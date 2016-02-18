@@ -1,4 +1,4 @@
-package model;
+package wishlist.model;
 import java.util.Date;
 
 import javax.persistence.MappedSuperclass;

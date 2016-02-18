@@ -1,25 +1,31 @@
-package dao;
+package wishlist.dao;
 
 import java.util.List;
 
+import javax.ejb.Lock;
+import javax.ejb.LockType;
+import javax.ejb.Singleton;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 
-import model.User;
+import wishlist.model.User;
 
+@Singleton
+@Lock(LockType.READ)
 public class UserDAO {
 
 	@Inject
 	private DAO dao;
 	
-	@Inject
-	EntityManager em;
+	@PersistenceContext(unitName = "wishlist")
+    protected EntityManager em;
 	
 	public User create(String mail, String name) throws SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
 		

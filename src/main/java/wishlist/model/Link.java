@@ -1,4 +1,4 @@
-package model;
+package wishlist.model;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -7,11 +7,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @NamedQueries({
     @NamedQuery(name = "link.list", query = "select l from Link l")
 })
+@XmlRootElement(name = "link")
 public class Link extends DateModel{
 	@NotNull
 	private String url;

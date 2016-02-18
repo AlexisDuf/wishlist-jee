@@ -1,4 +1,4 @@
-package model;
+package wishlist.model;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.GeneratedValue;

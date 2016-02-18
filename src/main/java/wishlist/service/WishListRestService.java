@@ -1,4 +1,4 @@
-package jaxrs;
+package wishlist.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,16 +17,16 @@ import org.codehaus.jettison.json.JSONObject;
 
 import com.google.gson.Gson;
 
-import dao.CommentDAO;
-import dao.GuestPropostionDAO;
-import dao.LinkDAO;
-import dao.WishlistDAO;
-import dao.WishlistItemDAO;
-import model.Comment;
-import model.GuestProposition;
-import model.Link;
-import model.Wishlist;
-import model.WishlistItem;
+import wishlist.dao.CommentDAO;
+import wishlist.dao.GuestPropostionDAO;
+import wishlist.dao.LinkDAO;
+import wishlist.dao.WishlistDAO;
+import wishlist.dao.WishlistItemDAO;
+import wishlist.model.Comment;
+import wishlist.model.GuestProposition;
+import wishlist.model.Link;
+import wishlist.model.Wishlist;
+import wishlist.model.WishlistItem;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;

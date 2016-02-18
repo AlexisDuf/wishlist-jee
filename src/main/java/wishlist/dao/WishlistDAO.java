@@ -1,11 +1,15 @@
-package dao;
+package wishlist.dao;
 
 import java.util.Collections;
 import java.util.List;
 
+import javax.ejb.Lock;
+import javax.ejb.LockType;
+import javax.ejb.Singleton;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -14,15 +18,17 @@ import javax.transaction.SystemException;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import model.User;
-import model.Wishlist;
+import wishlist.model.User;
+import wishlist.model.Wishlist;
 
+@Singleton
+@Lock(LockType.READ)
 public class WishlistDAO {
 	@Inject
 	private DAO dao;
 	
-	@Inject
-	EntityManager em;
+	@PersistenceContext(unitName = "wishlist")
+    protected EntityManager em;
 	
     public List<Wishlist> list(int first, int max) {
         return dao.namedFind(Wishlist.class, "wishlist.list", first, max);
