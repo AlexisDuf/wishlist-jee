@@ -16,7 +16,6 @@ import wishlist.dao.UserDAO;
 import wishlist.model.User;
 
 @Path("users")
-@Consumes({"application/json"})
 @Produces({"application/json","text/xml"})
 public class AuthRestService {
 	

@@ -17,7 +17,7 @@ import org.junit.BeforeClass;
 import wishlist.dao.UserDAO;
 
 public class ContainerHarness {
-    private static final String APP_NAME = "jaxrs-blog";
+    private static final String APP_NAME = "wishlist-jee";
     protected static EJBContainer container;
 
     @BeforeClass
@@ -30,7 +30,7 @@ public class ContainerHarness {
                                                                 // feature
         p.setProperty(EJBContainer.MODULES, webApp.getAbsolutePath());
         p.setProperty(EmbeddedTomEEContainer.TOMEE_EJBCONTAINER_HTTP_PORT, "-1"); // random
-                                                                                    // port
+                                                                                 // port
         container = EJBContainer.createEJBContainer(p);
     }
 
@@ -44,7 +44,7 @@ public class ContainerHarness {
     protected String getServiceURI() {
         final String uri = "http://127.0.0.1:"
                 + System.getProperty(EmbeddedTomEEContainer.TOMEE_EJBCONTAINER_HTTP_PORT)
-                + "/jaxrs-blog";
+                + "/wishlist-jee";
         return uri;
     }
 

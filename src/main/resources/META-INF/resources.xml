@@ -2,15 +2,15 @@
     <Resource id="wishlist" type="javax.sql.DataSource">
         JdbcDriver = org.hsqldb.jdbcDriver
         JdbcUrl = jdbc:hsqldb:mem:wishlistdb
-        UserName = SA
-        Password =
+        UserName = sa
+        Password = 
         JtaManaged = true
     </Resource>
     <Resource id="wishlist-unmanaged" type="javax.sql.DataSource">
         JdbcDriver = org.hsqldb.jdbcDriver
         JdbcUrl = jdbc:hsqldb:file:mem:wishlistdb
-        UserName = SA
-        Password =
+        UserName = sa
+        Password = 
         JtaManaged = false
     </Resource>
 </resources>

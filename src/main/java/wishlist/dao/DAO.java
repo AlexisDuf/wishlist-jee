@@ -24,7 +24,7 @@ public class DAO {
 	@PersistenceContext(unitName = "wishlist")
     protected EntityManager em;
 	
-    @Inject
+	@Inject
     UserTransaction ut;
 
     public <E> E create(E e) throws NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
