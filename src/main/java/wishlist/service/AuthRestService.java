@@ -23,11 +23,11 @@ public class AuthRestService {
 	private UserDAO udao;
 	
 	@POST
-    public User create(@QueryParam("email") String email, @QueryParam("name") String name) throws SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
-		User user = udao.findByMail(email);
+    public User create(User usr) throws SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
+		User user = udao.findByMail(usr.getMail());
 		System.out.println(user == null);
 		if(user == null){
-			user = udao.create(email, name);
+			user = udao.create(usr.getMail(), usr.getName());
 		}
 		return user;
     }
