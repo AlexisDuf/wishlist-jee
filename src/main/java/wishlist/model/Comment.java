@@ -10,9 +10,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
+@Entity(name="comments")
 @NamedQueries({
-    @NamedQuery(name = "comment.list", query = "select c from Comment c")
+    @NamedQuery(name = "comment.list", query = "select c from comments c")
 })
 @XmlRootElement(name = "comment")
 public class Comment extends DateModel {

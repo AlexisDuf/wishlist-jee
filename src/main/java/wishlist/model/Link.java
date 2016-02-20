@@ -9,9 +9,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
+@Entity(name="links")
 @NamedQueries({
-    @NamedQuery(name = "link.list", query = "select l from Link l")
+    @NamedQuery(name = "link.list", query = "select l from links l")
 })
 @XmlRootElement(name = "link")
 public class Link extends DateModel{

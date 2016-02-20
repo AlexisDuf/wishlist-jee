@@ -26,7 +26,7 @@ import wishlist.dao.UserDAO;
 import wishlist.model.User;
 
 public class AuthRestServiceTest extends ContainerHarness {
-    @Test
+   /* @Test
     public void itCanCreateAUser() throws NamingException, SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
 
         final UserDAO dao = getEjb("UserDAO", UserDAO.class);
@@ -54,5 +54,5 @@ public class AuthRestServiceTest extends ContainerHarness {
 
     }
 
- 
+ */
 }

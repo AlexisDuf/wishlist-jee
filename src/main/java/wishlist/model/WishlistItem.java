@@ -14,11 +14,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
+@Entity(name="wishlistItems")
 @NamedQueries({
-    @NamedQuery(name = "item.list", query = "select i from WishlistItem i")
+    @NamedQuery(name = "item.list", query = "select i from wishlistItems i")
 })
-@XmlRootElement(name = "wishlist_item")
+@XmlRootElement(name = "wishlistitem")
 public class WishlistItem extends DateModel{
 	
 	

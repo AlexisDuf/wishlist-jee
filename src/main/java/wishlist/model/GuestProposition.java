@@ -8,11 +8,11 @@ import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-@Entity
+@Entity(name="guestPropositions")
 @NamedQueries({
-    @NamedQuery(name = "guestprop.list", query = "select g from GuestProposition g")
+    @NamedQuery(name = "guestprop.list", query = "select g from guestPropositions g")
 })
-@XmlRootElement(name = "guest_proposition")
+@XmlRootElement(name = "guestproposition")
 public class GuestProposition extends DateModel{
 	
 	private float price;

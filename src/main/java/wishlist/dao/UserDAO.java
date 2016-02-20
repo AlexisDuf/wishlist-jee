@@ -29,17 +29,12 @@ public class UserDAO {
 	
 	public User create(String mail, String name) throws SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
 		
-		User usr = findByMail(mail);
-		
-		if(usr == null){
-			usr = new User();
-			usr.setMail(mail);
-			usr.setName(name);		
+		User usr = new User();
+		usr.setMail(mail);
+		usr.setName(name);		
 
-			return dao.create(usr);
-		} else {
-			return usr;
-		}
+		return dao.create(usr);
+
 	}
 	
     public List<User> list(int first, int max) {
@@ -50,7 +45,7 @@ public class UserDAO {
 
     	try{
     		User usr = (User) em
-    				.createQuery("SELECT u FROM User u WHERE u.mail = :mail")
+    				.createNamedQuery("user.findByMail")
     				.setParameter("mail", mail).getSingleResult();
     		return usr;
 

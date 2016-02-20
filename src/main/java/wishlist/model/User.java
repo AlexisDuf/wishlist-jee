@@ -14,15 +14,15 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@Entity
+@Entity(name="users")
 @NamedQueries({
-    @NamedQuery(name = "user.list", query = "select u from User u")
+    @NamedQuery(name = "user.list", query = "select u from users u"),
+    @NamedQuery(name = "user.findByMail", query = "SELECT u FROM users u WHERE u.mail = :mail")
 })
 @XmlRootElement(name = "user")
 public class User extends DateModel{
 	
 	@NotNull
-	@Size(min =1)
 	private String mail;
 	
 	@ManyToMany(mappedBy="guest")

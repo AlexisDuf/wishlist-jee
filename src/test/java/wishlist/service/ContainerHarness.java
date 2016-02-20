@@ -30,7 +30,8 @@ public class ContainerHarness {
                                                                 // feature
         p.setProperty(EJBContainer.MODULES, webApp.getAbsolutePath());
         p.setProperty(EmbeddedTomEEContainer.TOMEE_EJBCONTAINER_HTTP_PORT, "-1"); // random
-                                                                                 // port
+                                                                                // port
+        
         container = EJBContainer.createEJBContainer(p);
     }
 

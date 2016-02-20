@@ -20,9 +20,9 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@Entity
+@Entity(name="wishlists")
 @NamedQueries({
-    @NamedQuery(name = "wishlist.list", query = "select w from Wishlist w")
+    @NamedQuery(name = "wishlist.list", query = "select w from wishlists w")
 })
 @XmlRootElement(name = "wishlist")
 public class Wishlist extends DateModel {

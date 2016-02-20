@@ -14,7 +14,7 @@ import javax.naming.NamingException;
 
 public class UserDAOTest extends ContainerHarness{
 	
-    @Inject
+   /* @Inject
     UserDAO dao;
     
     @Before
@@ -26,14 +26,30 @@ public class UserDAOTest extends ContainerHarness{
     public void itCanCreateAUser() throws Exception{    	
 
     	User testUser = dao.create("alexis.dufour@isen-lille.fr", "Alexis");
+    	testUser = dao.findByMail("alexis.dufour@isen-lille.fr");
     	assertThat(testUser).isNotNull();
     	assertThat(testUser.getMail()).isEqualTo("alexis.dufour@isen-lille.fr");
     	assertThat(testUser.getName()).isEqualTo("Alexis");	    			
     }
     
-    /*private UserDAO getUserDAO() throws NamingException {
-        final UserDAO udao = (UserDAO) container.getContext().lookup(
-                "java:global/wishlist-jee/UserDAO");
-        return udao;
-    }*/
+
+    
+    @Test
+    public void itCanUpdate() throws Exception {
+    	User testUser = dao.create("alexis@isen-lille.fr", "Alexis");
+    	assertThat(testUser).isNotNull();
+    	testUser = dao.update(testUser.getId(), "dufour@isen-lille.fr", "Dufour");
+    	assertThat(testUser.getMail()).isEqualTo("dufour@isen-lille.fr");
+    	assertThat(testUser.getName()).isEqualTo("Dufour");	
+    }
+    
+    @Test
+    public void itCanDelete() throws Exception {
+    	User testUser = dao.create("alexis@isen-lille.fr", "Alexis");
+    	assertThat(testUser).isNotNull();
+    	dao.delete(testUser.getId());	    	
+    	assertThat(dao.find(testUser.getId())).isNull();
+    }
+    
+*/
 }
