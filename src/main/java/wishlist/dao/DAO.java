@@ -23,12 +23,19 @@ public class DAO {
 
 	@PersistenceContext(unitName = "wishlist")
     protected EntityManager em;
+<<<<<<< HEAD
 	
 
     public <E> E create(E e) throws NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
 
         em.persist(e);
     
+=======
+
+
+    public <E> E create(E e) throws NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
+        em.persist(e);
+>>>>>>> origin/master
         return e;
     }
 

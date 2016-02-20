@@ -8,7 +8,7 @@
     </Resource>
     <Resource id="wishlist-unmanaged" type="javax.sql.DataSource">
         JdbcDriver = org.hsqldb.jdbcDriver
-        JdbcUrl = jdbc:hsqldb:file:mem:wishlistdb
+        JdbcUrl = jdbc:hsqldb:mem:wishlistdb
         UserName = sa
         Password = 
         JtaManaged = false

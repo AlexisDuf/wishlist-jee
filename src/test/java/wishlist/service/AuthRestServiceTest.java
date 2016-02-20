@@ -26,7 +26,6 @@ import wishlist.dao.UserDAO;
 import wishlist.model.User;
 
 public class AuthRestServiceTest extends ContainerHarness {
-/*
     @Test
     public void itCanCreateAUser() throws NamingException, SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
 
@@ -54,6 +53,6 @@ public class AuthRestServiceTest extends ContainerHarness {
         public User create(User usr);
 
     }
-*/
+
  
 }
