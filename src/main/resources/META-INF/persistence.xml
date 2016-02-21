@@ -16,7 +16,6 @@
 	<class>wishlist.model.Wishlist</class>
 	<class>wishlist.model.WishlistItem</class>
     <properties>
-      <property name="openjpa.RuntimeUnenhancedClasses" value="supported"/>
       <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
       <property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE"/>
     </properties>
