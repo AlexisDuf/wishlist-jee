@@ -1,6 +1,6 @@
 package daotest;
 
-import static org.assertj.core.api.Assertions.assertThat;
+//import static org.assertj.core.api.Assertions.assertThat;
 
 import javax.inject.Inject;
 import javax.naming.NamingException;

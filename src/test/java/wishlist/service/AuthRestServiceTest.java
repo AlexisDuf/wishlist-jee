@@ -26,7 +26,9 @@ import wishlist.dao.UserDAO;
 import wishlist.model.User;
 
 public class AuthRestServiceTest extends ContainerHarness {
-   /* @Test
+	
+	
+    /*@Test
     public void itCanCreateAUser() throws NamingException, SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
 
         final UserDAO dao = getEjb("UserDAO", UserDAO.class);
@@ -37,13 +39,18 @@ public class AuthRestServiceTest extends ContainerHarness {
         usr.setMail("ad@isen.fr");
         usr.setName("Ale");
         User user = client.create(usr);
+        
+        User usr1 = new User();
+        usr.setMail("s@isen.fr");
+        usr.setName("Ales");
+        User user1 = client.create(usr);
 
         user = dao.find(user.getId());
         assertThat(user.getMail()).isEqualTo("ad@isen.fr");
 
         dao.delete(user.getId());
 
-    }
+    }*/
     
     @Path("/api/users")
     @Produces({ "text/xml", "application/json" })
@@ -54,5 +61,5 @@ public class AuthRestServiceTest extends ContainerHarness {
 
     }
 
- */
+
 }

@@ -6,7 +6,7 @@ import org.junit.Test;
 import wishlist.dao.UserDAO;
 import wishlist.model.User;
 import wishlist.service.ContainerHarness;
-import static org.assertj.core.api.Assertions.assertThat;
+//import static org.assertj.core.api.Assertions.assertThat;
 
 import javax.inject.Inject;
 import javax.naming.NamingException;
