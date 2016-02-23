@@ -101,10 +101,9 @@ public class WishListRestService{
 	 * Create a new wishlist
 	 */
 	@POST
-	@Path("/create")
-    public Response createWishList(@FormParam("description") String description,
-            @FormParam("user_id") int user_id) {
-		Wishlist wishList = wdao.create(description, user_id);		
+    public Response createWishList(@FormParam("description") String description, @FormParam("title") String title,
+            @HeaderParam("user_id") int user_id) {
+		Wishlist wishList = wdao.create(title, description, user_id);		
 		Gson gson = new Gson();
         return Response.ok(gson.toJson(wishList), MediaType.APPLICATION_JSON).build();
     }
@@ -134,14 +133,14 @@ public class WishListRestService{
     /*
      * Modify a particular wishlist, only admin can do that
      */
-	@POST
+	@PUT
     @Path("/{wishlist_token}")
-    public Response updateWishList(@PathParam("wishlist_token") String token, @FormParam("description") String description){
+    public Response updateWishList(@PathParam("wishlist_token") String token, @FormParam("description") String description, @FormParam("title") String title){
     	// Admin can modify wishlist configurations
     	if(this.isAdmin(token)){
     		Wishlist wishlist = wdao.loadFromTokenAdmin(token);
     		Gson gson = new Gson();
-    		wishlist = wdao.updateDescription(wishlist.getId(), description);
+    		wishlist = wdao.updateDescription(title, wishlist.getId(), description);
     		return Response.ok(gson.toJson(wishlist), MediaType.APPLICATION_JSON).build();
     	}
     	// Guets can't modify wishlist configurations

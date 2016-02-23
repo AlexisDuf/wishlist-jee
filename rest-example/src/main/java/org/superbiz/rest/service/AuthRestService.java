@@ -38,10 +38,10 @@ public class AuthRestService {
 	
 	@POST
 	@Path("/create")
-    public Response create(@FormParam("mail") String mail, @FormParam("name") String name) throws SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
-		User user = udao.findByMail(mail);
+    public Response create(@FormParam("email") String email, @FormParam("name") String name) throws SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
+		User user = udao.findByMail(email);
 		if(user == null){
-			user = udao.create(mail, name);
+			user = udao.create(email, name);
 		}
 		Gson gson = new Gson();
 		return Response.ok(gson.toJson(user), MediaType.APPLICATION_JSON).build();
