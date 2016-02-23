@@ -1,4 +1,4 @@
-package wishlist.model;
+package org.superbiz.rest.model;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,13 +13,14 @@ import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-@Entity(name="wishlistItems")
+@Entity
 @NamedQueries({
-    @NamedQuery(name = "item.list", query = "select i from wishlistItems i")
+    @NamedQuery(name = "item.list", query = "select i from WishlistItem i")
 })
 @XmlRootElement(name = "wishlistitem")
-public class WishlistItem extends DateModel{
+public class WishlistItem extends DatedModel{
 	
 	
 	@NotNull
@@ -28,23 +29,21 @@ public class WishlistItem extends DateModel{
 	private String photoLink;
 	
 	@OneToMany(targetEntity=Link.class, mappedBy = "item", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<Link> links;
+	private List<Link> links = new LinkedList<>();
 	
-    @OneToMany(targetEntity=Comment.class, mappedBy = "item", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<Comment> comments;
+    @OneToMany(targetEntity=Comment.class, mappedBy = "itemComment", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Comment> comments = new LinkedList<>();
     
-    @OneToMany(targetEntity=GuestProposition.class, mappedBy = "item", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<GuestProposition> propositions;
+    @OneToMany(targetEntity=GuestProposition.class, mappedBy = "itemProposition", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<GuestProposition> propositions = new LinkedList<>();
     
-	@ManyToOne()
-	@JoinColumn(name = "wishlistId")
+	@ManyToOne
+	@JoinColumn(name = "wishlist_id")
 	@Valid
+	@XmlTransient
 	private Wishlist wishlist;	
 	
 	public WishlistItem() {
-		links = new LinkedList<>();
-		comments = new LinkedList<>();
-		propositions = new LinkedList<>();
 	}
 	
 
@@ -96,8 +95,8 @@ public class WishlistItem extends DateModel{
 	}
 	
 	public void setWishlist(Wishlist wishlist) {
-		wishlist.addItem(this);
 		this.wishlist = wishlist;
+		wishlist.addItem(this);
 	}
 	
 	

@@ -1,5 +1,7 @@
-package wishlist.dao;
+package org.superbiz.rest.dao;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,19 +9,10 @@ import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
 
-import org.apache.commons.lang.RandomStringUtils;
-
-import wishlist.model.User;
-import wishlist.model.Wishlist;
+import org.superbiz.rest.model.User;
+import org.superbiz.rest.model.Wishlist;
 
 @Singleton
 @Lock(LockType.READ)
@@ -27,8 +20,8 @@ public class WishlistDAO {
 	@Inject
 	private DAO dao;
 	
-	@PersistenceContext(unitName = "wishlist")
-    protected EntityManager em;
+	
+	private SecureRandom random = new SecureRandom();
 	
     public List<Wishlist> list(int first, int max) {
         return dao.namedFind(Wishlist.class, "wishlist.list", first, max);
@@ -51,25 +44,16 @@ public class WishlistDAO {
         
 		Wishlist wishlist = new Wishlist();
 		wishlist.setDescription(description);
-		wishlist.setTokenAdmin(RandomStringUtils.randomAlphanumeric(10).toLowerCase());
-		wishlist.setTokenGuest(RandomStringUtils.randomAlphanumeric(10).toLowerCase());
+		wishlist.setTokenAdmin(new BigInteger(130, random).toString(32));
+		wishlist.setTokenGuest(new BigInteger(130, random).toString(32));
 		wishlist.setCreator(usr);
-		
-		try {
-			dao.create(wishlist);
-		} catch (SecurityException | IllegalStateException | NotSupportedException | SystemException | RollbackException
-				| HeuristicMixedException | HeuristicRollbackException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		return wishlist;
+			
+		return dao.create(wishlist);
 	}
 	
 	public Wishlist loadFromTokenAdmin(String tokenAdmin){
 		try {
-			Wishlist wl = (Wishlist) em
-					.createQuery("SELECT wl FROM Wishlist wl WHERE wl.tokenAdmin = :tokenAdmin")
-					.setParameter("tokenAdmin", tokenAdmin).getSingleResult();
+			Wishlist wl = (Wishlist) dao.findBy(Wishlist.class, "SELECT wl FROM Wishlist wl WHERE wl.tokenAdmin = :tokenAdmin", "tokenAdmin", tokenAdmin);
 			return wl;
 		} catch (NoResultException exception) {
 			return null;
@@ -79,9 +63,7 @@ public class WishlistDAO {
 	
 	public Wishlist loadFromTokenGuest(String tokenGuest){
 		try {
-			Wishlist wl = (Wishlist) em
-					.createQuery("SELECT wl FROM Wishlist wl WHERE wl.tokenGuest = :tokenGuest")
-					.setParameter("tokenGuest", tokenGuest).getSingleResult();
+			Wishlist wl = (Wishlist) dao.findBy(Wishlist.class, "SELECT wl FROM Wishlist wl WHERE wl.tokenGuest = :tokenGuest", "tokenGuest", tokenGuest);
 			return wl;
 		} catch( NoResultException exception){
 			return null;
@@ -109,14 +91,16 @@ public class WishlistDAO {
 		
 	}
 	
-	public Wishlist updateGuest(long id, User guest) {
+	public Wishlist updateGuest(long id, long id_guest) {
 		Wishlist wl = dao.find(Wishlist.class, id);
-			
+		User user = dao.find(User.class, id_guest);
+		
 		if(wl == null) throw new IllegalArgumentException("Wishlist with id " + id + " not found");		
 		
-		if(wl.getGuest().contains(guest)) return wl;
+		if(wl.getGuest().contains(user)) return wl;
 		
-		wl.addGuest(guest);		
+		wl.addGuest(user);
+
 		return dao.update(wl);
 	}
 }

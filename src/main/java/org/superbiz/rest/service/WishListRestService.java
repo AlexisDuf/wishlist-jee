@@ -1,8 +1,9 @@
-package wishlist.service;
+package org.superbiz.rest.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -13,30 +14,42 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
+import org.superbiz.rest.dao.CommentDAO;
+import org.superbiz.rest.dao.GuestPropostionDAO;
+import org.superbiz.rest.dao.LinkDAO;
+import org.superbiz.rest.dao.WishlistDAO;
+import org.superbiz.rest.dao.WishlistItemDAO;
+import org.superbiz.rest.model.Comment;
+import org.superbiz.rest.model.GuestProposition;
+import org.superbiz.rest.model.Link;
+import org.superbiz.rest.model.Wishlist;
+import org.superbiz.rest.model.WishlistItem;
 
 import com.google.gson.Gson;
-
-import wishlist.dao.CommentDAO;
-import wishlist.dao.GuestPropostionDAO;
-import wishlist.dao.LinkDAO;
-import wishlist.dao.WishlistDAO;
-import wishlist.dao.WishlistItemDAO;
-import wishlist.model.Comment;
-import wishlist.model.GuestProposition;
-import wishlist.model.Link;
-import wishlist.model.Wishlist;
-import wishlist.model.WishlistItem;
+import com.google.gson.JsonObject;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
 
-@Path("wishlists")
-@Consumes({"application/json", "text/xml"}) 
-@Produces({"application/json","text/xml"})
+@Path("/api/wishlists")
+@Produces({"text/xml"})
 public class WishListRestService{
+	
+	/*
+	 * Injections
+	 */
+	
+	@EJB
+	private WishlistDAO wdao;
+	@EJB 
+	private WishlistItemDAO witemdao;
+	@EJB
+	private GuestPropostionDAO gpdao;
+	@EJB
+	private CommentDAO cmtdao;
+	@EJB
+	private LinkDAO ldao;
 	
 	private boolean isGuest(String token){
 		Wishlist wishlist = wdao.loadFromTokenGuest(token);
@@ -58,37 +71,24 @@ public class WishListRestService{
 		}
 	}
 
-	private List<JSONObject> parseAdminItems(Wishlist wishlist) throws JSONException{
-		List<JSONObject> itemsObj = new ArrayList<>();
-		JSONObject currentItemObj;
+	private String parseAdminItems(Wishlist wishlist) {
+		List<JsonObject> itemsObj = new ArrayList<>();
+		JsonObject currentItemObj;
 		Gson gson = new Gson();
 		
 		List<WishlistItem> items = wishlist.getItem();
 		for (WishlistItem currentItem : items ) {
-			currentItemObj = new JSONObject();
-			currentItemObj.put("links",  gson.toJson(currentItem.getLinks()));
-			currentItemObj.put("avg_price", currentItem.getAveragePrice());
-			currentItemObj.put("photo_link", currentItem.getPhotoLink());
+			currentItemObj = new JsonObject();
+			currentItemObj.addProperty("links",  gson.toJson(currentItem.getLinks()));
+			currentItemObj.addProperty("avg_price", currentItem.getAveragePrice());
+			currentItemObj.addProperty("photo_link", currentItem.getPhotoLink());
 			itemsObj.add(currentItemObj);
 		}
 		
-		return itemsObj;
+		return itemsObj.toString();
 	}
 	
-	/*
-	 * Injections
-	 */
-	
-	@Inject
-	private WishlistDAO wdao;
-	@Inject 
-	private WishlistItemDAO witemdao;
-	@Inject
-	private GuestPropostionDAO gpdao;
-	@Inject
-	private CommentDAO cmtdao;
-	@Inject
-	private LinkDAO ldao;
+
 	
 		/*
 		 * Endpoints
@@ -98,38 +98,47 @@ public class WishListRestService{
 	/*
 	 * Create a new wishlist
 	 */
-	@POST
-    public Wishlist createWishList(@QueryParam("description") String description,
+	@Path("/create")
+	@PUT
+    public String createWishList(@QueryParam("description") String description,
             @QueryParam("user_id") int user_id) {
-        return wdao.create(description, user_id);
+		Wishlist w = wdao.create(description, user_id);		
+		w = wdao.find(w.getId());
+		JsonObject wishlistJson = new JsonObject();
+		wishlistJson.addProperty("id", w.getId());
+		wishlistJson.addProperty("description", w.getDescription());
+		wishlistJson.addProperty("tokenAdmin", w.getTokenAdmin());
+		wishlistJson.addProperty("tokenGuest", w.getTokenGuest());
+		wishlistJson.addProperty("creator", w.getCreator().getName());
+        return wishlistJson.toString();
     }
 	
 	
 	/*
 	 * Get a particular wishlist by token
 	 */
-    @Path("{wishlist_token}")
+    @Path("/{wishlist_token}")
     @GET
-    public Response showParticularWishList(@PathParam("wishlist_token") String token) throws JSONException {
-    	JSONObject responseObj = new JSONObject();
+    public Response showParticularWishList(@PathParam("wishlist_token") String token)  {
+    	JsonObject responseObj = new JsonObject();
     	Gson gson = new Gson();
     	if(isAdmin(token)){
     		Wishlist wishlist = wdao.loadFromTokenAdmin(token);
-    		List<JSONObject> itemsObj = this.parseAdminItems(wishlist);
-			responseObj.put("items", itemsObj);
-			responseObj.put("guests", gson.toJson(wishlist.getGuest()));
-			responseObj.put("admin", gson.toJson(wishlist.getCreator()));
-			responseObj.put("created_date", gson.toJson(wishlist.getCreated()));
-			responseObj.put("description", gson.toJson(wishlist.getDescription()));
+    		String itemsObj = this.parseAdminItems(wishlist);
+			responseObj.addProperty("items", itemsObj);
+			responseObj.addProperty("guests", gson.toJson(wishlist.getGuest()));
+			responseObj.addProperty("admin", gson.toJson(wishlist.getCreator()));
+			responseObj.addProperty("created_date", gson.toJson(wishlist.getCreated()));
+			responseObj.addProperty("description", gson.toJson(wishlist.getDescription()));
 			return Response.status(Response.Status.OK).build();
     	}
     	else if(isGuest(token)){
     		Wishlist wishlist = wdao.loadFromTokenGuest(token);
-			responseObj.put("items", gson.toJson(wishlist.getItem()));
-			responseObj.put("guests", gson.toJson(wishlist.getGuest()));
-			responseObj.put("admin", gson.toJson(wishlist.getCreator()));
-			responseObj.put("created_date", gson.toJson(wishlist.getCreated()));
-			responseObj.put("description", gson.toJson(wishlist.getDescription()));
+			responseObj.addProperty("items", gson.toJson(wishlist.getItem()));
+			responseObj.addProperty("guests", gson.toJson(wishlist.getGuest()));
+			responseObj.addProperty("admin", gson.toJson(wishlist.getCreator()));
+			responseObj.addProperty("created_date", gson.toJson(wishlist.getCreated()));
+			responseObj.addProperty("description", gson.toJson(wishlist.getDescription()));
 			return Response.status(Response.Status.OK).build();
     	}
     	else{
@@ -141,8 +150,8 @@ public class WishListRestService{
     /*
      * Modify a particular wishlist, only admin can do that
      */
-    @Path("{wishlist_token}")
-    @PUT
+    @Path("/{wishlist_token}")
+    @POST
     public Response updateWishList(@PathParam("wishlist_token") String token, @QueryParam("description") String description){
     	// Admin can modify wishlist configurations
     	if(this.isAdmin(token)){
@@ -161,7 +170,7 @@ public class WishListRestService{
     /*
      * Delete a particular wishlist, only admin can do that
      */
-    @Path("{wishlist_token}")
+    @Path("/{wishlist_token}")
     @DELETE
     public Response deleteWishList(@PathParam("wishlist_token") String token){
     	// Admin can delete wishlist

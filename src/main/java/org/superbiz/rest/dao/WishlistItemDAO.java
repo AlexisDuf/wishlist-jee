@@ -1,4 +1,4 @@
-package wishlist.dao;
+package org.superbiz.rest.dao;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,14 +7,10 @@ import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
 
-import wishlist.model.Wishlist;
-import wishlist.model.WishlistItem;
+import org.superbiz.rest.model.Wishlist;
+import org.superbiz.rest.model.WishlistItem;
+
 
 @Singleton
 @Lock(LockType.READ)
@@ -45,17 +41,9 @@ public class WishlistItemDAO {
 		WishlistItem item = new WishlistItem();
 		item.setAveragePrice(averagePrice);
 		item.setPhotoLink(photoLink);	
-		item.setWishlist(wl);
-		
-		try {
-			dao.create(item);
-		} catch (SecurityException | IllegalStateException | NotSupportedException | SystemException | RollbackException
-				| HeuristicMixedException | HeuristicRollbackException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return item;
+		item.setWishlist(wl);		
+	
+		return dao.create(item);
 	}
 
 	public void delete(long idItem, Long idW){
@@ -76,7 +64,5 @@ public class WishlistItemDAO {
 		item.setPhotoLink(photoLink);
 		
 		return dao.update(item);
-		
-
 	}
 }

@@ -1,4 +1,4 @@
-package wishlist.dao;
+package org.superbiz.rest.dao;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,14 +7,11 @@ import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
 
-import wishlist.model.Link;
-import wishlist.model.WishlistItem;
+import org.superbiz.rest.model.Link;
+import org.superbiz.rest.model.WishlistItem;
+
+
 
 @Singleton
 @Lock(LockType.READ)
@@ -42,14 +39,7 @@ public class LinkDAO {
 		l.setUrl(url);
 		l.setItem(item);
 		
-		try {
-			dao.create(l);
-		} catch (SecurityException | IllegalStateException | NotSupportedException | SystemException | RollbackException
-				| HeuristicMixedException | HeuristicRollbackException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		return l;
+		return dao.create(l);
 	}
 
 	public void delete(long idLink, long idItem){

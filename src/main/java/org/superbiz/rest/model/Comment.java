@@ -1,4 +1,4 @@
-package wishlist.model;
+package org.superbiz.rest.model;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -9,13 +9,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-@Entity(name="comments")
+@Entity
 @NamedQueries({
-    @NamedQuery(name = "comment.list", query = "select c from comments c")
+    @NamedQuery(name = "comment.list", query = "select c from Comment c")
 })
 @XmlRootElement(name = "comment")
-public class Comment extends DateModel {
+public class Comment extends DatedModel {
 	
 	@NotNull
 	@Size(min = 1)
@@ -23,15 +24,17 @@ public class Comment extends DateModel {
 	private String content;
 	
 	@ManyToOne
-	@JoinColumn(name = "authorId")
+	@JoinColumn(name = "author_id")
 	@Valid
+	@XmlTransient
 	private User author;
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "itemId")
+	@JoinColumn(name = "item_id")
 	@Valid
-	private WishlistItem item;	
+	@XmlTransient
+	private WishlistItem itemComment;	
 	
 	
 	/******** GETTER ********/
@@ -44,7 +47,7 @@ public class Comment extends DateModel {
 	}
 	
 	public WishlistItem getItem() {
-		return item;
+		return itemComment;
 	}
 	
 	/********* SETTER **********/
@@ -56,7 +59,7 @@ public class Comment extends DateModel {
 	
 	public void setWishlistItem(WishlistItem item){
 		item.addComment(this);
-		this.item = item;
+		this.itemComment = item;
 	}
 
 	public void setContent(String content) {

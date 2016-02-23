@@ -1,4 +1,4 @@
-package wishlist.model;
+package org.superbiz.rest.model;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,39 +14,35 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@Entity(name="users")
+
+
+@Entity
 @NamedQueries({
-    @NamedQuery(name = "user.list", query = "select u from users u"),
-    @NamedQuery(name = "user.findByMail", query = "SELECT u FROM users u WHERE u.mail = :mail")
+    @NamedQuery(name = "user.list", query = "select u from User u"),
+    @NamedQuery(name = "user.findByMail", query = "SELECT u FROM User u WHERE u.mail = :mail")
 })
 @XmlRootElement(name = "user")
-public class User extends DateModel{
+public class User extends DatedModel{
 	
 	@NotNull
 	private String mail;
 	
-	@ManyToMany(mappedBy="guest")
+	@ManyToMany(targetEntity = Wishlist.class, cascade=CascadeType.ALL)
 	List<Wishlist> participationToWishlist;
 	
-    @OneToMany(targetEntity=Wishlist.class, mappedBy="creator", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<Wishlist> wishlist;
+    @OneToMany(targetEntity=Wishlist.class, mappedBy="creator", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Wishlist> wishlists = new LinkedList<>();
     
     @OneToMany(targetEntity=GuestProposition.class, mappedBy = "guestName", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<GuestProposition> propositions;
+	private List<GuestProposition> propositions = new LinkedList<>();
     
     @OneToMany(targetEntity=Comment.class, mappedBy = "author", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<Comment> comments;
+	private List<Comment> comments = new LinkedList<>();
 	
 	@NotNull
 	@Size(min =1)
 	private String name;
 
-	public User() {
-		comments = new LinkedList<>();
-		wishlist = new LinkedList<>();
-		propositions = new LinkedList<>();
-		participationToWishlist = new LinkedList<>();
-	}
 	
 	/******** GETTER **********/
 	public String getMail() {
@@ -59,7 +55,7 @@ public class User extends DateModel{
 	
 
 	public List<Wishlist> getWishlist() {
-		return wishlist;
+		return wishlists;
 	}
 	
 	public List<GuestProposition> getPropositions() {
@@ -85,7 +81,7 @@ public class User extends DateModel{
 	}
 
 	public void setWishlist(List<Wishlist> wishlist) {
-		this.wishlist = wishlist;
+		this.wishlists = wishlist;
 	}
 
 	public void setComments(List<Comment> comments) {

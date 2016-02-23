@@ -1,4 +1,4 @@
-package wishlist.dao;
+package org.superbiz.rest.dao;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,15 +7,12 @@ import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
 
-import wishlist.model.GuestProposition;
-import wishlist.model.User;
-import wishlist.model.WishlistItem;
+import org.superbiz.rest.model.GuestProposition;
+import org.superbiz.rest.model.User;
+import org.superbiz.rest.model.WishlistItem;
+
+
 
 @Singleton
 @Lock(LockType.READ)
@@ -51,17 +48,9 @@ public class GuestPropostionDAO {
 		GuestProposition gprop = new GuestProposition();
 		gprop.setPrice(price);		
 		gprop.setGuestName(usr);
-		gprop.setItem(item);
-		
-		try {
-			dao.create(gprop);
-		} catch (SecurityException | IllegalStateException | NotSupportedException | SystemException | RollbackException
-				| HeuristicMixedException | HeuristicRollbackException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		gprop.setItem(item);	
 
-		return gprop;
+		return dao.create(gprop);
 	}
 
 	public GuestProposition find(long id) {

@@ -1,4 +1,4 @@
-package wishlist.model;
+package org.superbiz.rest.model;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -9,17 +9,17 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity(name="links")
+@Entity
 @NamedQueries({
-    @NamedQuery(name = "link.list", query = "select l from links l")
+    @NamedQuery(name = "link.list", query = "select l from Link l")
 })
 @XmlRootElement(name = "link")
-public class Link extends DateModel{
+public class Link extends DatedModel{
 	@NotNull
 	private String url;
 	
 	@ManyToOne
-	@JoinColumn(name = "itemId")
+	@JoinColumn(name = "item_id")
 	@Valid
 	private WishlistItem item;
 	

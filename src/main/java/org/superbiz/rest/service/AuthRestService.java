@@ -1,40 +1,50 @@
-package wishlist.service;
+package org.superbiz.rest.service;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
-import wishlist.dao.UserDAO;
-import wishlist.model.User;
 
-@Path("users")
-@Consumes({"application/json", "text/xml"}) 
-@Produces({"application/json","text/xml"})
+import org.superbiz.rest.dao.UserDAO;
+import org.superbiz.rest.model.User;
+
+import com.google.gson.JsonObject;
+
+
+
+
+@Path("/api/users")
+@Produces({"text/xml"})
 public class AuthRestService {
 	
-	@Inject
+	@EJB
 	private UserDAO udao;
 	
-	@POST
-    public User create(@QueryParam("mail") String mail, @QueryParam("name") String name) throws SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
+	@Path("/create")
+	@PUT
+    public String create(@QueryParam("mail") String mail, @QueryParam("name") String name) throws SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
 		User user = udao.findByMail(mail);
-
 		if(user == null){
 			user = udao.create(mail, name);
 		}
-		return user;
+		JsonObject usr = new JsonObject();
+		usr.addProperty("id", user.getId());
+		usr.addProperty("mail", user.getMail());
+		usr.addProperty("name", user.getName());
+		return usr.toString();
     }
 	
     
@@ -48,7 +58,7 @@ public class AuthRestService {
     
     
 	
-	/*@POST
+/*	@POST
     public User create(User usr) throws SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
 		User user = udao.findByMail(usr.getMail());
 

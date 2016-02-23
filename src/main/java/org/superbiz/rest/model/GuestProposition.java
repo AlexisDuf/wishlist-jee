@@ -1,4 +1,4 @@
-package wishlist.model;
+package org.superbiz.rest.model;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -8,27 +8,27 @@ import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-@Entity(name="guestPropositions")
+@Entity
 @NamedQueries({
-    @NamedQuery(name = "guestprop.list", query = "select g from guestPropositions g")
+    @NamedQuery(name = "guestprop.list", query = "select g from GuestProposition g")
 })
 @XmlRootElement(name = "guestproposition")
-public class GuestProposition extends DateModel{
+public class GuestProposition extends DatedModel{
 	
 	private float price;
 	
 	@ManyToOne
-	@JoinColumn(name = "guestId")
+	@JoinColumn(name = "guest_id")
 	@Valid
 	@XmlTransient
 	private User guestName;
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "itemId")
+	@JoinColumn(name = "item_id")
 	@Valid
 	@XmlTransient
-	private WishlistItem item;	
+	private WishlistItem itemProposition;	
 
 	public GuestProposition() {
 	}
@@ -43,7 +43,7 @@ public class GuestProposition extends DateModel{
 	}
 	
 	public WishlistItem getItem() {
-		return item;
+		return itemProposition;
 	}
 	
 	/******* SETTER *******/
@@ -54,7 +54,7 @@ public class GuestProposition extends DateModel{
 	
 	public void setItem(WishlistItem item) {
 		item.addProposition(this);
-		this.item = item;
+		this.itemProposition = item;
 	}
 	
 	public void setPrice(float price) {

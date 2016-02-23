@@ -1,4 +1,4 @@
-package wishlist.model;
+package org.superbiz.rest.model;
 
 
 import java.util.LinkedList;
@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -18,14 +17,15 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
-@Entity(name="wishlists")
+@Entity
 @NamedQueries({
-    @NamedQuery(name = "wishlist.list", query = "select w from wishlists w")
+    @NamedQuery(name = "wishlist.list", query = "select w from Wishlist w")
 })
 @XmlRootElement(name = "wishlist")
-public class Wishlist extends DateModel {
+public class Wishlist extends DatedModel {
 
 	
 	@NotNull
@@ -38,21 +38,19 @@ public class Wishlist extends DateModel {
 	@NotNull
 	private String tokenGuest;
 	
-	@OneToMany(targetEntity=WishlistItem.class, mappedBy = "wishlist", fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true)
-	private List<WishlistItem> item;
+	@OneToMany(targetEntity=WishlistItem.class, mappedBy = "wishlist", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<WishlistItem> item = new LinkedList<>();
 	
-    @ManyToMany(cascade=CascadeType.ALL)  
-    @JoinTable(name="guest_wishlist") 
-	private List<User> guest;
+    @ManyToMany(mappedBy="participationToWishlist", fetch=FetchType.EAGER, cascade=CascadeType.ALL) 
+	private List<User> guest = new LinkedList<>();
 	
 	@ManyToOne
-	@JoinColumn(name = "creatorId")
+	@JoinColumn(name = "creator_id")
 	@Valid
+	@XmlTransient
 	private User creator;
 	
 	public Wishlist() {
-		item = new LinkedList<>();
-		guest = new LinkedList<>();
 	}
 	
 	/********* GETTER ********/
@@ -84,8 +82,8 @@ public class Wishlist extends DateModel {
 	/********* SETTER ********/
 	
 	public void setCreator(User creator) {
-		creator.addWishlist(this);
 		this.creator = creator;
+		creator.addWishlist(this);		
 	}
 	
 	public void setDescription(String description) {
@@ -110,7 +108,9 @@ public class Wishlist extends DateModel {
 
 	/********** OTHER ***********/
 	public void addItem(WishlistItem item) {
-		getItem().add(item);
+		if(!getItem().contains(item)){
+			getItem().add(item);
+		}		
 	}
 	
 	public void removeItem(WishlistItem item){
