@@ -24,14 +24,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class WishlistDaoTest {
     private static EJBContainer container;
     
-    //private static UserDAO udao;
-    //private static WishlistDAO wdao;
 
     @BeforeClass
     public static void start() throws Exception {
         container = EJBContainer.createEJBContainer();
-       // udao = (UserDAO) container.getContext().lookup("java:global/rest-example/UserDAO");
-    //	wdao = (WishlistDAO) container.getContext().lookup("java:global/rest-example/WishlistDAO");
     }
 
     @AfterClass
@@ -42,12 +38,12 @@ public class WishlistDaoTest {
     }
     
     
-    
+    @Test
 	public void daoItCanCreateWishlist() throws Exception {
     	final UserDAO udao = (UserDAO) container.getContext().lookup("java:global/rest-example/UserDAO");
     	final WishlistDAO wdao = (WishlistDAO) container.getContext().lookup("java:global/rest-example/WishlistDAO");
 		User testUser = udao.create("test.dufour@isen-lille.fr", "Test");
-		Wishlist wl = wdao.create("test", testUser.getId());
+		Wishlist wl = wdao.create("Test","test", testUser.getId());
 		
 		wl = wdao.find(wl.getId());
 		assertThat(wdao).isNotNull();
@@ -72,51 +68,38 @@ public class WishlistDaoTest {
 		
 	}
 	
-	
+	@Test
 	public void daoItCanUpdateInfo() throws Exception {
 		final UserDAO udao = (UserDAO) container.getContext().lookup("java:global/rest-example/UserDAO");
     	final WishlistDAO wdao = (WishlistDAO) container.getContext().lookup("java:global/rest-example/WishlistDAO");
     	User testUser = udao.create("dufour@isen-lille.fr", "Alexis");
-		Wishlist wl = wdao.create("update test", testUser.getId());		
+		Wishlist wl = wdao.create("Test","update test", testUser.getId());		
 		
-		wdao.updateDescription(wl.getId(), "modification");
+		wdao.updateDescription("Test", wl.getId(), "modification");
 		
 		assertThat(wdao.find(wl.getId()).getDescription()).isEqualTo("modification");
 	}
 	
 	
-	public void daoItCanUpdateGuest() throws Exception {
-		final UserDAO udao = (UserDAO) container.getContext().lookup("java:global/rest-example/UserDAO");
-    	final WishlistDAO wdao = (WishlistDAO) container.getContext().lookup("java:global/rest-example/WishlistDAO");
-    	
-    	User testUser = udao.create("test@isen-lille.fr", "Alex");
-		User testGuest = udao.create("dufour@lille.fr", "Dufour");
-		assertThat(udao.find(testGuest.getId())).isNotNull();
-		
-		Wishlist wl = wdao.create("update test", testUser.getId());	
-		assertThat(wdao.find(wl.getId()).getDescription()).isEqualTo("update test");
-		
-		wl = wdao.updateGuest(wl.getId(), testGuest.getId());
-		assertThat(wdao.find(wl.getId()).getGuest()).isNotNull();
-
-		//assertThat(wdao.find(wl.getId()).getGuest().get(0).getName()).isEqualTo("Dufour");
-	}
-	
 	@Test
-	public void daoItCanUpdateItem() throws Exception {
+	public void daoItCanAddItem() throws Exception {
 		final UserDAO udao = (UserDAO) container.getContext().lookup("java:global/rest-example/UserDAO");
     	final WishlistDAO wdao = (WishlistDAO) container.getContext().lookup("java:global/rest-example/WishlistDAO");
     	final WishlistItemDAO widao = (WishlistItemDAO) container.getContext().lookup("java:global/rest-example/WishlistItemDAO");
 		
     	
     	User testUser = udao.create("dufor@isen-lille.fr", "Test");
-		Wishlist wl = wdao.create("test", testUser.getId());	
+		Wishlist wl = wdao.create("Test", "test", testUser.getId());	
 		
 		WishlistItem item = widao.create(50, "oLink", wl.getId());
 		item = widao.find(item.getId());
-		assertThat(wdao.find(wl.getId()).getItem()).isNotNull();
+		assertThat(widao.find(item.getId()).getWishlist()).isNotNull();
+		assertThat(wdao.find(wl.getId()).getItem()).hasSize(1);
 		
-		//assertThat(wdao.find(wl.getId()).getGuest().get(0).getName()).isEqualTo("DUfour");
+		WishlistItem item2 = widao.create(50, "oLink", wl.getId());
+		item2 = widao.find(item2.getId());
+		assertThat(widao.find(item2.getId()).getWishlist()).isNotNull();
+		assertThat(wdao.find(wl.getId()).getItem()).hasSize(2);
 	}
 	
 	
@@ -126,7 +109,7 @@ public class WishlistDaoTest {
     	final WishlistDAO wdao = (WishlistDAO) container.getContext().lookup("java:global/rest-example/WishlistDAO");
 		
     	User testUser = udao.create("aufour@isen-lille.fr", "Alexis");
-		Wishlist wl = wdao.create("update test", testUser.getId());	
+		Wishlist wl = wdao.create("Test", "update test", testUser.getId());	
 		
 		wdao.delete(wl.getId(), testUser.getId());
 		assertThat(wdao.find(wl.getId())).isNull();		
