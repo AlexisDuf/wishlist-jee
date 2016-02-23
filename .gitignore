@@ -1,5 +1,5 @@
-.classpath
-.project
-.settings/*
-target/*
-/target/
+rest-example/.classpath
+rest-example/.project
+rest-example/.settings/*
+rest-example/target/*
+rest-example/target/
