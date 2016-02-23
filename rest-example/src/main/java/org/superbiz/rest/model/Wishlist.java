@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -27,6 +28,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement(name = "wishlist")
 public class Wishlist extends DatedModel {
 
+	@NotNull
+	@Size(min = 1)
+	@Lob
+	private String title;
+	
 	
 	@NotNull
 	@Size(min = 1)
@@ -41,7 +47,12 @@ public class Wishlist extends DatedModel {
 	@OneToMany(targetEntity=WishlistItem.class, mappedBy = "wishlist", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<WishlistItem> item = new LinkedList<>();
 	
-    @ManyToMany(mappedBy="participationToWishlist", fetch=FetchType.EAGER, cascade=CascadeType.ALL) 
+
+	/*@ManyToMany 
+	@JoinTable(name="Wishlist_Guest", 
+	      joinColumns=@JoinColumn(name="id"),
+	      inverseJoinColumns=@JoinColumn(name="id")) */
+	@ManyToMany(mappedBy="participationToWishlist", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<User> guest = new LinkedList<>();
 	
 	@ManyToOne
@@ -55,6 +66,10 @@ public class Wishlist extends DatedModel {
 	
 	/********* GETTER ********/
 
+	public String getTitle() {
+		return title;
+	}
+	
 	public User getCreator() {
 		return creator;		
 	}
@@ -84,6 +99,10 @@ public class Wishlist extends DatedModel {
 	public void setCreator(User creator) {
 		this.creator = creator;
 		creator.addWishlist(this);		
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	public void setDescription(String description) {
@@ -118,8 +137,12 @@ public class Wishlist extends DatedModel {
 	}
 	
 	public void addGuest(User guest){
-		guest.addParticpationToWishlist(this);
-		getGuest().add(guest);
+		if (!getGuest().contains(guest)) {
+			getGuest().add(guest);
+		}
+		if (!guest.getParticipationToWishlist().contains(this)) {
+			guest.addParticpationToWishlist(this);
+		}				
 	}
 	
 	

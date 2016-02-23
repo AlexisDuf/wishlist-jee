@@ -35,7 +35,7 @@ public class WishlistDAO {
         return Collections.unmodifiableList(usr.getWishlist());
     }
     
-	public Wishlist create(String description, long userId){
+	public Wishlist create(String title, String description, long userId){
 		User usr = dao.find(User.class, userId);
 		
         if (usr == null) {
@@ -43,6 +43,7 @@ public class WishlistDAO {
         }
         
 		Wishlist wishlist = new Wishlist();
+		wishlist.setTitle(title);
 		wishlist.setDescription(description);
 		wishlist.setTokenAdmin(new BigInteger(130, random).toString(32));
 		wishlist.setTokenGuest(new BigInteger(130, random).toString(32));
@@ -80,27 +81,16 @@ public class WishlistDAO {
 		dao.delete(Wishlist.class, idWl);		
 	}
 
-	public Wishlist updateDescription(long id, String description) {
+	public Wishlist updateDescription(String title, long id, String description) {
 		Wishlist wl = dao.find(Wishlist.class, id);
 		
 		if(wl == null) throw new IllegalArgumentException("Wishlist with id " + id + " not found");
 		
 		wl.setDescription(description);
+		wl.setTitle(title);
 		
 		return dao.update(wl);
 		
 	}
-	
-	public Wishlist updateGuest(long id, long id_guest) {
-		Wishlist wl = dao.find(Wishlist.class, id);
-		User user = dao.find(User.class, id_guest);
-		
-		if(wl == null) throw new IllegalArgumentException("Wishlist with id " + id + " not found");		
-		
-		if(wl.getGuest().contains(user)) return wl;
-		
-		wl.addGuest(user);
 
-		return dao.update(wl);
-	}
 }

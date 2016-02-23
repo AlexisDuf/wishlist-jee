@@ -27,8 +27,8 @@ public class User extends DatedModel{
 	@NotNull
 	private String mail;
 	
-	@ManyToMany(targetEntity = Wishlist.class, cascade=CascadeType.ALL)
-	List<Wishlist> participationToWishlist;
+	@ManyToMany
+	List<Wishlist> participationToWishlist = new LinkedList<>();
 	
     @OneToMany(targetEntity=Wishlist.class, mappedBy="creator", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Wishlist> wishlists = new LinkedList<>();
@@ -103,7 +103,13 @@ public class User extends DatedModel{
 	}
 	
 	public void addParticpationToWishlist(Wishlist wl){
-		getParticipationToWishlist().add(wl);
+		if (!getParticipationToWishlist().contains(wl)) {
+			getParticipationToWishlist().add(wl);
+		}
+		if (!wl.getGuest().contains(this)) {
+			wl.getGuest().add(this);
+		}
+		
 	}
 	
 	
