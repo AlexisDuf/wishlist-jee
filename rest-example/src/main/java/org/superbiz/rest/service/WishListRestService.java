@@ -1,11 +1,6 @@
 package org.superbiz.rest.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.ejb.EJB;
-import javax.inject.Inject;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -28,11 +23,7 @@ import org.superbiz.rest.model.Link;
 import org.superbiz.rest.model.Wishlist;
 import org.superbiz.rest.model.WishlistItem;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 
 
 @Path("/api/wishlists")
@@ -72,23 +63,7 @@ public class WishListRestService{
 			return true;
 		}
 	}
-
-	private String parseAdminItems(Wishlist wishlist) {
-		List<JsonObject> itemsObj = new ArrayList<>();
-		JsonObject currentItemObj;
-		Gson gson = new Gson();
-		
-		List<WishlistItem> items = wishlist.getItem();
-		for (WishlistItem currentItem : items ) {
-			currentItemObj = new JsonObject();
-			currentItemObj.addProperty("links",  gson.toJson(currentItem.getLinks()));
-			currentItemObj.addProperty("avg_price", currentItem.getAveragePrice());
-			currentItemObj.addProperty("photo_link", currentItem.getPhotoLink());
-			itemsObj.add(currentItemObj);
-		}
-		
-		return itemsObj.toString();
-	}
+	
 	
 
 	
@@ -103,9 +78,9 @@ public class WishListRestService{
 	@POST
     public Response createWishList(@FormParam("description") String description, @FormParam("title") String title,
             @HeaderParam("user_id") int user_id) {
-		Wishlist wishList = wdao.create(title, description, user_id);		
-		Gson gson = new Gson();
-        return Response.ok(gson.toJson(wishList), MediaType.APPLICATION_JSON).build();
+		Wishlist wishlist = wdao.create(title, description, user_id);		
+		JsonObject json = ParserService.parseWishlist(wishlist);
+        return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     }
 	
 	
@@ -115,14 +90,15 @@ public class WishListRestService{
 	@GET
     @Path("/{wishlist_token}")
     public Response showParticularWishList(@PathParam("wishlist_token") String token)  {
-    	Gson gson = new Gson();
     	if(isAdmin(token)){
     		Wishlist wishlist = wdao.loadFromTokenAdmin(token);
-    		return Response.ok(gson.toJson(wishlist), MediaType.APPLICATION_JSON).build();
+    		JsonObject json = ParserService.parseWishlist(wishlist);
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     	}
     	else if(isGuest(token)){
     		Wishlist wishlist = wdao.loadFromTokenGuest(token);
-    		return Response.ok(gson.toJson(wishlist), MediaType.APPLICATION_JSON).build();
+    		JsonObject json = ParserService.parseWishlist(wishlist);
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     	}
     	else{
     		return Response.status(Response.Status.FORBIDDEN).build();
@@ -139,9 +115,9 @@ public class WishListRestService{
     	// Admin can modify wishlist configurations
     	if(this.isAdmin(token)){
     		Wishlist wishlist = wdao.loadFromTokenAdmin(token);
-    		Gson gson = new Gson();
     		wishlist = wdao.updateDescription(title, wishlist.getId(), description);
-    		return Response.ok(gson.toJson(wishlist), MediaType.APPLICATION_JSON).build();
+    		JsonObject json = ParserService.parseWishlist(wishlist);
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     	}
     	// Guets can't modify wishlist configurations
     	else{
@@ -183,9 +159,9 @@ public class WishListRestService{
     	}
     	// Admin can add item
     	else{
-    		Gson gson = new Gson();
     		WishlistItem item = witemdao.create(avg_price, url_photo, wishlist.getId());
-    		return Response.ok(gson.toJson(item), MediaType.APPLICATION_JSON).build();
+    		JsonObject json = ParserService.parseWishListItem(item);
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     	}
     }
     
@@ -204,9 +180,9 @@ public class WishListRestService{
     	}
     	// Admin can update item
     	else{
-    		Gson gson = new Gson();
     		WishlistItem item = witemdao.update(item_id, avg_price, url_photo);
-        	return Response.status(Response.Status.OK).entity(gson.toJson(item)).build();
+    		JsonObject json = ParserService.parseWishListItem(item);
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     	}
     }
    
@@ -239,9 +215,9 @@ public class WishListRestService{
             @HeaderParam("user_id") long user_id){
     	// Guest can add comment
     	if(this.isGuest(token)){
-    		Gson gson = new Gson();
     		Comment comment = cmtdao.create(content, item_id, user_id);
-    		return Response.ok(gson.toJson(comment), MediaType.APPLICATION_JSON).build();
+    		JsonObject json = ParserService.parseComment(comment);
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     	}
     	// Admin can't add comment
     	else{
@@ -260,9 +236,9 @@ public class WishListRestService{
     	if(this.isGuest(token)){
     		Comment comment = cmtdao.find(comment_id);
     		if(user_id == comment.getAuthor().getId()){
-    			Gson gson = new Gson();
         		comment = cmtdao.update(comment_id, content);
-        		return Response.ok(gson.toJson(comment), MediaType.APPLICATION_JSON).build();
+        		JsonObject json = ParserService.parseComment(comment);
+        		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     		}
     		else{
     			return Response.status(Response.Status.FORBIDDEN).build();
@@ -308,9 +284,9 @@ public class WishListRestService{
             @HeaderParam("user_id") long user_id){
     	// Guest can add proposition
     	if(this.isGuest(token)){
-    		Gson gson = new Gson();
     		GuestProposition proposition = gpdao.create(price, item_id, user_id);
-    		return Response.ok(gson.toJson(proposition), MediaType.APPLICATION_JSON).build();
+    		JsonObject json = ParserService.parseGuestProposition(proposition);
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     	}
     	// Admin can't add proposition
     	else{
@@ -330,9 +306,9 @@ public class WishListRestService{
     	if(this.isGuest(token)){
     		GuestProposition proposition = gpdao.find(proposition_id);
     		if(user_id == proposition.getGuestName().getId()){
-    			Gson gson = new Gson();
     			proposition = gpdao.update(proposition_id, price);
-    			return Response.ok(gson.toJson(proposition), MediaType.APPLICATION_JSON).build();
+    			JsonObject json = ParserService.parseGuestProposition(proposition);
+        		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     		}
     		else{
     			return Response.status(Response.Status.FORBIDDEN).build();
@@ -383,9 +359,9 @@ public class WishListRestService{
     	}
     	// Admin can add link
     	else{
-    		Gson gson = new Gson();
     		Link link = ldao.create(url, item_id);
-    		return Response.ok(gson.toJson(link), MediaType.APPLICATION_JSON).build();
+    		JsonObject json = ParserService.parseLink(link);
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     	}
     }
     

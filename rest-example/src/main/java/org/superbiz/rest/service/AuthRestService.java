@@ -43,18 +43,8 @@ public class AuthRestService {
 		if(user == null){
 			user = udao.create(email, name);
 		}
-		Gson gson = new Gson();
-		return Response.ok(gson.toJson(user), MediaType.APPLICATION_JSON).build();
-    }
-	
-    
-	@GET
-    @Path("/list")
-    public Response list(@FormParam("first") @DefaultValue("0") int first,
-    						@FormParam("max") @DefaultValue("20") int max) {
-        List<User> users = udao.list(first, max);
-        Gson gson = new Gson();
-        return Response.ok(gson.toJson(users), MediaType.APPLICATION_JSON).build();
+		JsonObject json = ParserService.parseUser(user);
+		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
     }
 	
 }
