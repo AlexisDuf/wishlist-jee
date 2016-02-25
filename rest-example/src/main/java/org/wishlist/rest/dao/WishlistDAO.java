@@ -1,4 +1,4 @@
-package org.superbiz.rest.dao;
+package org.wishlist.rest.dao;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -11,8 +11,8 @@ import javax.ejb.Singleton;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 
-import org.superbiz.rest.model.User;
-import org.superbiz.rest.model.Wishlist;
+import org.wishlist.rest.model.User;
+import org.wishlist.rest.model.Wishlist;
 
 @Singleton
 @Lock(LockType.READ)
@@ -54,7 +54,7 @@ public class WishlistDAO {
 	
 	public Wishlist loadFromTokenAdmin(String tokenAdmin){
 		try {
-			Wishlist wl = (Wishlist) dao.findBy(Wishlist.class, "SELECT wl FROM Wishlist wl WHERE wl.tokenAdmin = :tokenAdmin", "tokenAdmin", tokenAdmin);
+			Wishlist wl = dao.findBy(Wishlist.class, "SELECT wl FROM Wishlist wl WHERE wl.tokenAdmin = :tokenAdmin", "tokenAdmin", tokenAdmin);
 			return wl;
 		} catch (NoResultException exception) {
 			return null;
@@ -64,7 +64,7 @@ public class WishlistDAO {
 	
 	public Wishlist loadFromTokenGuest(String tokenGuest){
 		try {
-			Wishlist wl = (Wishlist) dao.findBy(Wishlist.class, "SELECT wl FROM Wishlist wl WHERE wl.tokenGuest = :tokenGuest", "tokenGuest", tokenGuest);
+			Wishlist wl = dao.findBy(Wishlist.class, "SELECT wl FROM Wishlist wl WHERE wl.tokenGuest = :tokenGuest", "tokenGuest", tokenGuest);
 			return wl;
 		} catch( NoResultException exception){
 			return null;

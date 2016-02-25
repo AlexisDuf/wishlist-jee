@@ -3,8 +3,8 @@
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.superbiz.rest.dao.UserDAO;
-import org.superbiz.rest.model.User;
+import org.wishlist.rest.dao.UserDAO;
+import org.wishlist.rest.model.User;
 
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.NamingException;

@@ -1,4 +1,4 @@
-package org.superbiz.rest.model;
+package org.wishlist.rest.model;
 import java.util.LinkedList;
 import java.util.List;
 

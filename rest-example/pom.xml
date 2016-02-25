@@ -18,11 +18,11 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.superbiz</groupId>
-  <artifactId>rest-example</artifactId>
+  <groupId>org.isen</groupId>
+  <artifactId>wishlist-jee</artifactId>
   <packaging>war</packaging>
   <version>1.1.0-SNAPSHOT</version>
-  <name>OpenEJB :: Web Examples :: REST Example</name>
+  <name>Wishlist JEE :: REST API :: Alexis DUFOUR - Matthieu DELMAIRE - Paul WASSON</name>
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -110,7 +110,7 @@
         <artifactId>openjpa-maven-plugin</artifactId>
         <version>${version.openjpa}</version>
         <configuration>
-          <includes>org/superbiz/rest/model/*.class</includes>
+          <includes>org/wishlist/rest/model/*.class</includes>
           <addDefaultConstructor>true</addDefaultConstructor>
           <enforcePropertyRestrictions>true</enforcePropertyRestrictions>
         </configuration>

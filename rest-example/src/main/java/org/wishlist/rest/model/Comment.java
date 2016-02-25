@@ -1,4 +1,4 @@
-package org.superbiz.rest.model;
+package org.wishlist.rest.model;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;

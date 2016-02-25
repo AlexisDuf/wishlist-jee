@@ -24,8 +24,8 @@
   <persistence-unit name="blog">
     <jta-data-source>jdbc/blog</jta-data-source>
     <non-jta-data-source>jdbc/blog-unmanaged</non-jta-data-source>
-    <class>org.superbiz.rest.model.Model</class>
-    <class>org.superbiz.rest.model.DatedModel</class>
+    <class>org.wishlist.rest.model.Model</class>
+    <class>org.wishlist.rest.model.DatedModel</class>
 
     <properties>
       <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>

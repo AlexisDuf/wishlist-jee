@@ -1,4 +1,4 @@
-package org.superbiz.rest.dao;
+package org.wishlist.rest.dao;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.ejb.Singleton;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 
-import org.superbiz.rest.model.User;
+import org.wishlist.rest.model.User;
 
 
 @Singleton

@@ -1,4 +1,4 @@
-package org.superbiz.rest.dao;
+package org.wishlist.rest.dao;
 
 import java.util.Collections;
 import java.util.List;
@@ -8,9 +8,9 @@ import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 
-import org.superbiz.rest.model.Comment;
-import org.superbiz.rest.model.User;
-import org.superbiz.rest.model.WishlistItem;
+import org.wishlist.rest.model.Comment;
+import org.wishlist.rest.model.User;
+import org.wishlist.rest.model.WishlistItem;
 
 
 

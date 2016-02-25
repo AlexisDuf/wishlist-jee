@@ -1,23 +1,15 @@
 
 import javax.ejb.embeddable.EJBContainer;
-import javax.naming.NamingException;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.superbiz.rest.dao.UserDAO;
-import org.superbiz.rest.dao.WishlistDAO;
-import org.superbiz.rest.dao.WishlistItemDAO;
-import org.superbiz.rest.model.User;
-import org.superbiz.rest.model.Wishlist;
-import org.superbiz.rest.model.WishlistItem;
+import org.wishlist.rest.dao.UserDAO;
+import org.wishlist.rest.dao.WishlistDAO;
+import org.wishlist.rest.dao.WishlistItemDAO;
+import org.wishlist.rest.model.User;
+import org.wishlist.rest.model.Wishlist;
+import org.wishlist.rest.model.WishlistItem;
 
-import static org.junit.Assert.assertNotNull;
 import static org.assertj.core.api.Assertions.assertThat;
 
 

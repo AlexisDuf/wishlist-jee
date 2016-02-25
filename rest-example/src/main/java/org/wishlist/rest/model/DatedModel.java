@@ -14,7 +14,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.superbiz.rest.model;
+package org.wishlist.rest.model;
 
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;

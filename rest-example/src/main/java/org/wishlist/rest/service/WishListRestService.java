@@ -1,4 +1,4 @@
-package org.superbiz.rest.service;
+package org.wishlist.rest.service;
 
 import javax.ejb.EJB;
 import javax.ws.rs.DELETE;
@@ -12,16 +12,16 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.superbiz.rest.dao.CommentDAO;
-import org.superbiz.rest.dao.GuestPropostionDAO;
-import org.superbiz.rest.dao.LinkDAO;
-import org.superbiz.rest.dao.WishlistDAO;
-import org.superbiz.rest.dao.WishlistItemDAO;
-import org.superbiz.rest.model.Comment;
-import org.superbiz.rest.model.GuestProposition;
-import org.superbiz.rest.model.Link;
-import org.superbiz.rest.model.Wishlist;
-import org.superbiz.rest.model.WishlistItem;
+import org.wishlist.rest.dao.CommentDAO;
+import org.wishlist.rest.dao.GuestPropostionDAO;
+import org.wishlist.rest.dao.LinkDAO;
+import org.wishlist.rest.dao.WishlistDAO;
+import org.wishlist.rest.dao.WishlistItemDAO;
+import org.wishlist.rest.model.Comment;
+import org.wishlist.rest.model.GuestProposition;
+import org.wishlist.rest.model.Link;
+import org.wishlist.rest.model.Wishlist;
+import org.wishlist.rest.model.WishlistItem;
 
 import com.google.gson.JsonObject;
 

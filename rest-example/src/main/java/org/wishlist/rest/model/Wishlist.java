@@ -1,4 +1,4 @@
-package org.superbiz.rest.model;
+package org.wishlist.rest.model;
 
 
 import java.util.LinkedList;
@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;

@@ -14,7 +14,7 @@
  *     See the License for the specific language governing permissions and
  *     limitations under the License.
  */
-package org.superbiz.rest.dao;
+package org.wishlist.rest.dao;
 
 import javax.ejb.Lock;
 import javax.ejb.LockType;
@@ -60,7 +60,7 @@ public class DAO {
     public <E> E findBy(Class<E> clazz, String query, String nameParam, Object param) {
 		try
 		{
-			return (E) em.createQuery(query, clazz).setParameter(nameParam, param).getSingleResult();
+			return em.createQuery(query, clazz).setParameter(nameParam, param).getSingleResult();
 		}
 		catch(NoResultException exeption)
 		{

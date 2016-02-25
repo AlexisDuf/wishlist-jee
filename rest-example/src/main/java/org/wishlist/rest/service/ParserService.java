@@ -1,13 +1,13 @@
-package org.superbiz.rest.service;
+package org.wishlist.rest.service;
 
 import java.util.Iterator;
 
-import org.superbiz.rest.model.Comment;
-import org.superbiz.rest.model.GuestProposition;
-import org.superbiz.rest.model.Link;
-import org.superbiz.rest.model.User;
-import org.superbiz.rest.model.Wishlist;
-import org.superbiz.rest.model.WishlistItem;
+import org.wishlist.rest.model.Comment;
+import org.wishlist.rest.model.GuestProposition;
+import org.wishlist.rest.model.Link;
+import org.wishlist.rest.model.User;
+import org.wishlist.rest.model.Wishlist;
+import org.wishlist.rest.model.WishlistItem;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
