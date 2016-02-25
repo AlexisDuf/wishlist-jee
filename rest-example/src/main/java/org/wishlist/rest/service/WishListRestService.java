@@ -80,7 +80,9 @@ public class WishListRestService{
             @HeaderParam("user_id") int user_id) {
 		Wishlist wishlist = wdao.create(title, description, user_id);		
 		JsonObject json = ParserService.parseWishlist(wishlist);
-        return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+        return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+        		.header("Access-Control-Allow-Origin", "*")
+        		.build();
     }
 	
 	
@@ -93,15 +95,21 @@ public class WishListRestService{
     	if(isAdmin(token)){
     		Wishlist wishlist = wdao.loadFromTokenAdmin(token);
     		JsonObject json = ParserService.parseWishlist(wishlist);
-    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	else if(isGuest(token)){
     		Wishlist wishlist = wdao.loadFromTokenGuest(token);
     		JsonObject json = ParserService.parseWishlist(wishlist);
-    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	else{
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
     
@@ -117,11 +125,15 @@ public class WishListRestService{
     		Wishlist wishlist = wdao.loadFromTokenAdmin(token);
     		wishlist = wdao.updateDescription(title, wishlist.getId(), description);
     		JsonObject json = ParserService.parseWishlist(wishlist);
-    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	// Guets can't modify wishlist configurations
     	else{
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
     
@@ -136,11 +148,15 @@ public class WishListRestService{
     	if(this.isAdmin(token)){
     		Wishlist wishlist = wdao.loadFromTokenAdmin(token);
     		wdao.delete(wishlist.getId(), wishlist.getCreator().getId());
-    		return Response.status(Response.Status.NO_CONTENT).build();
+    		return Response.status(Response.Status.NO_CONTENT)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	// Guets can't delete wishlist
     	else{
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
     
@@ -155,13 +171,17 @@ public class WishListRestService{
     	Wishlist wishlist = wdao.loadFromTokenAdmin(token);
     	// Guests can't add item 
     	if(wishlist == null){
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	// Admin can add item
     	else{
     		WishlistItem item = witemdao.create(avg_price, url_photo, wishlist.getId());
     		JsonObject json = ParserService.parseWishListItem(item);
-    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
     
@@ -176,13 +196,17 @@ public class WishListRestService{
     	Wishlist wishlist = wdao.loadFromTokenAdmin(token);
     	// Guests can't update item 
     	if(wishlist == null){
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	// Admin can update item
     	else{
     		WishlistItem item = witemdao.update(item_id, avg_price, url_photo);
     		JsonObject json = ParserService.parseWishListItem(item);
-    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
    
@@ -196,12 +220,16 @@ public class WishListRestService{
     	Wishlist wishlist = wdao.loadFromTokenAdmin(token);
     	// Guests can't delete item 
     	if(wishlist == null){
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	// Admin can delete item
     	else{
     		witemdao.delete(item_id, wishlist.getId());
-        	return Response.status(Response.Status.NO_CONTENT).build();
+        	return Response.status(Response.Status.NO_CONTENT)
+        			.header("Access-Control-Allow-Origin", "*")
+        			.build();
     	}
     }
     
@@ -217,11 +245,15 @@ public class WishListRestService{
     	if(this.isGuest(token)){
     		Comment comment = cmtdao.create(content, item_id, user_id);
     		JsonObject json = ParserService.parseComment(comment);
-    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	// Admin can't add comment
     	else{
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
     
@@ -238,15 +270,21 @@ public class WishListRestService{
     		if(user_id == comment.getAuthor().getId()){
         		comment = cmtdao.update(comment_id, content);
         		JsonObject json = ParserService.parseComment(comment);
-        		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+        		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+        				.header("Access-Control-Allow-Origin", "*")
+        				.build();
     		}
     		else{
-    			return Response.status(Response.Status.FORBIDDEN).build();
+    			return Response.status(Response.Status.FORBIDDEN)
+    					.header("Access-Control-Allow-Origin", "*")
+    					.build();
     		}
     	}
     	// Admin can't modify comment
     	else{
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
     
@@ -262,15 +300,21 @@ public class WishListRestService{
     		Comment comment = cmtdao.find(comment_id);
     		if(user_id == comment.getAuthor().getId()){
         		cmtdao.delete(comment_id, user_id, item_id);
-        		return Response.status(Response.Status.NO_CONTENT).build();
+        		return Response.status(Response.Status.NO_CONTENT)
+        				.header("Access-Control-Allow-Origin", "*")
+        				.build();
     		}
     		else{
-    			return Response.status(Response.Status.FORBIDDEN).build();
+    			return Response.status(Response.Status.FORBIDDEN)
+    					.header("Access-Control-Allow-Origin", "*")
+    					.build();
     		}
     	}
     	// Admin can't delete comment
     	else{
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
 
@@ -286,11 +330,15 @@ public class WishListRestService{
     	if(this.isGuest(token)){
     		GuestProposition proposition = gpdao.create(price, item_id, user_id);
     		JsonObject json = ParserService.parseGuestProposition(proposition);
-    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	// Admin can't add proposition
     	else{
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
     
@@ -308,15 +356,21 @@ public class WishListRestService{
     		if(user_id == proposition.getGuestName().getId()){
     			proposition = gpdao.update(proposition_id, price);
     			JsonObject json = ParserService.parseGuestProposition(proposition);
-        		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+        		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+        				.header("Access-Control-Allow-Origin", "*")
+        				.build();
     		}
     		else{
-    			return Response.status(Response.Status.FORBIDDEN).build();
+    			return Response.status(Response.Status.FORBIDDEN)
+    					.header("Access-Control-Allow-Origin", "*")
+    					.build();
     		}
     	}
     	// Admin can't update proposition
     	else{
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
     
@@ -333,15 +387,21 @@ public class WishListRestService{
     		GuestProposition proposition = gpdao.find(proposition_id);
     		if(user_id == proposition.getGuestName().getId()){
     			gpdao.delete(proposition_id, user_id, item_id);
-    			return Response.status(Response.Status.NO_CONTENT).build();
+    			return Response.status(Response.Status.NO_CONTENT)
+    					.header("Access-Control-Allow-Origin", "*")
+    					.build();
     		}
     		else{
-    			return Response.status(Response.Status.FORBIDDEN).build();
+    			return Response.status(Response.Status.FORBIDDEN)
+    					.header("Access-Control-Allow-Origin", "*")
+    					.build();
     		}
     	}
     	// Admin can't delete proposition
     	else{
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
 
@@ -355,13 +415,17 @@ public class WishListRestService{
     public Response createLink(@PathParam("wishlist_token") String token, @PathParam("item_id") long item_id,@FormParam("url") String url){
     	// Guest can't add link
     	if(this.isGuest(token)){
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	// Admin can add link
     	else{
     		Link link = ldao.create(url, item_id);
     		JsonObject json = ParserService.parseLink(link);
-    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+    		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
     
@@ -374,12 +438,16 @@ public class WishListRestService{
     public Response createLink(@PathParam("wishlist_token") String token, @PathParam("item_id") long item_id, @PathParam("link_id") long link_id){
     	// Guest can't remove link
     	if(this.isGuest(token)){
-    		return Response.status(Response.Status.FORBIDDEN).build();
+    		return Response.status(Response.Status.FORBIDDEN)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     	// Admin can remove link
     	else{
     		ldao.delete(link_id, item_id);
-    		return Response.status(Response.Status.NO_CONTENT).build();
+    		return Response.status(Response.Status.NO_CONTENT)
+    				.header("Access-Control-Allow-Origin", "*")
+    				.build();
     	}
     }
 }

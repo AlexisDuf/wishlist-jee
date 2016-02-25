@@ -27,14 +27,15 @@ public class AuthRestService {
 	private UserDAO udao;
 	
 	@POST
-	@Path("/create")
     public Response create(@FormParam("email") String email, @FormParam("name") String name) throws SecurityException, IllegalStateException, NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
 		User user = udao.findByMail(email);
 		if(user == null){
 			user = udao.create(email, name);
 		}
 		JsonObject json = ParserService.parseUser(user);
-		return Response.ok(json.toString(), MediaType.APPLICATION_JSON).build();
+		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
+				.header("Access-Control-Allow-Origin", "*")
+				.build();
     }
 	
 }
