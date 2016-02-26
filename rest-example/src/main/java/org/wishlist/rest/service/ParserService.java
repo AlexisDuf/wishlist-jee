@@ -24,7 +24,7 @@ public class ParserService {
 			Wishlist currentWishlist = (Wishlist) iterator.next();
 			wishlists.add(ParserService.parseWishlist(currentWishlist));
 		}
-		json.addProperty("wishlists", wishlists.toString());
+		json.add("wishlists", wishlists);
 		return json;
 	}
 	
@@ -42,7 +42,7 @@ public class ParserService {
 		User creator = wishlist.getCreator();
 		creatorJson.addProperty("name", creator.getName());
 		creatorJson.addProperty("email", creator.getMail());
-		json.addProperty("creator", creatorJson.toString());
+		json.add("creator", creatorJson);
 		/*
 		 * Items
 		 */
@@ -51,7 +51,7 @@ public class ParserService {
 			WishlistItem currentItem = (WishlistItem) iterator.next();
 			items.add(ParserService.parseWishListItem(currentItem));
 		}
-		json.addProperty("items", items.toString());
+		json.add("items", items);
 		return json;
 	}
 	
@@ -68,7 +68,7 @@ public class ParserService {
 			Comment currentComment = (Comment) iterator.next();
 			comments.add(ParserService.parseComment(currentComment));
 		}
-		json.addProperty("comments", comments.toString());
+		json.add("comments", comments);
 		/*
 		 * Propositions
 		 */
@@ -77,7 +77,7 @@ public class ParserService {
 			GuestProposition currentProposition = (GuestProposition) iterator.next();
 			propositions.add(ParserService.parseGuestProposition(currentProposition));
 		}
-		json.addProperty("propositions", propositions.toString());
+		json.add("propositions", propositions);
 		/*
 		 * Links
 		 */
@@ -86,7 +86,7 @@ public class ParserService {
 			Link currentLink = (Link) iterator.next();
 			links.add(ParserService.parseLink(currentLink));
 		}
-		json.addProperty("links", links.toString());
+		json.add("links", links);
 		return json;
 	}
 	
@@ -103,7 +103,7 @@ public class ParserService {
 		User creator = comment.getAuthor();
 		creatorJson.addProperty("name", creator.getName());
 		creatorJson.addProperty("email", creator.getMail());
-		json.addProperty("creator", creatorJson.toString());
+		json.add("creator", creatorJson);
 		return json;
 	}
 	
@@ -118,7 +118,7 @@ public class ParserService {
 		User creator = gp.getGuestName();
 		creatorJson.addProperty("name", creator.getName());
 		creatorJson.addProperty("email", creator.getMail());
-		json.addProperty("creator", creatorJson.toString());
+		json.add("creator", creatorJson);
 		return json;
 	}
 	
