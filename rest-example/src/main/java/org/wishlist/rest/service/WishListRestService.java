@@ -77,7 +77,7 @@ public class WishListRestService{
 	 */
 	@POST
     public Response createWishList(@FormParam("description") String description, @FormParam("title") String title,
-            @HeaderParam("user_id") int user_id) {
+    		@FormParam("user_id") int user_id) {
 		Wishlist wishlist = wdao.create(title, description, user_id);		
 		JsonObject json = ParserService.parseWishlist(wishlist);
         return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
@@ -240,7 +240,7 @@ public class WishListRestService{
     @POST
     @Path("{wishlist_token}/items/{item_id}/comments")
     public Response createComment(@PathParam("wishlist_token") String token, @PathParam("item_id") long item_id,@FormParam("content") String content,
-            @HeaderParam("user_id") long user_id){
+    		@FormParam("user_id") int user_id){
     	// Guest can add comment
     	if(this.isGuest(token)){
     		Comment comment = cmtdao.create(content, item_id, user_id);
@@ -263,7 +263,7 @@ public class WishListRestService{
     @PUT
     @Path("{wishlist_token}/items/{item_id}/comments/{comment_id}")
     public Response createComment(@PathParam("wishlist_token") String token, @PathParam("item_id") long item_id, @PathParam("comment_id") long comment_id, @FormParam("content") String content,
-            @HeaderParam("user_id") long user_id){
+    		@FormParam("user_id") int user_id){
     	// Guest can modify comment only if is owner
     	if(this.isGuest(token)){
     		Comment comment = cmtdao.find(comment_id);
@@ -294,7 +294,7 @@ public class WishListRestService{
      */
     @DELETE
     @Path("{wishlist_token}/items/{item_id}/comments/{comment_id}")
-    public Response deleteComment(@PathParam("wishlist_token") String token, @PathParam("item_id") long item_id, @PathParam("comment_id") long comment_id, @HeaderParam("user_id") long user_id){
+    public Response deleteComment(@PathParam("wishlist_token") String token, @PathParam("item_id") long item_id, @PathParam("comment_id") long comment_id, @FormParam("user_id") int user_id){
     	// Guest can delete comment only if is owner
     	if(this.isGuest(token)){
     		Comment comment = cmtdao.find(comment_id);
@@ -325,7 +325,7 @@ public class WishListRestService{
     @POST
     @Path("{wishlist_token}/items/{item_id}/propositions")
     public Response createProposition(@PathParam("wishlist_token") String token, @PathParam("item_id") long item_id, @FormParam("price") float price,
-            @HeaderParam("user_id") long user_id){
+    		@FormParam("user_id") int user_id){
     	// Guest can add proposition
     	if(this.isGuest(token)){
     		GuestProposition proposition = gpdao.create(price, item_id, user_id);
@@ -349,7 +349,7 @@ public class WishListRestService{
     @PUT
     @Path("{wishlist_token}/items/{item_id}/propositions/{proposition_id}")
     public Response updateProposition(@PathParam("wishlist_token") String token,@PathParam("item_id") long item_id, @PathParam("proposition_id") long proposition_id, @FormParam("price") float price,
-            @HeaderParam("user_id") long user_id){
+    		@FormParam("user_id") int user_id){
     	// Guest can update proposition only if is owner
     	if(this.isGuest(token)){
     		GuestProposition proposition = gpdao.find(proposition_id);
@@ -381,7 +381,7 @@ public class WishListRestService{
     @Path("{wishlist_token}/items/{item_id}/propositions/{proposition_id}")
     @DELETE
     public Response deleteProposition(@PathParam("wishlist_token") String token,@PathParam("item_id") long item_id, @PathParam("proposition_id") long proposition_id,
-            @HeaderParam("user_id") long user_id){
+    		@FormParam("user_id") int user_id){
     	// Guest can delete proposition only if is owner
     	if(this.isGuest(token)){
     		GuestProposition proposition = gpdao.find(proposition_id);
