@@ -5,14 +5,14 @@
 
 ### HOW RUN PROJECT
 
-*Go to rest-example folder: mvn install 
-*Then: mvn tomee:run 
+* Go to rest-example folder: mvn install 
+* Then: mvn tomee:run 
 
 ### END POINT
 
-*REST Application: http://localhost:8080/wishlist-jee/ 1                                                                             
-    *Service URI: http://localhost:8080/wishlist-jee/api/users -> Pojo org.wishlist.rest.service.AuthRestService 1.1    
-        *POST http://localhost:8080/wishlist-jee/api/users/create -> Response create(String, String) 1.1a
+* REST Application: http://localhost:8080/wishlist-jee/ 1                                                                             
+    * Service URI: http://localhost:8080/wishlist-jee/api/users -> Pojo org.wishlist.rest.service.AuthRestService 1.1    
+        * POST http://localhost:8080/wishlist-jee/api/users/create -> Response create(String, String) 1.1a
     *Service URI: http://localhost:8080/wishlist-jee/api/wishlists -> Pojo org.wishlist.rest.service.WishListRestService
         *DELETE http://localhost:8080/wishlist-jee/api/wishlists/{wishlist_token} -> Response deleteWishList(String)                            
         *DELETE http://localhost:8080/wishlist-jee/api/wishlists/{wishlist_token}/items/{item_id} ->  Response deleteItem(String, long)                          
