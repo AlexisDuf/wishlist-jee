@@ -244,7 +244,8 @@ public class WishListRestService{
     	// Guest can add comment
     	if(this.isGuest(token)){
     		Comment comment = cmtdao.create(content, item_id, user_id);
-    		JsonObject json = ParserService.parseComment(comment);
+    		WishlistItem item = comment.getItem();
+    		JsonObject json = ParserService.parseWishListItem(item);
     		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
     				.header("Access-Control-Allow-Origin", "*")
     				.build();
@@ -269,7 +270,8 @@ public class WishListRestService{
     		Comment comment = cmtdao.find(comment_id);
     		if(user_id == comment.getAuthor().getId()){
         		comment = cmtdao.update(comment_id, content);
-        		JsonObject json = ParserService.parseComment(comment);
+        		WishlistItem item = comment.getItem();
+        		JsonObject json = ParserService.parseWishListItem(item);
         		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
         				.header("Access-Control-Allow-Origin", "*")
         				.build();
@@ -329,7 +331,8 @@ public class WishListRestService{
     	// Guest can add proposition
     	if(this.isGuest(token)){
     		GuestProposition proposition = gpdao.create(price, item_id, user_id);
-    		JsonObject json = ParserService.parseGuestProposition(proposition);
+    		WishlistItem item = proposition.getItem();
+    		JsonObject json = ParserService.parseWishListItem(item);
     		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
     				.header("Access-Control-Allow-Origin", "*")
     				.build();
@@ -355,7 +358,8 @@ public class WishListRestService{
     		GuestProposition proposition = gpdao.find(proposition_id);
     		if(user_id == proposition.getGuestName().getId()){
     			proposition = gpdao.update(proposition_id, price);
-    			JsonObject json = ParserService.parseGuestProposition(proposition);
+    			WishlistItem item = proposition.getItem();
+        		JsonObject json = ParserService.parseWishListItem(item);
         		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
         				.header("Access-Control-Allow-Origin", "*")
         				.build();
@@ -422,7 +426,8 @@ public class WishListRestService{
     	// Admin can add link
     	else{
     		Link link = ldao.create(url, item_id);
-    		JsonObject json = ParserService.parseLink(link);
+    		WishlistItem item = link.getItem();
+    		JsonObject json = ParserService.parseWishListItem(item);
     		return Response.ok(json.toString(), MediaType.APPLICATION_JSON)
     				.header("Access-Control-Allow-Origin", "*")
     				.build();
