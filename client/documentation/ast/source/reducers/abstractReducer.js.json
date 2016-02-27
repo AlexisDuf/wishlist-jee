@@ -1,0 +1,837 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "initialState",
+            "range": [
+              7,
+              19
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 19
+              }
+            }
+          },
+          "init": {
+            "type": "ObjectExpression",
+            "properties": [
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "connected",
+                  "range": [
+                    25,
+                    34
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 10
+                    }
+                  }
+                },
+                "value": {
+                  "type": "Literal",
+                  "value": false,
+                  "raw": "false",
+                  "range": [
+                    35,
+                    40
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 11
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 16
+                    }
+                  }
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "range": [
+                  25,
+                  40
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 16
+                  }
+                }
+              },
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "user",
+                  "range": [
+                    43,
+                    47
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 5
+                    }
+                  }
+                },
+                "value": {
+                  "type": "Literal",
+                  "value": null,
+                  "raw": "null",
+                  "range": [
+                    48,
+                    52
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 6
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 10
+                    }
+                  }
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "range": [
+                  43,
+                  52
+                ],
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 10
+                  }
+                }
+              },
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "access_token",
+                  "range": [
+                    55,
+                    67
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "Literal",
+                  "value": null,
+                  "raw": "null",
+                  "range": [
+                    68,
+                    72
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 14
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 18
+                    }
+                  }
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "range": [
+                  55,
+                  72
+                ],
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 18
+                  }
+                }
+              },
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "refresh_token",
+                  "range": [
+                    75,
+                    88
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 14
+                    }
+                  }
+                },
+                "value": {
+                  "type": "Literal",
+                  "value": null,
+                  "raw": "null",
+                  "range": [
+                    89,
+                    93
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 19
+                    }
+                  }
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": false,
+                "computed": false,
+                "range": [
+                  75,
+                  93
+                ],
+                "loc": {
+                  "start": {
+                    "line": 5,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 19
+                  }
+                }
+              }
+            ],
+            "range": [
+              22,
+              96
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 22
+              },
+              "end": {
+                "line": 6,
+                "column": 1
+              }
+            }
+          },
+          "range": [
+            7,
+            96
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 6,
+              "column": 1
+            }
+          },
+          "trailingComments": [
+            {
+              "type": "Block",
+              "value": "*\n * Abstract Reducer.\n * All reducers extends it.\n ",
+              "range": [
+                98,
+                154
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 0
+                },
+                "end": {
+                  "line": 11,
+                  "column": 3
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "kind": "const",
+      "range": [
+        1,
+        155
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 12,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "AbstractReducer",
+          "range": [
+            176,
+            191
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 21
+            },
+            "end": {
+              "line": 12,
+              "column": 36
+            }
+          }
+        },
+        "superClass": null,
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "constructor",
+                "range": [
+                  225,
+                  236
+                ],
+                "loc": {
+                  "start": {
+                    "line": 16,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 12
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [],
+                  "range": [
+                    238,
+                    240
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 14
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 16
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  236,
+                  240
+                ],
+                "loc": {
+                  "start": {
+                    "line": 16,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 16
+                  }
+                }
+              },
+              "kind": "constructor",
+              "computed": false,
+              "range": [
+                225,
+                240
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 1
+                },
+                "end": {
+                  "line": 16,
+                  "column": 16
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n\t* Class constructor.\n\t",
+                  "range": [
+                    194,
+                    223
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n\t* Call on action recieved.\n\t* @param {object} state - the current state, default value is the inital state.\n\t* @param {object} action - the performed action.\n\t* @returns {object} the new state\n\t* @abstract\n\t",
+                  "range": [
+                    243,
+                    457
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "handleAction",
+                "range": [
+                  466,
+                  478
+                ],
+                "loc": {
+                  "start": {
+                    "line": 25,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 20
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "AssignmentPattern",
+                    "left": {
+                      "type": "Identifier",
+                      "name": "state",
+                      "range": [
+                        479,
+                        484
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 25,
+                          "column": 21
+                        },
+                        "end": {
+                          "line": 25,
+                          "column": 26
+                        }
+                      }
+                    },
+                    "right": {
+                      "type": "Identifier",
+                      "name": "initalState",
+                      "range": [
+                        487,
+                        498
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 25,
+                          "column": 29
+                        },
+                        "end": {
+                          "line": 25,
+                          "column": 40
+                        }
+                      }
+                    },
+                    "range": [
+                      479,
+                      498
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 25,
+                        "column": 21
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 40
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "action",
+                    "range": [
+                      500,
+                      506
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 25,
+                        "column": 42
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 48
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Identifier",
+                        "name": "state",
+                        "range": [
+                          518,
+                          523
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 26,
+                            "column": 9
+                          },
+                          "end": {
+                            "line": 26,
+                            "column": 14
+                          }
+                        }
+                      },
+                      "range": [
+                        511,
+                        524
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 26,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 15
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    507,
+                    527
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 25,
+                      "column": 49
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 2
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  478,
+                  527
+                ],
+                "loc": {
+                  "start": {
+                    "line": 25,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 2
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                459,
+                527
+              ],
+              "loc": {
+                "start": {
+                  "line": 25,
+                  "column": 1
+                },
+                "end": {
+                  "line": 27,
+                  "column": 2
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n\t* Call on action recieved.\n\t* @param {object} state - the current state, default value is the inital state.\n\t* @param {object} action - the performed action.\n\t* @returns {object} the new state\n\t* @abstract\n\t",
+                  "range": [
+                    243,
+                    457
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "static": true
+            }
+          ],
+          "range": [
+            191,
+            530
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 36
+            },
+            "end": {
+              "line": 29,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          170,
+          530
+        ],
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 15
+          },
+          "end": {
+            "line": 29,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Abstract Reducer.\n * All reducers extends it.\n ",
+            "range": [
+              98,
+              154
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 0
+              },
+              "end": {
+                "line": 11,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+        155,
+        530
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "line": 29,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Abstract Reducer.\n * All reducers extends it.\n ",
+          "range": [
+            98,
+            154
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 11,
+              "column": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    1,
+    530
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 29,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n * Abstract Reducer.\n * All reducers extends it.\n ",
+      "range": [
+        98,
+        154
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n\t* Class constructor.\n\t",
+      "range": [
+        194,
+        223
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n\t* Call on action recieved.\n\t* @param {object} state - the current state, default value is the inital state.\n\t* @param {object} action - the performed action.\n\t* @returns {object} the new state\n\t* @abstract\n\t",
+      "range": [
+        243,
+        457
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 1
+        },
+        "end": {
+          "line": 24,
+          "column": 3
+        }
+      }
+    }
+  ]
+}

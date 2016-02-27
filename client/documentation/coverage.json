@@ -1,0 +1,129 @@
+{
+  "coverage": "75.58%",
+  "expectCount": 86,
+  "actualCount": 65,
+  "files": {
+    "app/models/actions/abstractActioner.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "app/components/addWish/addWish.js": {
+      "expectCount": 4,
+      "actualCount": 3,
+      "undocumentLines": [
+        25
+      ]
+    },
+    "app/components/addWishlist/addWishlist.js": {
+      "expectCount": 4,
+      "actualCount": 3,
+      "undocumentLines": [
+        23
+      ]
+    },
+    "app/components/buttons/addWishlistButton.js": {
+      "expectCount": 6,
+      "actualCount": 5,
+      "undocumentLines": [
+        18
+      ]
+    },
+    "app/components/app/app.js": {
+      "expectCount": 6,
+      "actualCount": 5,
+      "undocumentLines": [
+        21
+      ]
+    },
+    "app/stores/app/appStore.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "app/components/authentication/authentication.js": {
+      "expectCount": 5,
+      "actualCount": 4,
+      "undocumentLines": [
+        25
+      ]
+    },
+    "app/models/cookieManager/cookieManager.js": {
+      "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    },
+    "app/components/home/home.js": {
+      "expectCount": 7,
+      "actualCount": 6,
+      "undocumentLines": [
+        22
+      ]
+    },
+    "app/components/footer/lovelyFooter.js": {
+      "expectCount": 6,
+      "actualCount": 5,
+      "undocumentLines": [
+        19
+      ]
+    },
+    "app/app.routes.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "app/models/actions/wishlistActioner.js": {
+      "expectCount": 8,
+      "actualCount": 8,
+      "undocumentLines": []
+    },
+    "app/components/wish/wish.js": {
+      "expectCount": 4,
+      "actualCount": 3,
+      "undocumentLines": [
+        24
+      ]
+    },
+    "app/components/wishlist/wishlist.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "app/models/wishlistApi/wishlistApi.js": {
+      "expectCount": 9,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        79,
+        102,
+        56,
+        124,
+        36,
+        14,
+        146,
+        177
+      ]
+    },
+    "app/components/wishlist/wishlistDetailed.js": {
+      "expectCount": 5,
+      "actualCount": 3,
+      "undocumentLines": [
+        170,
+        27
+      ]
+    },
+    "app/components/grid/wishlistGrid.js": {
+      "expectCount": 7,
+      "actualCount": 5,
+      "undocumentLines": [
+        37,
+        19
+      ]
+    },
+    "app/reducers/wishlist/wishlistReducer.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    }
+  }
+}

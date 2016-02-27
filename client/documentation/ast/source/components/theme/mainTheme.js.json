@@ -1,0 +1,1554 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Colors",
+            "range": [
+              7,
+              13
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 13
+              }
+            }
+          },
+          "range": [
+            7,
+            13
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "material-ui/lib/styles/colors",
+        "raw": "'material-ui/lib/styles/colors'",
+        "range": [
+          31,
+          62
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 31
+          },
+          "end": {
+            "line": 1,
+            "column": 62
+          }
+        }
+      },
+      "range": [
+        0,
+        63
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "ColorManipulator",
+            "range": [
+              70,
+              86
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 7
+              },
+              "end": {
+                "line": 2,
+                "column": 23
+              }
+            }
+          },
+          "range": [
+            70,
+            86
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 7
+            },
+            "end": {
+              "line": 2,
+              "column": 23
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "material-ui/lib/utils/color-manipulator",
+        "raw": "'material-ui/lib/utils/color-manipulator'",
+        "range": [
+          94,
+          135
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 31
+          },
+          "end": {
+            "line": 2,
+            "column": 72
+          }
+        }
+      },
+      "range": [
+        63,
+        136
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Spacing",
+            "range": [
+              143,
+              150
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 14
+              }
+            }
+          },
+          "range": [
+            143,
+            150
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "material-ui/lib/styles/spacing",
+        "raw": "'material-ui/lib/styles/spacing'",
+        "range": [
+          167,
+          199
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 31
+          },
+          "end": {
+            "line": 3,
+            "column": 63
+          }
+        }
+      },
+      "range": [
+        136,
+        201
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ObjectExpression",
+        "properties": [
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "spacing",
+              "range": [
+                220,
+                227
+              ],
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 2
+                },
+                "end": {
+                  "line": 6,
+                  "column": 9
+                }
+              }
+            },
+            "value": {
+              "type": "Identifier",
+              "name": "Spacing",
+              "range": [
+                229,
+                236
+              ],
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 11
+                },
+                "end": {
+                  "line": 6,
+                  "column": 18
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              220,
+              236
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 2
+              },
+              "end": {
+                "line": 6,
+                "column": 18
+              }
+            }
+          },
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "fontFamily",
+              "range": [
+                240,
+                250
+              ],
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 2
+                },
+                "end": {
+                  "line": 7,
+                  "column": 12
+                }
+              }
+            },
+            "value": {
+              "type": "Literal",
+              "value": "Muli, sans-serif",
+              "raw": "'Muli, sans-serif'",
+              "range": [
+                252,
+                270
+              ],
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 14
+                },
+                "end": {
+                  "line": 7,
+                  "column": 32
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              240,
+              270
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 2
+              },
+              "end": {
+                "line": 7,
+                "column": 32
+              }
+            }
+          },
+          {
+            "type": "Property",
+            "key": {
+              "type": "Identifier",
+              "name": "palette",
+              "range": [
+                274,
+                281
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 2
+                },
+                "end": {
+                  "line": 8,
+                  "column": 9
+                }
+              }
+            },
+            "value": {
+              "type": "ObjectExpression",
+              "properties": [
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "primary1Color",
+                    "range": [
+                      289,
+                      302
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 17
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Colors",
+                      "range": [
+                        304,
+                        310
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 9,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 25
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "indigo500",
+                      "range": [
+                        311,
+                        320
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 9,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 35
+                        }
+                      }
+                    },
+                    "range": [
+                      304,
+                      320
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 19
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 35
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    289,
+                    320
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 35
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "primary2Color",
+                    "range": [
+                      326,
+                      339
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 10,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 17
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Colors",
+                      "range": [
+                        341,
+                        347
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 10,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 25
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "cyan700",
+                      "range": [
+                        348,
+                        355
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 10,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 33
+                        }
+                      }
+                    },
+                    "range": [
+                      341,
+                      355
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 10,
+                        "column": 19
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 33
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    326,
+                    355
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 10,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 10,
+                      "column": 33
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "primary3Color",
+                    "range": [
+                      361,
+                      374
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 11,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 17
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Colors",
+                      "range": [
+                        376,
+                        382
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 25
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "lightBlack",
+                      "range": [
+                        383,
+                        393
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 26
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 36
+                        }
+                      }
+                    },
+                    "range": [
+                      376,
+                      393
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 11,
+                        "column": 19
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 36
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    361,
+                    393
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 11,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 36
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "accent1Color",
+                    "range": [
+                      399,
+                      411
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 12,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 16
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Colors",
+                      "range": [
+                        413,
+                        419
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 12,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 24
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "indigo500",
+                      "range": [
+                        420,
+                        429
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 12,
+                          "column": 25
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 34
+                        }
+                      }
+                    },
+                    "range": [
+                      413,
+                      429
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 12,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 34
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    399,
+                    429
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 12,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 34
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "accent2Color",
+                    "range": [
+                      435,
+                      447
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 16
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Colors",
+                      "range": [
+                        449,
+                        455
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 13,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 13,
+                          "column": 24
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "grey100",
+                      "range": [
+                        456,
+                        463
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 13,
+                          "column": 25
+                        },
+                        "end": {
+                          "line": 13,
+                          "column": 32
+                        }
+                      }
+                    },
+                    "range": [
+                      449,
+                      463
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 32
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    435,
+                    463
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "accent3Color",
+                    "range": [
+                      469,
+                      481
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 16
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Colors",
+                      "range": [
+                        483,
+                        489
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 14,
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 14,
+                          "column": 24
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "grey500",
+                      "range": [
+                        490,
+                        497
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 14,
+                          "column": 25
+                        },
+                        "end": {
+                          "line": 14,
+                          "column": 32
+                        }
+                      }
+                    },
+                    "range": [
+                      483,
+                      497
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 32
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    469,
+                    497
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 14,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "textColor",
+                    "range": [
+                      503,
+                      512
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 15,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 13
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "#0D47A1",
+                    "raw": "\"#0D47A1\"",
+                    "range": [
+                      514,
+                      523
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 15,
+                        "column": 15
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 24
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    503,
+                    523
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 15,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 24
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "alternateTextColor",
+                    "range": [
+                      529,
+                      547
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 16,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 22
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "white",
+                    "raw": "\"white\"",
+                    "range": [
+                      549,
+                      556
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 16,
+                        "column": 24
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 31
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    529,
+                    556
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 31
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "canvasColor",
+                    "range": [
+                      562,
+                      573
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 17,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 15
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Colors",
+                      "range": [
+                        575,
+                        581
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 17
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 23
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "white",
+                      "range": [
+                        582,
+                        587
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 24
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 29
+                        }
+                      }
+                    },
+                    "range": [
+                      575,
+                      587
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 17,
+                        "column": 17
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 29
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    562,
+                    587
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 17,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 29
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "borderColor",
+                    "range": [
+                      593,
+                      604
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 18,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 15
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Colors",
+                      "range": [
+                        606,
+                        612
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 18,
+                          "column": 17
+                        },
+                        "end": {
+                          "line": 18,
+                          "column": 23
+                        }
+                      }
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "grey300",
+                      "range": [
+                        613,
+                        620
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 18,
+                          "column": 24
+                        },
+                        "end": {
+                          "line": 18,
+                          "column": 31
+                        }
+                      }
+                    },
+                    "range": [
+                      606,
+                      620
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 18,
+                        "column": 17
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 31
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    593,
+                    620
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 31
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "disabledColor",
+                    "range": [
+                      626,
+                      639
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 17
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "computed": false,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "ColorManipulator",
+                        "range": [
+                          641,
+                          657
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 19,
+                            "column": 19
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 35
+                          }
+                        }
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "fade",
+                        "range": [
+                          658,
+                          662
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 19,
+                            "column": 36
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 40
+                          }
+                        }
+                      },
+                      "range": [
+                        641,
+                        662
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 19,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 40
+                        }
+                      }
+                    },
+                    "arguments": [
+                      {
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "Colors",
+                          "range": [
+                            663,
+                            669
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 19,
+                              "column": 41
+                            },
+                            "end": {
+                              "line": 19,
+                              "column": 47
+                            }
+                          }
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "darkBlack",
+                          "range": [
+                            670,
+                            679
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 19,
+                              "column": 48
+                            },
+                            "end": {
+                              "line": 19,
+                              "column": 57
+                            }
+                          }
+                        },
+                        "range": [
+                          663,
+                          679
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 19,
+                            "column": 41
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 57
+                          }
+                        }
+                      },
+                      {
+                        "type": "Literal",
+                        "value": 0.3,
+                        "raw": "0.3",
+                        "range": [
+                          681,
+                          684
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 19,
+                            "column": 59
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 62
+                          }
+                        }
+                      }
+                    ],
+                    "range": [
+                      641,
+                      685
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 19,
+                        "column": 19
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 63
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    626,
+                    685
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 19,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 63
+                    }
+                  }
+                },
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "backgroundColor",
+                    "range": [
+                      691,
+                      706
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 19
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "#42A5F5",
+                    "raw": "\"#42A5F5\"",
+                    "range": [
+                      707,
+                      716
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 20,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 29
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    691,
+                    716
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 29
+                    }
+                  }
+                }
+              ],
+              "range": [
+                283,
+                720
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 11
+                },
+                "end": {
+                  "line": 21,
+                  "column": 3
+                }
+              }
+            },
+            "kind": "init",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "range": [
+              274,
+              720
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 2
+              },
+              "end": {
+                "line": 21,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "range": [
+          216,
+          723
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 15
+          },
+          "end": {
+            "line": 22,
+            "column": 1
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "range": [
+        201,
+        724
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 22,
+          "column": 2
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    724
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 22,
+      "column": 2
+    }
+  },
+  "comments": []
+}

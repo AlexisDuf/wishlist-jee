@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">app/components/wish/wish.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/app.routes.js~Router.html">Router</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-router">router</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/addWish</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/addWish/addWish.js~AddWish.html">AddWish</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/addWishlist</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/addWishlist/addWishlist.js~AddWishlist.html">AddWishlist</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/app</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/app/app.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/authentication</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/authentication/authentication.js~Authentication.html">Authentication</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/buttons</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/buttons/addWishlistButton.js~AddWishlistButton.html">AddWishlistButton</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/footer</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/footer/lovelyFooter.js~LovelyFooter.html">LovelyFooter</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/grid</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/grid/wishlistGrid.js~WishlistGrid.html">WishlistGrid</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/home</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/home/home.js~Home.html">Home</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/wish</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/wish/wish.js~Wish.html">Wish</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/wishlist</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/wishlist/wishlist.js~Wishlist.html">Wishlist</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/wishlist/wishlistDetailed.js~WishlistDetailed.html">WishlistDetailed</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">models/actions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/actions/abstractActioner.js~AbstractActioner.html">AbstractActioner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/actions/wishlistActioner.js~WishlistActioner.html">WishlistActioner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPES">TYPES</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">models/cookieManager</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/cookieManager/cookieManager.js~CookieManager.html">CookieManager</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">models/wishlistApi</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/wishlistApi/wishlistApi.js~WishlistApi.html">WishlistApi</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers/wishlist</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-WishlistsReducer">WishlistsReducer</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">stores/app</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-AppStore">AppStore</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">app/components/wish/wish.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, {Component}				from &apos;react&apos;
+import {connect} 						from &apos;react-redux&apos;
+import ThemeManager  	  				from &apos;material-ui/lib/styles/theme-manager&apos;
+import MainTheme 		  				from &apos;../theme/mainTheme.js&apos;
+import WishlistApi 						from &apos;../../models/wishlistApi/wishlistApi.js&apos;;
+import AppStore 						from &apos;../../stores/app/appStore.js&apos;;
+import WishlistActioner 				from &apos;../../models/actions/wishlistActioner.js&apos;;
+import Tabs 							from &apos;material-ui/lib/tabs/tabs&apos;;
+import Tab 								from &apos;material-ui/lib/tabs/tab&apos;;
+import SwipeableViews 					from &apos;react-swipeable-views&apos;;
+
+/**
+ * Wish React class
+ * @extends {Component}
+ */
+export default class Wish extends Component{
+
+	/**
+	* Class constructor.
+	* @param {object} props - properties passed to component.
+	*/
+	constructor(props){
+		super(props);
+		this.state = {
+			comment:&quot;&quot;,
+			proposal:null,
+			slideIndex:0,
+		}
+	}
+
+	_getProposalNodes(){
+		let styles = {
+			commentContainer:{
+				margin:10
+			},
+			nameContainer:{
+				textTransform:&quot;uppercase&quot;,
+				color:MainTheme.palette.textColor
+			},
+			contentContainer:{
+				marginTop:5
+			}
+		}
+		return this.props.wish.propositions.map((proposition, index)=&gt;{
+			return (
+				&lt;div key={index} style={styles.commentContainer}&gt;
+					&lt;div style={styles.nameContainer}&gt;
+						{proposition.creator.name}
+					&lt;/div&gt;
+					&lt;div style={styles.contentContainer}&gt;
+						{`${proposition.price}&#x20AC;`}
+					&lt;/div&gt;
+				&lt;/div&gt;
+			)
+		});
+	}
+
+	_getCommentNodes(){
+		let styles = {
+			commentContainer:{
+				margin:10
+			},
+			nameContainer:{
+				textTransform:&quot;uppercase&quot;,
+				color:MainTheme.palette.textColor
+			},
+			contentContainer:{
+				marginTop:5
+			}
+		}
+		return this.props.wish.comments.map((comment, index)=&gt;{
+			return (
+				&lt;div key={index} style={styles.commentContainer}&gt;
+					&lt;div style={styles.nameContainer}&gt;
+						{comment.creator.name}
+					&lt;/div&gt;
+					&lt;div style={styles.contentContainer}&gt;
+						{comment.content}
+					&lt;/div&gt;
+				&lt;/div&gt;
+			)
+		});
+	}
+
+	_commentChanged(event){
+		this.setState({comment:event.target.value});
+	}
+
+	_submitComment(event){
+
+		if(!(this.state.comment.length &gt;= 0)){return};
+		WishlistApi.addComment(this.state.comment, this.props.wish.id, this.props.wishlist.guest_token).then((response)=&gt;{
+			AppStore.dispatch(WishlistActioner.setWish(this.props.wishlist, response));
+			this.setState({comment:&quot;&quot;});
+		})
+	}
+
+	_proposalChanged(event){
+		this.setState({proposal:event.target.value});
+	}
+
+	_submitProposal(event){
+		if(!this.state.proposal == null){return};
+		WishlistApi.addProposal(this.state.proposal, this.props.wish.id, this.props.wishlist.guest_token).then((response)=&gt;{
+			AppStore.dispatch(WishlistActioner.setWish(this.props.wishlist, response));
+			this.setState({proposal:null});
+		})
+	}
+
+	_handleSlideChange(value){
+		this.setState({slideIndex: value});
+	}
+	
+	/**
+	* override
+	*/
+	render() {
+		let styles = {
+			container:{
+				width:&quot;300px&quot;,
+				marginTop:30
+			},
+			img:{
+				height:&quot;100%&quot;
+			},
+			imgContainer:{
+				height:&quot;100%&quot;,
+			},
+			itemContainer:{
+				height:100,
+				display:&quot;flex&quot;
+			},
+			avgPrice:{
+				margin:&quot;auto&quot;,
+				fontSize:20
+			},
+			comments:{
+
+			},
+			addComment:{
+				marginTop:10,
+			},
+			section:{
+				height: 600,
+			},
+			swipeableView:{
+			},
+			tabs:{
+				marginTop:10
+			},
+			tabList:{
+				height:400,
+				overflowY:&quot;scroll&quot;
+			},
+			button:{
+				cursor:&quot;pointer&quot;,
+				color:MainTheme.palette.textColor,
+				backgroundColor:&quot;white&quot;,
+				borderRadius:5,
+				fontSize:18,
+				padding:8,
+				paddingLeft:14,
+				paddingRight:14,
+				borderWidth:0,
+				boxShadow: &apos;0px 0px 10px 0px rgba(42,42,42,.75)&apos;,
+			},
+			input:{
+				display:&quot;block&quot;,
+				margin:&quot;auto&quot;,
+				boxSizing: &quot;border-box&quot;,
+				marginBottom:18,
+				width:&quot;80%&quot;,
+				padding:8,
+				fontSize:18,
+				borderRadius:5,
+				borderWidth:0,
+				color:MainTheme.palette.textColor,
+				boxShadow: &apos;0px 0px 10px 0px rgba(42,42,42,.75)&apos;,
+			},
+			addSection:{
+				width:&quot;100%&quot;,
+				textAlign:&quot;center&quot;,
+				marginTop:50
+			}
+		};
+		return (
+			&lt;div style={styles.container}&gt;
+				&lt;div style={styles.itemContainer}&gt;
+					&lt;div style={styles.imgContainer}&gt;
+						&lt;img style={styles.img} src={this.props.wish.url_photo}/&gt;
+					&lt;/div&gt;
+					&lt;div style={styles.avgPrice}&gt;
+						{`${this.props.wish.avg_price}&#x20AC;`}
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;div style={styles.tabs}&gt;
+					&lt;Tabs style={styles.inlineTabs} onChange={this._handleSlideChange.bind(this)} value={this.state.slideIndex}&gt;
+			          &lt;Tab style={{color:MainTheme.palette.alternateTextColor}} label=&quot;Comments&quot; value={0} /&gt;
+			          &lt;Tab style={{color:MainTheme.palette.alternateTextColor}} label=&quot;Propsals&quot; value={1} /&gt;
+			        &lt;/Tabs&gt;
+	        		&lt;SwipeableViews style={styles.swipeableView} index={this.state.slideIndex} onChangeIndex={this._handleSlideChange.bind(this)}&gt;
+						&lt;div style={styles.section}&gt;
+							&lt;div style={styles.tabList}&gt;
+								{this._getCommentNodes()}
+							&lt;/div&gt;
+							&lt;div style={styles.addSection}&gt;
+								&lt;input style={styles.input} type=&quot;text&quot; value={this.state.comment} onChange={this._commentChanged.bind(this)} placeholder=&quot;comment&quot; /&gt;
+								&lt;button onClick={this._submitComment.bind(this)} style={styles.button} type=&quot;button&quot;&gt;Make a comment&lt;/button&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div style={styles.section}&gt;
+							&lt;div style={styles.tabList}&gt;
+								{this._getProposalNodes()}
+							&lt;/div&gt;
+							&lt;div style={styles.addSection}&gt;
+								&lt;input style={styles.input} type=&quot;number&quot; value={this.state.proposal} onChange={this._proposalChanged.bind(this)} placeholder=&quot;proposal&quot; /&gt;
+								&lt;button onClick={this._submitProposal.bind(this)} style={styles.button} type=&quot;button&quot;&gt;Make a proposal&lt;/button&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+			        &lt;/SwipeableViews&gt;
+				&lt;/div&gt;
+
+				&lt;div style={styles.proposals}&gt;
+				&lt;/div&gt;
+				&lt;div style={styles.comments}&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		);
+	}
+};</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

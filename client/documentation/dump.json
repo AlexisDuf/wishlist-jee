@@ -1,0 +1,4112 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/app.js",
+    "memberof": null,
+    "longname": "app/app.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import {router}             \t\tfrom './app.routes';\n\n\n"
+  },
+  {
+    "__docId__": 1,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/app.routes.js",
+    "memberof": null,
+    "longname": "app/app.routes.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React \t\t\t\t\t\t\t\t   \t\t\t\t\t\t\t\t\t\t\tfrom 'react';\nimport { render } \t\t\t\t\t\t\t   \t\t\t\t\t\t\t\t\t\t\tfrom 'react-dom';\nimport App\t\t\t\t\t\t\t   \t\t\t\t\t\t\t\t\t\t\t\t\tfrom './components/app/app.js';\nimport Home \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfrom './components/home/home.js';\nimport Wishlist \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfrom './components/wishlist/wishlist.js';\nimport WishlistDetailed \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfrom './components/wishlist/wishlistDetailed.js';\nimport Authentication \t\t\t\t\t\t\t\t\t\t \t\t\t\t\t\t\tfrom './components/authentication/authentication.js';\nimport AddWish \t\t\t\t\t\t\t\t\t\t \t\t\t\t\t\t\t\t\tfrom './components/addWish/addWish.js';\nimport AddWishlist \t\t\t\t\t\t\t\t\t\t \t\t\t\t\t\t\t\t\tfrom './components/addWishlist/addWishlist.js';\nimport { Router as ReactRouter , Route, Link, IndexRedirect, Redirect, hashHistory} \tfrom 'react-router';\n\n/**\n * The application Router\n */\nexport class Router{\n\n\t/**\n\t* Class constructor.\n\t* create the router and listen to route changes\n\t*/\n\tconstructor(){\n\n\t\trender((\n\t\t\t<ReactRouter history={hashHistory}>\n\t\t\t\t<Route path=\"/\" component={App}>\n\t\t\t\t\t<Route path=\"auth\" component={Authentication} />\n\t\t\t\t\t<Route path=\"home\" component={Home} />\n\t\t\t\t\t<Route path=\"wishlist\">\n\t\t\t\t\t\t<Route path=\":id\" component={WishlistDetailed} />\n\t\t\t\t\t</Route>\n\t\t\t\t\t<Route path=\"guest_wishlist\">\n\t\t\t\t\t\t<Route path=\":token\" component={WishlistDetailed} />\n\t\t\t\t\t</Route>\n\t\t\t\t\t<Route path=\"add_wish\">\n\t\t\t\t\t\t<Route path=\":id\" component={AddWish} />\n\t\t\t\t\t</Route>\n\t\t\t\t\t<Route path=\"add_wishlist\" component={AddWishlist}/>\t\t\t\t\t\n\t\t\t\t\t<IndexRedirect to=\"/auth\" />\n\t\t\t\t</Route>\n\t\t\t</ReactRouter>\n\t\t), document.getElementById(\"app\")); \n\n\t}\n\n}\n\n\n/**\n * the application's router.\n * @type {class}\n */\nexport let router = new Router();\n\n\n\n"
+  },
+  {
+    "__docId__": 2,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Router",
+    "memberof": "app/app.routes.js",
+    "longname": "app/app.routes.js~Router",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/app.routes.js",
+    "importStyle": "{Router}",
+    "description": "The application Router",
+    "lineNumber": 15,
+    "interface": false
+  },
+  {
+    "__docId__": 3,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/app.routes.js~Router",
+    "longname": "app/app.routes.js~Router#constructor",
+    "access": null,
+    "description": "Class constructor.\ncreate the router and listen to route changes",
+    "lineNumber": 21,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 4,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "router",
+    "memberof": "app/app.routes.js",
+    "longname": "app/app.routes.js~router",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/app.routes.js",
+    "importStyle": "{router}",
+    "description": "the application's router.",
+    "lineNumber": 52,
+    "type": {
+      "nullable": null,
+      "types": [
+        "class"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 5,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/addWish/addWish.js",
+    "memberof": null,
+    "longname": "app/components/addWish/addWish.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component}\t\t\t\tfrom 'react';\nimport {connect} \t\t\t\t\t\tfrom 'react-redux';\nimport {hashHistory} \t\t\t\t\tfrom 'react-router';\nimport {Config} \t\t\t\t\t\tfrom '../../app.config.js';\nimport ThemeManager  \t  \t\t\t\tfrom 'material-ui/lib/styles/theme-manager';\nimport MainTheme \t\t  \t\t\t\tfrom '../theme/mainTheme.js';\nimport WishlistApi \t\t\t\t\t\tfrom '../../models/wishlistApi/wishlistApi.js';\nimport AppStore \t\t\t\t\t\tfrom '../../stores/app/appStore.js';\nimport WishlistActioner \t\t\t\tfrom '../../models/actions/wishlistActioner.js';\n\n\n\n/**\n * add Wish  React class\n * @extends {Component}\n */\nexport class AddWish extends Component{\n\n\t/**\n\t* Class constructor.\n\t* @param {object} props - properties passed to component.\n\t*/\n\tconstructor(props){\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\ttitle:\"Add a wish\",\n\t\t\tlist : this._getListFromId(this.props.params.id),\n\t\t\turl_photo:\"\",\n\t\t\tavg_price:\"\",\n\t\t}\n\t}\n\n\t/**\n\t* Get the list of the provided id from the owned and guest lists\n\t* @param {string} id - the id\n\t* @returns {object} the list\n\t*/\n\t_getListFromId(id){\n\t\tlet lists = this.props.ownedWishlits.concat(this.props.guestWishlists).filter((list)=>{\n\t\t\treturn list.id == id;\n\t\t});\n\n\t\tif(lists.length <= 0){return};\n\t\treturn lists[0];\n\t}\n\n\t/**\n\t* Handle the changes of the url photo input\n\t* @param {object} event - the triggered event\n\t*/\n\t_urlPhotoChanged(event){\n\t\tthis.setState({url_photo:event.target.value})\n\t}\n\t\n\t/**\n\t* Handle the changes of the avg price input\n\t* @param {object} event - the triggered event\n\t*/\n\t_avgPriceChanged(event){\n\t\tthis.setState({avg_price:event.target.value})\n\t}\n\n\t/**\n\t* Handle the button click\n\t* @param {object} event - the triggered event\n\t*/\n\t_submit(event){\n\t\tif(this.state.url_photo && this.state.avg_price && this.state.list){\n\t\t\tWishlistApi.addWish(this.state.url_photo, this.state.avg_price, this.state.list.admin_token).then((response, error)=>{\n\t\t\t\tif(response){\n\t\t\t\t\tAppStore.dispatch(WishlistActioner.addWish(this.state.list, response));\n\t\t\t\t\tthis.setState({avg_price:null, url_photo:null});\n\t\t\t\t\thashHistory.goBack();\n\t\t\t\t}\n\t\t\t})\n\t\t}\n\t}\n\t\n\t/**\n\t* override\n\t*/\n\trender() {\n\t\tlet styles = {\n\t\t\tcontainer:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\",\n\t\t\t\tfontFamily:MainTheme.fontFamily,\n\t\t\t\tfontSize:\"60px\",\n\t\t\t\tposition:\"absolute\",\n\t\t\t\ttop:0,\n\t\t\t\tbottom:0,\n\t\t\t\tdisplay:\"flex\",\n\t\t\t\tbackgroundColor:MainTheme.palette.backgroundColor,\n\t\t\t\tcolor:MainTheme.palette.textColor\n\t\t\t},\n\t\t\tform:{\n\t\t\t\tmargin:\"auto\",\n\t\t\t\ttextAlign:\"center\",\n\t\t\t\twidth:250\n\t\t\t},\n\t\t\ttitle:{\n\t\t\t\tdisplay:\"block\",\n\t\t\t\tmarginBottom:10,\n\t\t\t\tlineHeight:1,\n\t\t\t\tborderBottom:`3px solid ${MainTheme.palette.alternateTextColor}`\n\t\t\t},\n\t\t\tinput:{\n\t\t\t\tdisplay:\"block\",\n\t\t\t\tboxSizing: \"border-box\",\n\t\t\t\tmarginBottom:18,\n\t\t\t\twidth:\"100%\",\n\t\t\t\tpadding:8,\n\t\t\t\tfontSize:18,\n\t\t\t\tborderRadius:5,\n\t\t\t\tborderWidth:0,\n\t\t\t\tcolor:MainTheme.palette.textColor,\n\t\t\t\tboxShadow: '0px 0px 10px 0px rgba(42,42,42,.75)',\n\t\t\t},\n\t\t\tbuttonContainer:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\",\n\t\t\t\tdisplay:\"flex\",\n\t\t\t},\n\t\t\tbutton:{\n\t\t\t\tmargin:\"auto\",\n\t\t\t\tcursor:\"pointer\",\n\t\t\t\tcolor:MainTheme.palette.textColor,\n\t\t\t\tbackgroundColor:\"white\",\n\t\t\t\tborderRadius:5,\n\t\t\t\tfontSize:18,\n\t\t\t\tpadding:8,\n\t\t\t\tpaddingLeft:14,\n\t\t\t\tpaddingRight:14,\n\t\t\t\tborderWidth:0,\n\t\t\t\tboxShadow: '0px 0px 10px 0px rgba(42,42,42,.75)',\n\t\t\t},\n\t\t\tinputContainer:{\n\n\t\t\t}\n\t\t};\n\t\treturn (\n\t\t\t<div style={styles.container}>\n\t\t\t\t<div style={styles.form}>\n\t\t\t\t\t<div style={styles.title}>{this.state.title}</div>\n\t\t\t\t\t<div style={styles.inputContainer}>\n\t\t\t\t\t\t<input style={styles.input} type=\"text\" value={this.state.url_photo} onChange={this._urlPhotoChanged.bind(this)} placeholder=\"url to photo\" />\n\t\t\t\t\t\t<input style={styles.input} type=\"number\" value={this.state.avg_price} onChange={this._avgPriceChanged.bind(this)} placeholder=\"average price\" />\n\t\t\t\t\t</div>\n\t\t\t\t\t<div style={styles.buttonContainer}>\n\t\t\t\t\t\t<button onClick={this._submit.bind(this)} style={styles.button} type=\"button\">Make a wish!</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t);\n\t\n\t}\n};\n\n/**\n* Select the properties needed from the store.\n* @param {object} state - containing the all store properties.\n* @returns {object} the needed subset.\n*/\nfunction selectPropertyFromStore(state) {\n\treturn {\n\t\townedWishlits:state.WishlistsReducer.ownedWishlists,\n\t\tguestWishlists:state.WishlistsReducer.guestWishlists,\n\t\tuserId:state.WishlistsReducer.userId,\n\t\tname:state.WishlistsReducer.name,\n\t\temail:state.WishlistsReducer.email,\n\t}\n}\n\n/**\n* An extended verison of {WishlistDetailed} witch is connected to the store\n*/\nexport default connect(selectPropertyFromStore)(AddWish);"
+  },
+  {
+    "__docId__": 6,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "AddWish",
+    "memberof": "app/components/addWish/addWish.js",
+    "longname": "app/components/addWish/addWish.js~AddWish",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/addWish/addWish.js",
+    "importStyle": "{AddWish}",
+    "description": "add Wish  React class",
+    "lineNumber": 17,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 7,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/addWish/addWish.js~AddWish",
+    "longname": "app/components/addWish/addWish.js~AddWish#constructor",
+    "access": null,
+    "description": "Class constructor.",
+    "lineNumber": 23,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "properties passed to component."
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 8,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/addWish/addWish.js~AddWish",
+    "longname": "app/components/addWish/addWish.js~AddWish#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 9,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getListFromId",
+    "memberof": "app/components/addWish/addWish.js~AddWish",
+    "longname": "app/components/addWish/addWish.js~AddWish#_getListFromId",
+    "access": null,
+    "description": "Get the list of the provided id from the owned and guest lists",
+    "lineNumber": 38,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} the list"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "the id"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the list"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 10,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_urlPhotoChanged",
+    "memberof": "app/components/addWish/addWish.js~AddWish",
+    "longname": "app/components/addWish/addWish.js~AddWish#_urlPhotoChanged",
+    "access": null,
+    "description": "Handle the changes of the url photo input",
+    "lineNumber": 51,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "the triggered event"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 11,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_avgPriceChanged",
+    "memberof": "app/components/addWish/addWish.js~AddWish",
+    "longname": "app/components/addWish/addWish.js~AddWish#_avgPriceChanged",
+    "access": null,
+    "description": "Handle the changes of the avg price input",
+    "lineNumber": 59,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "the triggered event"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 12,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_submit",
+    "memberof": "app/components/addWish/addWish.js~AddWish",
+    "longname": "app/components/addWish/addWish.js~AddWish#_submit",
+    "access": null,
+    "description": "Handle the button click",
+    "lineNumber": 67,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "the triggered event"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 13,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/addWish/addWish.js~AddWish",
+    "longname": "app/components/addWish/addWish.js~AddWish#render",
+    "access": null,
+    "description": "override",
+    "lineNumber": 82,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 14,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "selectPropertyFromStore",
+    "memberof": "app/components/addWish/addWish.js",
+    "longname": "app/components/addWish/addWish.js~selectPropertyFromStore",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/components/addWish/addWish.js",
+    "importStyle": null,
+    "description": "Select the properties needed from the store.",
+    "lineNumber": 164,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} the needed subset."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
+        "description": "containing the all store properties."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the needed subset."
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 15,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/addWishlist/addWishlist.js",
+    "memberof": null,
+    "longname": "app/components/addWishlist/addWishlist.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component}\t\t\t\tfrom 'react';\nimport {connect} \t\t\t\t\t\tfrom 'react-redux';\nimport {hashHistory} \t\t\t\t\tfrom 'react-router';\nimport ThemeManager  \t  \t\t\t\tfrom 'material-ui/lib/styles/theme-manager';\nimport MainTheme \t\t  \t\t\t\tfrom '../theme/mainTheme.js';\nimport WishlistApi \t\t\t\t\t\tfrom '../../models/wishlistApi/wishlistApi.js';\nimport AppStore \t\t\t\t\t\tfrom '../../stores/app/appStore.js';\nimport WishlistActioner \t\t\t\tfrom '../../models/actions/wishlistActioner.js';\n\n\n/**\n * add Wishlist  React class\n * @extends {Component}\n */\nexport class AddWishlist extends Component{\n\n\t/**\n\t* Class constructor.\n\t* @param {object} props - properties passed to component.\n\t*/\n\tconstructor(props){\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\ttitle:\"Add a wishlist\",\n\t\t\tname:\"\",\n\t\t\tdesciption:\"\"\n\t\t}\n\t}\n\n\t/**\n\t* Handle the changes of the name input\n\t* @param {object} event - the triggered event\n\t*/\n\t_nameChanged(event){\n\t\tthis.setState({name:event.target.value});\n\t}\n\n\t/**\n\t* Handle the changes of the description input\n\t* @param {object} event - the triggered event\n\t*/\n\t_descriptionChanged(event){\n\t\tthis.setState({desciption:event.target.value});\n\t}\n\n\t/**\n\t* Handle the button click\n\t* @param {object} event - the triggered event\n\t*/\n\t_submit(event){\n\t\tif(this.state.name && this.state.desciption){\n\t\t\tWishlistApi.addWishlist(this.state.name, this.state.desciption).then((response, error)=>{\n\t\t\t\tif(response){\n\t\t\t\t\tAppStore.dispatch(WishlistActioner.addOwnedWishlist(response));\n\t\t\t\t\tthis.setState({name:null, desciption:null});\n\t\t\t\t\thashHistory.push('/home')\n\t\t\t\t}\n\t\t\t})\n\t\t}\n\t}\n\t\n\t\n\t/**\n\t* override\n\t*/\n\trender() {\n\t\tlet styles = {\n\t\t\tcontainer:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\",\n\t\t\t\tfontFamily:MainTheme.fontFamily,\n\t\t\t\tfontSize:\"60px\",\n\t\t\t\tposition:\"absolute\",\n\t\t\t\ttop:0,\n\t\t\t\tbottom:0,\n\t\t\t\tdisplay:\"flex\",\n\t\t\t\tbackgroundColor:MainTheme.palette.backgroundColor,\n\t\t\t\tcolor:MainTheme.palette.textColor\n\t\t\t},\n\t\t\tform:{\n\t\t\t\tmargin:\"auto\",\n\t\t\t\ttextAlign:\"center\",\n\t\t\t\twidth:250\n\t\t\t},\n\t\t\ttitle:{\n\t\t\t\tdisplay:\"block\",\n\t\t\t\tmarginBottom:10,\n\t\t\t\tlineHeight:1,\n\t\t\t\tborderBottom:`3px solid ${MainTheme.palette.alternateTextColor}`\n\t\t\t},\n\t\t\tinput:{\n\t\t\t\tdisplay:\"block\",\n\t\t\t\tboxSizing: \"border-box\",\n\t\t\t\tmarginBottom:18,\n\t\t\t\twidth:\"100%\",\n\t\t\t\tpadding:8,\n\t\t\t\tfontSize:18,\n\t\t\t\tborderRadius:5,\n\t\t\t\tborderWidth:0,\n\t\t\t\tcolor:MainTheme.palette.textColor,\n\t\t\t\tboxShadow: '0px 0px 10px 0px rgba(42,42,42,.75)',\n\t\t\t},\n\t\t\tbuttonContainer:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\",\n\t\t\t\tdisplay:\"flex\",\n\t\t\t},\n\t\t\tbutton:{\n\t\t\t\tmargin:\"auto\",\n\t\t\t\tcursor:\"pointer\",\n\t\t\t\tcolor:MainTheme.palette.textColor,\n\t\t\t\tbackgroundColor:\"white\",\n\t\t\t\tborderRadius:5,\n\t\t\t\tfontSize:18,\n\t\t\t\tpadding:8,\n\t\t\t\tpaddingLeft:14,\n\t\t\t\tpaddingRight:14,\n\t\t\t\tborderWidth:0,\n\t\t\t\tboxShadow: '0px 0px 10px 0px rgba(42,42,42,.75)',\n\t\t\t},\n\t\t\tinputContainer:{\n\n\t\t\t}\n\t\t};\n\t\treturn (\n\t\t\t<div style={styles.container}>\n\t\t\t\t<div style={styles.form}>\n\t\t\t\t\t<div style={styles.title}>{this.state.title}</div>\n\t\t\t\t\t<div style={styles.inputContainer}>\n\t\t\t\t\t\t<input style={styles.input} type=\"text\" value={this.state.name} onChange={this._nameChanged.bind(this)} placeholder=\"NAME\" />\n\t\t\t\t\t\t<input style={styles.input} type=\"email\" value={this.state.desciption} onChange={this._descriptionChanged.bind(this)} placeholder=\"DESCRIPTION\" />\n\t\t\t\t\t</div>\n\t\t\t\t\t<div style={styles.buttonContainer}>\n\t\t\t\t\t\t<button onClick={this._submit.bind(this)} style={styles.button} type=\"button\">Make a wish!</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t);\n\t}\n};\n\n/**\n* Select the properties needed from the store.\n* @param {object} state - containing the all store properties.\n* @returns {object} the needed subset.\n*/\nfunction selectPropertyFromStore(state) {\n\treturn {\n\t\townedWishlits:state.WishlistsReducer.ownedWishlists,\n\t\tguestWishlists:state.WishlistsReducer.guestWishlists,\n\t\tuserId:state.WishlistsReducer.userId,\n\t\tname:state.WishlistsReducer.name,\n\t\temail:state.WishlistsReducer.email,\n\t}\n}\n\n/**\n* An extended verison of {WishlistDetailed} witch is connected to the store\n*/\nexport default connect(selectPropertyFromStore)(AddWishlist);"
+  },
+  {
+    "__docId__": 16,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "AddWishlist",
+    "memberof": "app/components/addWishlist/addWishlist.js",
+    "longname": "app/components/addWishlist/addWishlist.js~AddWishlist",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/addWishlist/addWishlist.js",
+    "importStyle": "{AddWishlist}",
+    "description": "add Wishlist  React class",
+    "lineNumber": 15,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 17,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/addWishlist/addWishlist.js~AddWishlist",
+    "longname": "app/components/addWishlist/addWishlist.js~AddWishlist#constructor",
+    "access": null,
+    "description": "Class constructor.",
+    "lineNumber": 21,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "properties passed to component."
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 18,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/addWishlist/addWishlist.js~AddWishlist",
+    "longname": "app/components/addWishlist/addWishlist.js~AddWishlist#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 19,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_nameChanged",
+    "memberof": "app/components/addWishlist/addWishlist.js~AddWishlist",
+    "longname": "app/components/addWishlist/addWishlist.js~AddWishlist#_nameChanged",
+    "access": null,
+    "description": "Handle the changes of the name input",
+    "lineNumber": 34,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "the triggered event"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 20,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_descriptionChanged",
+    "memberof": "app/components/addWishlist/addWishlist.js~AddWishlist",
+    "longname": "app/components/addWishlist/addWishlist.js~AddWishlist#_descriptionChanged",
+    "access": null,
+    "description": "Handle the changes of the description input",
+    "lineNumber": 42,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "the triggered event"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 21,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_submit",
+    "memberof": "app/components/addWishlist/addWishlist.js~AddWishlist",
+    "longname": "app/components/addWishlist/addWishlist.js~AddWishlist#_submit",
+    "access": null,
+    "description": "Handle the button click",
+    "lineNumber": 50,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "the triggered event"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 22,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/addWishlist/addWishlist.js~AddWishlist",
+    "longname": "app/components/addWishlist/addWishlist.js~AddWishlist#render",
+    "access": null,
+    "description": "override",
+    "lineNumber": 66,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 23,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "selectPropertyFromStore",
+    "memberof": "app/components/addWishlist/addWishlist.js",
+    "longname": "app/components/addWishlist/addWishlist.js~selectPropertyFromStore",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/components/addWishlist/addWishlist.js",
+    "importStyle": null,
+    "description": "Select the properties needed from the store.",
+    "lineNumber": 147,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} the needed subset."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
+        "description": "containing the all store properties."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the needed subset."
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 24,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/app/app.js",
+    "memberof": null,
+    "longname": "app/components/app/app.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component} \tfrom 'react';\nimport {Provider}\t\t  \tfrom 'react-redux';\nimport AppBar \t\t\t\tfrom 'material-ui/lib/app-bar';\nimport AppStore \t\t\tfrom '../../stores/app/appStore.js';\nimport MainTheme \t\t  \tfrom '../theme/mainTheme.js';\nimport ThemeManager  \t  \tfrom 'material-ui/lib/styles/theme-manager';\nimport InjectTapEventPlugin from 'react-tap-event-plugin';\n\n/**\n * App React class\n * @extends {Component}\n */\nexport default class App extends Component{\n\t\n\t/**\n\t* Class constructor.\n\t*/\n\tconstructor(){\n\t\tsuper();\n\t\tInjectTapEventPlugin();//to convert click to tap\n\t\tthis.state = {\n\t\t\t\n\t\t}\n\t}\n\n\t/**\n     * @type {object}\n\t* defining the child context types\n     */\n\tstatic get childContextTypes(){\n        return {\n\t\t\tmuiTheme: React.PropTypes.object,\n\t\t};\n    }\n\n    /**\n\t* get the child context.\n\t* @returns {object} wich specify the child context\n\t*/\n\tgetChildContext() {\n\t\treturn {\n\t\t\tmuiTheme: ThemeManager.getMuiTheme(MainTheme),\n\t\t};\n\t}\n\n\t/**\n\t* specify how to render the component.\n\t* @returns {html} representing the component\n\t*/\n\trender(){\n\t\tlet styles={\n\t\t\t\n\t\t}\n\t\treturn (\n\t\t  <div>\n\t\t    <Provider store={AppStore}>\n\t\t\t\t{this.props.children}\n\t\t\t</Provider>\n\t\t  </div>\n\t\t);\n\t}\n};"
+  },
+  {
+    "__docId__": 25,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "App",
+    "memberof": "app/components/app/app.js",
+    "longname": "app/components/app/app.js~App",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/app/app.js",
+    "importStyle": "App",
+    "description": "App React class",
+    "lineNumber": 13,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 26,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/app/app.js~App",
+    "longname": "app/components/app/app.js~App#constructor",
+    "access": null,
+    "description": "Class constructor.",
+    "lineNumber": 18,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 27,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/app/app.js~App",
+    "longname": "app/components/app/app.js~App#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 28,
+    "kind": "get",
+    "static": true,
+    "variation": null,
+    "name": "childContextTypes",
+    "memberof": "app/components/app/app.js~App",
+    "longname": "app/components/app/app.js~App.childContextTypes",
+    "access": null,
+    "description": "",
+    "lineNumber": 30,
+    "type": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 29,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getChildContext",
+    "memberof": "app/components/app/app.js~App",
+    "longname": "app/components/app/app.js~App#getChildContext",
+    "access": null,
+    "description": "get the child context.",
+    "lineNumber": 40,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} wich specify the child context"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "wich specify the child context"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 30,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/app/app.js~App",
+    "longname": "app/components/app/app.js~App#render",
+    "access": null,
+    "description": "specify how to render the component.",
+    "lineNumber": 50,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{html} representing the component"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "html"
+      ],
+      "spread": false,
+      "description": "representing the component"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 31,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/authentication/authentication.js",
+    "memberof": null,
+    "longname": "app/components/authentication/authentication.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component}\t\t\t\tfrom 'react';\nimport {Config} \t\t\t\t\t\tfrom '../../app.config.js';\nimport {connect} \t\t\t\t\t\tfrom 'react-redux';\nimport {hashHistory} \t\t\t\t\tfrom 'react-router';\nimport CookieManager \t\t\t\t\tfrom '../../models/cookieManager/cookieManager.js';\nimport ThemeManager  \t  \t\t\t\tfrom 'material-ui/lib/styles/theme-manager';\nimport MainTheme \t\t  \t\t\t\tfrom '../theme/mainTheme.js';\nimport WishlistApi \t\t\t\t\t\tfrom '../../models/wishlistApi/wishlistApi.js';\nimport AppStore \t\t\t\t\t\tfrom '../../stores/app/appStore.js';\nimport WishlistActioner \t\t\t\tfrom '../../models/actions/wishlistActioner.js';\nimport LovelyFooter \t\t\t\t\tfrom '../footer/lovelyFooter.js';\n\n/**\n * Authentication React class\n * @extends {Component}\n */\nexport class Authentication extends Component{\n\n\t/**\n\t* Class constructor.\n\t* @param {object} props - properties passed to component.\n\t*/\n\tconstructor(props){\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\ttitle:Config.application_name,\n\t\t\temail:\"\",\n\t\t\tname:\"\"\n\t\t}\n\t}\n\n\t/**\n\t* Handle the changes of the email input\n\t* @param {object} event - the triggered event\n\t*/\n\t_emailChanged(event){\n\t\tthis.setState({email:event.target.value});\n\t}\n\n\t/**\n\t* Handle the changes of the name input\n\t* @param {object} event - the triggered event\n\t*/\n\t_nameChanged(event){\n\t\tthis.setState({name:event.target.value});\n\t}\n\n\t/**\n\t* Handle the button click\n\t* @param {object} event - the triggered event\n\t*/\n\t_submit(event){\n\t\tif(this.state.name && this.state.email){\n\t\t\tWishlistApi.log(this.state.name, this.state.email).then((response, error)=>{\n\t\t\t\tif(response){\n\t\t\t\t\tAppStore.dispatch(WishlistActioner.setUser(response));\n\t\t\t\t\tCookieManager.saveObject({userId:response.id, name: response.name, email:response.email});\n\t\t\t\t\thashHistory.push('/home');\n\t\t\t\t}\n\t\t\t})\n\t\t}\n\t}\n\n\t/**\n\t* @override\n\t*/\n\tcomponentDidMount(){\n\t\tlet credentials = CookieManager.get([\"userId\", \"name\", \"email\"]);\n\t\tif(credentials.name != null && credentials.email != null && credentials.userId != null){\n\t\t\tthis.setState({email:credentials.email, name:credentials.name},this._submit.bind(this));\n\t\t}\n\t}\n\t\n\t\n\t/**\n\t* override\n\t*/\n\trender() {\n\t\tlet styles = {\n\t\t\tcontainer:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\",\n\t\t\t\tfontFamily:MainTheme.fontFamily,\n\t\t\t\tfontSize:\"60px\",\n\t\t\t\tposition:\"absolute\",\n\t\t\t\ttop:0,\n\t\t\t\tbottom:0,\n\t\t\t\tdisplay:\"flex\",\n\t\t\t\tbackgroundColor:MainTheme.palette.backgroundColor,\n\t\t\t\tcolor:MainTheme.palette.textColor\n\t\t\t},\n\t\t\tform:{\n\t\t\t\tmargin:\"auto\",\n\t\t\t\ttextAlign:\"center\",\n\t\t\t\twidth:250\n\t\t\t},\n\t\t\ttitle:{\n\t\t\t\tdisplay:\"block\",\n\t\t\t\tmarginBottom:10,\n\t\t\t\tlineHeight:1,\n\t\t\t\tborderBottom:`3px solid ${MainTheme.palette.alternateTextColor}`\n\t\t\t},\n\t\t\tinput:{\n\t\t\t\tdisplay:\"block\",\n\t\t\t\tboxSizing: \"border-box\",\n\t\t\t\tmarginBottom:18,\n\t\t\t\twidth:\"100%\",\n\t\t\t\tpadding:8,\n\t\t\t\tfontSize:18,\n\t\t\t\tborderRadius:5,\n\t\t\t\tborderWidth:0,\n\t\t\t\tcolor:MainTheme.palette.textColor,\n\t\t\t\tboxShadow: '0px 0px 10px 0px rgba(42,42,42,.75)',\n\t\t\t},\n\t\t\tbuttonContainer:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\",\n\t\t\t\tdisplay:\"flex\",\n\t\t\t},\n\t\t\tbutton:{\n\t\t\t\tmargin:\"auto\",\n\t\t\t\tcursor:\"pointer\",\n\t\t\t\tcolor:MainTheme.palette.textColor,\n\t\t\t\tbackgroundColor:\"white\",\n\t\t\t\tborderRadius:5,\n\t\t\t\tfontSize:18,\n\t\t\t\tpadding:8,\n\t\t\t\tpaddingLeft:14,\n\t\t\t\tpaddingRight:14,\n\t\t\t\tborderWidth:0,\n\t\t\t\tboxShadow: '0px 0px 10px 0px rgba(42,42,42,.75)',\n\t\t\t},\n\t\t\tinputContainer:{\n\n\t\t\t}\n\t\t};\n\t\treturn (\n\t\t\t<div style={styles.container}>\n\t\t\t\t<div style={styles.form}>\n\t\t\t\t\t<div style={styles.title}>{this.state.title}</div>\n\t\t\t\t\t<div style={styles.inputContainer}>\n\t\t\t\t\t\t<input style={styles.input} type=\"text\" value={this.state.name} onChange={this._nameChanged.bind(this)} placeholder=\"NAME\" />\n\t\t\t\t\t\t<input style={styles.input} type=\"email\" value={this.state.email} onChange={this._emailChanged.bind(this)} placeholder=\"EMAIL\" />\n\t\t\t\t\t</div>\n\t\t\t\t\t<div style={styles.buttonContainer}>\n\t\t\t\t\t\t<button onClick={this._submit.bind(this)} style={styles.button} type=\"button\">Make a wish happen !</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<LovelyFooter/>\n\t\t\t</div>\n\t\t);\n\t}\n}; \n\n/*\n* Select the properties needed from the store.\n* @param {object} state - containing the all store properties.\n* @returns {object} the needed subset.\n*/\nfunction selectPropertyFromStore(state) {\n\treturn {\n\t\townedWishlits:state.WishlistsReducer.ownedWishlists,\n\t\tguestWishlists:state.WishlistsReducer.guestWishlists,\n\t}\n}\n\n/**\n* An extended verison of {SignInform} witch is connected to the store\n*/\nexport default connect(selectPropertyFromStore)(Authentication);"
+  },
+  {
+    "__docId__": 32,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Authentication",
+    "memberof": "app/components/authentication/authentication.js",
+    "longname": "app/components/authentication/authentication.js~Authentication",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/authentication/authentication.js",
+    "importStyle": "{Authentication}",
+    "description": "Authentication React class",
+    "lineNumber": 17,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 33,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/authentication/authentication.js~Authentication",
+    "longname": "app/components/authentication/authentication.js~Authentication#constructor",
+    "access": null,
+    "description": "Class constructor.",
+    "lineNumber": 23,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "properties passed to component."
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 34,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/authentication/authentication.js~Authentication",
+    "longname": "app/components/authentication/authentication.js~Authentication#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 35,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_emailChanged",
+    "memberof": "app/components/authentication/authentication.js~Authentication",
+    "longname": "app/components/authentication/authentication.js~Authentication#_emailChanged",
+    "access": null,
+    "description": "Handle the changes of the email input",
+    "lineNumber": 36,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "the triggered event"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 36,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_nameChanged",
+    "memberof": "app/components/authentication/authentication.js~Authentication",
+    "longname": "app/components/authentication/authentication.js~Authentication#_nameChanged",
+    "access": null,
+    "description": "Handle the changes of the name input",
+    "lineNumber": 44,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "the triggered event"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 37,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_submit",
+    "memberof": "app/components/authentication/authentication.js~Authentication",
+    "longname": "app/components/authentication/authentication.js~Authentication#_submit",
+    "access": null,
+    "description": "Handle the button click",
+    "lineNumber": 52,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "the triggered event"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 38,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "componentDidMount",
+    "memberof": "app/components/authentication/authentication.js~Authentication",
+    "longname": "app/components/authentication/authentication.js~Authentication#componentDidMount",
+    "access": null,
+    "description": "",
+    "lineNumber": 67,
+    "params": [],
+    "override": true,
+    "generator": false
+  },
+  {
+    "__docId__": 39,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/authentication/authentication.js~Authentication",
+    "longname": "app/components/authentication/authentication.js~Authentication#render",
+    "access": null,
+    "description": "override",
+    "lineNumber": 78,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 40,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "selectPropertyFromStore",
+    "memberof": "app/components/authentication/authentication.js",
+    "longname": "app/components/authentication/authentication.js~selectPropertyFromStore",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/components/authentication/authentication.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 160,
+    "undocument": true,
+    "params": [
+      {
+        "name": "state",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 41,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/buttons/addWishlistButton.js",
+    "memberof": null,
+    "longname": "app/components/buttons/addWishlistButton.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component} \tfrom 'react';\nimport MainTheme \t\t  \tfrom '../theme/mainTheme.js';\nimport ThemeManager  \t  \tfrom 'material-ui/lib/styles/theme-manager';\nimport FloatingActionButton from 'material-ui/lib/floating-action-button';\nimport ContentAdd \t\t\tfrom 'material-ui/lib/svg-icons/content/add';\n\n/**\n * Add Wishlist Button React class\n * @extends {Component}\n */\nexport default class AddWishlistButton extends Component{\n\t\n\t/**\n\t* Class constructor.\n\t*/\n\tconstructor(props){\n\t\tsuper(props);\n\t\tthis.state={}\n\t}\n\n\t/**\n     * @type {object}\n\t* defining the child context types\n     */\n\tstatic get childContextTypes(){\n        return {\n\t\t\tmuiTheme: React.PropTypes.object,\n\t\t};\n    }\n\n    /**\n\t* get the child context.\n\t* @returns {object} wich specify the child context\n\t*/\n\tgetChildContext() {\n\t\treturn {\n\t\t\tmuiTheme: ThemeManager.getMuiTheme(MainTheme),\n\t\t};\n\t}\n\n\t/**\n\t* specify how to render the component.\n\t* @returns {html} representing the component\n\t*/\n\trender(){\n\n\t\tlet styles = {\n\t\t\tcontainer:{\n\t\t\t\tposition:\"fixed\",\n\t\t\t\tbottom:10,\n\t\t\t\tright:10\n\t\t\t},\n\t\t}\n\n\t\treturn (\n\t\t\t<div style={styles.container}>\n\t\t\t\t<FloatingActionButton onClick={this.props.onClick}>\n\t\t\t      <ContentAdd />\n\t\t\t    </FloatingActionButton>\n\t\t    </div>\n\t\t);\n\t}\n};\n"
+  },
+  {
+    "__docId__": 42,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "AddWishlistButton",
+    "memberof": "app/components/buttons/addWishlistButton.js",
+    "longname": "app/components/buttons/addWishlistButton.js~AddWishlistButton",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/buttons/addWishlistButton.js",
+    "importStyle": "AddWishlistButton",
+    "description": "Add Wishlist Button React class",
+    "lineNumber": 11,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 43,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/buttons/addWishlistButton.js~AddWishlistButton",
+    "longname": "app/components/buttons/addWishlistButton.js~AddWishlistButton#constructor",
+    "access": null,
+    "description": "Class constructor.",
+    "lineNumber": 16,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 44,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/buttons/addWishlistButton.js~AddWishlistButton",
+    "longname": "app/components/buttons/addWishlistButton.js~AddWishlistButton#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 45,
+    "kind": "get",
+    "static": true,
+    "variation": null,
+    "name": "childContextTypes",
+    "memberof": "app/components/buttons/addWishlistButton.js~AddWishlistButton",
+    "longname": "app/components/buttons/addWishlistButton.js~AddWishlistButton.childContextTypes",
+    "access": null,
+    "description": "",
+    "lineNumber": 25,
+    "type": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 46,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getChildContext",
+    "memberof": "app/components/buttons/addWishlistButton.js~AddWishlistButton",
+    "longname": "app/components/buttons/addWishlistButton.js~AddWishlistButton#getChildContext",
+    "access": null,
+    "description": "get the child context.",
+    "lineNumber": 35,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} wich specify the child context"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "wich specify the child context"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 47,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/buttons/addWishlistButton.js~AddWishlistButton",
+    "longname": "app/components/buttons/addWishlistButton.js~AddWishlistButton#render",
+    "access": null,
+    "description": "specify how to render the component.",
+    "lineNumber": 45,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{html} representing the component"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "html"
+      ],
+      "spread": false,
+      "description": "representing the component"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/footer/lovelyFooter.js",
+    "memberof": null,
+    "longname": "app/components/footer/lovelyFooter.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component} \tfrom 'react';\nimport {Config} \t\t\tfrom '../../app.config.js';\nimport MainTheme \t\t  \tfrom '../theme/mainTheme.js';\nimport FontIcon \t\t\tfrom 'material-ui/lib/font-icon';\nimport ThemeManager  \t  \tfrom 'material-ui/lib/styles/theme-manager';\n\n\n/**\n * A lovely footer React class\n * @extends {Component}\n */\nexport default class LovelyFooter extends Component{\n\t\n\t/**\n\t* Class constructor.\n\t*/\n\tconstructor(){\n\t\tsuper();\n\t\tthis.state = {\n\t\t\t\n\t\t}\n\t}\n\n\t/**\n     * @type {object}\n\t* defining the child context types\n     */\n\tstatic get childContextTypes(){\n        return {\n\t\t\tmuiTheme: React.PropTypes.object,\n\t\t};\n    }\n\n    /**\n\t* get the child context.\n\t* @returns {object} wich specify the child context\n\t*/\n\tgetChildContext() {\n\t\treturn {\n\t\t\tmuiTheme: ThemeManager.getMuiTheme(MainTheme),\n\t\t};\n\t}\n\n\t/**\n\t* specify how to render the component.\n\t* @returns {html} representing the component\n\t*/\n\trender(){\n\t\tlet styles={\n\t\t\tcontainer:{\n\t\t\t\tposition:\"fixed\",\n\t\t\t\twidth:\"100%\",\n\t\t\t\tbottom:3,\n\t\t\t\ttextAlign:\"center\"\n\t\t\t},\n\t\t\ticon:{\n\t\t\t\tfontSize:15\n\t\t\t}\n\t\t}\n\t\treturn (\n\t\t  <div style={styles.container}>\n\t\t  \tMade with <FontIcon style={styles.icon} className=\"material-icons\">favorite</FontIcon> by a bunch of nerds\n\t\t  </div>\n\t\t);\n\t}\n};"
+  },
+  {
+    "__docId__": 49,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "LovelyFooter",
+    "memberof": "app/components/footer/lovelyFooter.js",
+    "longname": "app/components/footer/lovelyFooter.js~LovelyFooter",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/footer/lovelyFooter.js",
+    "importStyle": "LovelyFooter",
+    "description": "A lovely footer React class",
+    "lineNumber": 12,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 50,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/footer/lovelyFooter.js~LovelyFooter",
+    "longname": "app/components/footer/lovelyFooter.js~LovelyFooter#constructor",
+    "access": null,
+    "description": "Class constructor.",
+    "lineNumber": 17,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 51,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/footer/lovelyFooter.js~LovelyFooter",
+    "longname": "app/components/footer/lovelyFooter.js~LovelyFooter#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "get",
+    "static": true,
+    "variation": null,
+    "name": "childContextTypes",
+    "memberof": "app/components/footer/lovelyFooter.js~LovelyFooter",
+    "longname": "app/components/footer/lovelyFooter.js~LovelyFooter.childContextTypes",
+    "access": null,
+    "description": "",
+    "lineNumber": 28,
+    "type": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 53,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getChildContext",
+    "memberof": "app/components/footer/lovelyFooter.js~LovelyFooter",
+    "longname": "app/components/footer/lovelyFooter.js~LovelyFooter#getChildContext",
+    "access": null,
+    "description": "get the child context.",
+    "lineNumber": 38,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} wich specify the child context"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "wich specify the child context"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 54,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/footer/lovelyFooter.js~LovelyFooter",
+    "longname": "app/components/footer/lovelyFooter.js~LovelyFooter#render",
+    "access": null,
+    "description": "specify how to render the component.",
+    "lineNumber": 48,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{html} representing the component"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "html"
+      ],
+      "spread": false,
+      "description": "representing the component"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 55,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/grid/wishlistGrid.js",
+    "memberof": null,
+    "longname": "app/components/grid/wishlistGrid.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component}                                             from 'react';\nimport Wishlist                                                       from '../wishlist/wishlist.js';\nimport {Responsive as ResponsiveReactGridLayout, WidthProvider}       from'react-grid-layout';\n\nconst ReactGridLayout = WidthProvider(ResponsiveReactGridLayout);\n\n\n/**\n * Wishlist grid React class\n * @extends {Component}\n */\nexport default class WishlistGrid extends Component{\n  \n  /**\n * Class constructor\n */\n  constructor(props){\n    super(props);\n    this.state =  {\n      layouts: {\"lg\":this.generateLayout(\"lg\")},\n      currentBreakpoint: 'lg'\n    }\n  }\n\n  /**\n  * @override\n  */\n  static get defaultProps() {\n    return {\n      className: \"layout\",\n      cols: {lg: 4, md: 2, sm: 2, xs: 1, xxs:1},\n      rowHeight: 400,\n      verticalCompact:true\n    };\n  }\n\n  onBreakpointChange(breakpoint) {\n\n    let newLayouts = Object.assign({}, this.state.layouts,this.state.layouts);\n    newLayouts[breakpoint] = this.generateLayout(breakpoint);\n\n    this.setState({\n      layouts:newLayouts,\n      currentBreakpoint: breakpoint\n    });\n  }\n\n  /**\n  * get the wishlist nodes.\n  * @returns {array} containing the nodes\n  */\n  _getWishlistNodes(){\n    return this.props.wishlists.map((wl,index)=>{\n      return (\n          <div key={index}>\n            <Wishlist key={index} list={wl} owned={true}/>\n          </div>\n        )\n    })\n  }\n\n  /**\n  * generate the layout\n  * @params {string} breakPoint - the break point ton render\n  * @returns {object} the layout\n  */\n  generateLayout(breakPoint) {\n    let layouts = this.props.wishlists.map((wl, index)=>{\n      return {\n        i: index.toString(),\n        x: index%this.props.cols[breakPoint],\n        y: Math.floor(index/this.props.cols[breakPoint]),\n        w: 1,\n        h: 1\n      }\n    })\n    return layouts\n  }\n\n  /**\n  * specify how to render the component.\n  * @returns {html} representing the component\n  */\n  render() {\n    let styles ={\n      container:{\n        width:\"100%\",\n        height:\"100%\"\n      }\n    }\n    return ( \n      <div style={styles.container}>\n        <ReactGridLayout  className=\"layout\" onBreakpointChange={this.onBreakpointChange.bind(this)} layouts={this.state.layouts} {...this.props}>\n          {this._getWishlistNodes()}\n        </ReactGridLayout>\n      </div>\n    );\n  }\n\n\n}\n"
+  },
+  {
+    "__docId__": 56,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "ReactGridLayout",
+    "memberof": "app/components/grid/wishlistGrid.js",
+    "longname": "app/components/grid/wishlistGrid.js~ReactGridLayout",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/components/grid/wishlistGrid.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "WishlistGrid",
+    "memberof": "app/components/grid/wishlistGrid.js",
+    "longname": "app/components/grid/wishlistGrid.js~WishlistGrid",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/grid/wishlistGrid.js",
+    "importStyle": "WishlistGrid",
+    "description": "Wishlist grid React class",
+    "lineNumber": 12,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 58,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/grid/wishlistGrid.js~WishlistGrid",
+    "longname": "app/components/grid/wishlistGrid.js~WishlistGrid#constructor",
+    "access": null,
+    "description": "Class constructor",
+    "lineNumber": 17,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 59,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/grid/wishlistGrid.js~WishlistGrid",
+    "longname": "app/components/grid/wishlistGrid.js~WishlistGrid#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "get",
+    "static": true,
+    "variation": null,
+    "name": "defaultProps",
+    "memberof": "app/components/grid/wishlistGrid.js~WishlistGrid",
+    "longname": "app/components/grid/wishlistGrid.js~WishlistGrid.defaultProps",
+    "access": null,
+    "description": "",
+    "lineNumber": 28,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "override": true,
+    "generator": false
+  },
+  {
+    "__docId__": 61,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "onBreakpointChange",
+    "memberof": "app/components/grid/wishlistGrid.js~WishlistGrid",
+    "longname": "app/components/grid/wishlistGrid.js~WishlistGrid#onBreakpointChange",
+    "access": null,
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true,
+    "params": [
+      {
+        "name": "breakpoint",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 62,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getWishlistNodes",
+    "memberof": "app/components/grid/wishlistGrid.js~WishlistGrid",
+    "longname": "app/components/grid/wishlistGrid.js~WishlistGrid#_getWishlistNodes",
+    "access": null,
+    "description": "get the wishlist nodes.",
+    "lineNumber": 52,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{array} containing the nodes"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "array"
+      ],
+      "spread": false,
+      "description": "containing the nodes"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 63,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "generateLayout",
+    "memberof": "app/components/grid/wishlistGrid.js~WishlistGrid",
+    "longname": "app/components/grid/wishlistGrid.js~WishlistGrid#generateLayout",
+    "access": null,
+    "description": "generate the layout",
+    "lineNumber": 67,
+    "unknown": [
+      {
+        "tagName": "@params",
+        "tagValue": "{string} breakPoint - the break point ton render"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} the layout"
+      }
+    ],
+    "params": [
+      {
+        "name": "breakPoint",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the layout"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 64,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/grid/wishlistGrid.js~WishlistGrid",
+    "longname": "app/components/grid/wishlistGrid.js~WishlistGrid#render",
+    "access": null,
+    "description": "specify how to render the component.",
+    "lineNumber": 84,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{html} representing the component"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "html"
+      ],
+      "spread": false,
+      "description": "representing the component"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 65,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/home/home.js",
+    "memberof": null,
+    "longname": "app/components/home/home.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component} \tfrom 'react';\nimport {connect} \t\t\tfrom 'react-redux';\nimport {hashHistory} \t\tfrom 'react-router';\nimport {Config} \t\t\tfrom '../../app.config.js';\nimport AppBar \t\t\t\tfrom 'material-ui/lib/app-bar';\nimport MainTheme \t\t  \tfrom '../theme/mainTheme.js';\nimport ThemeManager  \t  \tfrom 'material-ui/lib/styles/theme-manager';\nimport WishlistGrid \t\tfrom '../grid/wishlistGrid.js';\nimport AddWishlistButton \tfrom '../buttons/addWishlistButton.js';\n\n/**\n * Home React class\n * @extends {Component}\n */\nexport default class Home extends Component{\n\t\n\t/**\n\t* Class constructor.\n\t*/\n\tconstructor(props){\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\ttitle:Config.application_name,\n\t\t}\n\t\t\n\t}\n\n\t/**\n     * @type {object}\n\t* defining the child context types\n     */\n\tstatic get childContextTypes(){\n        return {\n\t\t\tmuiTheme: React.PropTypes.object,\n\t\t};\n    }\n\n    /**\n\t* get the child context.\n\t* @returns {object} wich specify the child context\n\t*/\n\tgetChildContext() {\n\t\treturn {\n\t\t\tmuiTheme: ThemeManager.getMuiTheme(MainTheme),\n\t\t};\n\t}\n\n\t/**\n\t* Go to add wishlist\n\t*/\n\t_goToAddWishlist(){\n\t\thashHistory.push('/add_wishlist');\n\t}\n\n\t/**\n\t* @override\n\t*/\n\tcomponentDidMount(){\n\t\tif(!this.props.userId){hashHistory.push('/auth')};\n\t}\n\n\t/**\n\t* specify how to render the component.\n\t* @returns {html} representing the component\n\t*/\n\trender(){\n\t\tlet styles={\n\t\t\tcontainer:{\n\t\t\t\tposition:\"absolute\",\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\",\n\t\t\t},\n\t\t\tplacehodlerContainer:{\n\t\t\t\tdisplay:(this.props.ownedWishlits.length > 0)?'none':'flex',\n\t\t\t\tposition:\"absolute\",\n\t\t\t\ttop:0,\n\t\t\t\tleft:0,\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\"\n\t\t\t},\n\t\t\tplacehodler:{\t\n\t\t\t\tmargin:\"auto\",\n\t\t\t\tfontSize:30,\n\t\t\t}\n\t\t}\n\n\t\treturn (\n\t\t  <div style={styles.container}>\n\t\t  \t<WishlistGrid wishlists={this.props.ownedWishlits}/>\n\t\t  \t<div style={styles.placehodlerContainer}>\n\t\t  \t\t<div style={styles.placehodler}> No wishlist yet!</div>\n\t  \t\t</div>\n\t\t  \t<AddWishlistButton onClick={this._goToAddWishlist.bind(this)} />\n\t\t  </div>\n\t\t);\n\t}\n};\n\n\n/**\n* Select the properties needed from the store.\n* @param {object} state - containing the all store properties.\n* @returns {object} the needed subset.\n*/\nfunction selectPropertyFromStore(state) {\n\treturn {\n\t\townedWishlits:state.WishlistsReducer.ownedWishlists,\n\t\tguestWishlists:state.WishlistsReducer.guestWishlists,\n\t\tuserId:state.WishlistsReducer.userId,\n\t\tname:state.WishlistsReducer.name,\n\t\temail:state.WishlistsReducer.email,\n\t}\n}\n\n/**\n* An extended verison of {SignInform} witch is connected to the store\n*/\nexport default connect(selectPropertyFromStore)(Home);\n"
+  },
+  {
+    "__docId__": 66,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Home",
+    "memberof": "app/components/home/home.js",
+    "longname": "app/components/home/home.js~Home",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/home/home.js",
+    "importStyle": "Home",
+    "description": "Home React class",
+    "lineNumber": 15,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 67,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/home/home.js~Home",
+    "longname": "app/components/home/home.js~Home#constructor",
+    "access": null,
+    "description": "Class constructor.",
+    "lineNumber": 20,
+    "params": [
+      {
+        "name": "props",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 68,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/home/home.js~Home",
+    "longname": "app/components/home/home.js~Home#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "get",
+    "static": true,
+    "variation": null,
+    "name": "childContextTypes",
+    "memberof": "app/components/home/home.js~Home",
+    "longname": "app/components/home/home.js~Home.childContextTypes",
+    "access": null,
+    "description": "",
+    "lineNumber": 32,
+    "type": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 70,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getChildContext",
+    "memberof": "app/components/home/home.js~Home",
+    "longname": "app/components/home/home.js~Home#getChildContext",
+    "access": null,
+    "description": "get the child context.",
+    "lineNumber": 42,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} wich specify the child context"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "wich specify the child context"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 71,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_goToAddWishlist",
+    "memberof": "app/components/home/home.js~Home",
+    "longname": "app/components/home/home.js~Home#_goToAddWishlist",
+    "access": null,
+    "description": "Go to add wishlist",
+    "lineNumber": 51,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 72,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "componentDidMount",
+    "memberof": "app/components/home/home.js~Home",
+    "longname": "app/components/home/home.js~Home#componentDidMount",
+    "access": null,
+    "description": "",
+    "lineNumber": 58,
+    "params": [],
+    "override": true,
+    "generator": false
+  },
+  {
+    "__docId__": 73,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/home/home.js~Home",
+    "longname": "app/components/home/home.js~Home#render",
+    "access": null,
+    "description": "specify how to render the component.",
+    "lineNumber": 66,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{html} representing the component"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "html"
+      ],
+      "spread": false,
+      "description": "representing the component"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 74,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "selectPropertyFromStore",
+    "memberof": "app/components/home/home.js",
+    "longname": "app/components/home/home.js~selectPropertyFromStore",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/components/home/home.js",
+    "importStyle": null,
+    "description": "Select the properties needed from the store.",
+    "lineNumber": 105,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} the needed subset."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
+        "description": "containing the all store properties."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the needed subset."
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 75,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/theme/mainTheme.js",
+    "memberof": null,
+    "longname": "app/components/theme/mainTheme.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import Colors             from 'material-ui/lib/styles/colors'\nimport ColorManipulator   from 'material-ui/lib/utils/color-manipulator'\nimport Spacing            from 'material-ui/lib/styles/spacing'\n\nexport default {\n  spacing: Spacing,\n  fontFamily: 'Muli, sans-serif',\n  palette: {\n    primary1Color: Colors.indigo500,\n    primary2Color: Colors.cyan700,\n    primary3Color: Colors.lightBlack,\n    accent1Color: Colors.indigo500,\n    accent2Color: Colors.grey100,\n    accent3Color: Colors.grey500,\n    textColor: \"#0D47A1\",\n    alternateTextColor: \"white\",\n    canvasColor: Colors.white,\n    borderColor: Colors.grey300,\n    disabledColor: ColorManipulator.fade(Colors.darkBlack, 0.3),\n    backgroundColor:\"#42A5F5\"\n  },\n};\n"
+  },
+  {
+    "__docId__": 76,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/wish/wish.js",
+    "memberof": null,
+    "longname": "app/components/wish/wish.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component}\t\t\t\tfrom 'react'\nimport {connect} \t\t\t\t\t\tfrom 'react-redux'\nimport ThemeManager  \t  \t\t\t\tfrom 'material-ui/lib/styles/theme-manager'\nimport MainTheme \t\t  \t\t\t\tfrom '../theme/mainTheme.js'\nimport WishlistApi \t\t\t\t\t\tfrom '../../models/wishlistApi/wishlistApi.js';\nimport AppStore \t\t\t\t\t\tfrom '../../stores/app/appStore.js';\nimport WishlistActioner \t\t\t\tfrom '../../models/actions/wishlistActioner.js';\nimport Tabs \t\t\t\t\t\t\tfrom 'material-ui/lib/tabs/tabs';\nimport Tab \t\t\t\t\t\t\t\tfrom 'material-ui/lib/tabs/tab';\nimport SwipeableViews \t\t\t\t\tfrom 'react-swipeable-views';\n\n/**\n * Wish React class\n * @extends {Component}\n */\nexport default class Wish extends Component{\n\n\t/**\n\t* Class constructor.\n\t* @param {object} props - properties passed to component.\n\t*/\n\tconstructor(props){\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\tcomment:\"\",\n\t\t\tproposal:null,\n\t\t\tslideIndex:0,\n\t\t}\n\t}\n\n\t_getProposalNodes(){\n\t\tlet styles = {\n\t\t\tcommentContainer:{\n\t\t\t\tmargin:10\n\t\t\t},\n\t\t\tnameContainer:{\n\t\t\t\ttextTransform:\"uppercase\",\n\t\t\t\tcolor:MainTheme.palette.textColor\n\t\t\t},\n\t\t\tcontentContainer:{\n\t\t\t\tmarginTop:5\n\t\t\t}\n\t\t}\n\t\treturn this.props.wish.propositions.map((proposition, index)=>{\n\t\t\treturn (\n\t\t\t\t<div key={index} style={styles.commentContainer}>\n\t\t\t\t\t<div style={styles.nameContainer}>\n\t\t\t\t\t\t{proposition.creator.name}\n\t\t\t\t\t</div>\n\t\t\t\t\t<div style={styles.contentContainer}>\n\t\t\t\t\t\t{`${proposition.price}€`}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t)\n\t\t});\n\t}\n\n\t_getCommentNodes(){\n\t\tlet styles = {\n\t\t\tcommentContainer:{\n\t\t\t\tmargin:10\n\t\t\t},\n\t\t\tnameContainer:{\n\t\t\t\ttextTransform:\"uppercase\",\n\t\t\t\tcolor:MainTheme.palette.textColor\n\t\t\t},\n\t\t\tcontentContainer:{\n\t\t\t\tmarginTop:5\n\t\t\t}\n\t\t}\n\t\treturn this.props.wish.comments.map((comment, index)=>{\n\t\t\treturn (\n\t\t\t\t<div key={index} style={styles.commentContainer}>\n\t\t\t\t\t<div style={styles.nameContainer}>\n\t\t\t\t\t\t{comment.creator.name}\n\t\t\t\t\t</div>\n\t\t\t\t\t<div style={styles.contentContainer}>\n\t\t\t\t\t\t{comment.content}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t)\n\t\t});\n\t}\n\n\t_commentChanged(event){\n\t\tthis.setState({comment:event.target.value});\n\t}\n\n\t_submitComment(event){\n\n\t\tif(!(this.state.comment.length >= 0)){return};\n\t\tWishlistApi.addComment(this.state.comment, this.props.wish.id, this.props.wishlist.guest_token).then((response)=>{\n\t\t\tAppStore.dispatch(WishlistActioner.setWish(this.props.wishlist, response));\n\t\t\tthis.setState({comment:\"\"});\n\t\t})\n\t}\n\n\t_proposalChanged(event){\n\t\tthis.setState({proposal:event.target.value});\n\t}\n\n\t_submitProposal(event){\n\t\tif(!this.state.proposal == null){return};\n\t\tWishlistApi.addProposal(this.state.proposal, this.props.wish.id, this.props.wishlist.guest_token).then((response)=>{\n\t\t\tAppStore.dispatch(WishlistActioner.setWish(this.props.wishlist, response));\n\t\t\tthis.setState({proposal:null});\n\t\t})\n\t}\n\n\t_handleSlideChange(value){\n\t\tthis.setState({slideIndex: value});\n\t}\n\t\n\t/**\n\t* override\n\t*/\n\trender() {\n\t\tlet styles = {\n\t\t\tcontainer:{\n\t\t\t\twidth:\"300px\",\n\t\t\t\tmarginTop:30\n\t\t\t},\n\t\t\timg:{\n\t\t\t\theight:\"100%\"\n\t\t\t},\n\t\t\timgContainer:{\n\t\t\t\theight:\"100%\",\n\t\t\t},\n\t\t\titemContainer:{\n\t\t\t\theight:100,\n\t\t\t\tdisplay:\"flex\"\n\t\t\t},\n\t\t\tavgPrice:{\n\t\t\t\tmargin:\"auto\",\n\t\t\t\tfontSize:20\n\t\t\t},\n\t\t\tcomments:{\n\n\t\t\t},\n\t\t\taddComment:{\n\t\t\t\tmarginTop:10,\n\t\t\t},\n\t\t\tsection:{\n\t\t\t\theight: 600,\n\t\t\t},\n\t\t\tswipeableView:{\n\t\t\t},\n\t\t\ttabs:{\n\t\t\t\tmarginTop:10\n\t\t\t},\n\t\t\ttabList:{\n\t\t\t\theight:400,\n\t\t\t\toverflowY:\"scroll\"\n\t\t\t},\n\t\t\tbutton:{\n\t\t\t\tcursor:\"pointer\",\n\t\t\t\tcolor:MainTheme.palette.textColor,\n\t\t\t\tbackgroundColor:\"white\",\n\t\t\t\tborderRadius:5,\n\t\t\t\tfontSize:18,\n\t\t\t\tpadding:8,\n\t\t\t\tpaddingLeft:14,\n\t\t\t\tpaddingRight:14,\n\t\t\t\tborderWidth:0,\n\t\t\t\tboxShadow: '0px 0px 10px 0px rgba(42,42,42,.75)',\n\t\t\t},\n\t\t\tinput:{\n\t\t\t\tdisplay:\"block\",\n\t\t\t\tmargin:\"auto\",\n\t\t\t\tboxSizing: \"border-box\",\n\t\t\t\tmarginBottom:18,\n\t\t\t\twidth:\"80%\",\n\t\t\t\tpadding:8,\n\t\t\t\tfontSize:18,\n\t\t\t\tborderRadius:5,\n\t\t\t\tborderWidth:0,\n\t\t\t\tcolor:MainTheme.palette.textColor,\n\t\t\t\tboxShadow: '0px 0px 10px 0px rgba(42,42,42,.75)',\n\t\t\t},\n\t\t\taddSection:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\ttextAlign:\"center\",\n\t\t\t\tmarginTop:50\n\t\t\t}\n\t\t};\n\t\treturn (\n\t\t\t<div style={styles.container}>\n\t\t\t\t<div style={styles.itemContainer}>\n\t\t\t\t\t<div style={styles.imgContainer}>\n\t\t\t\t\t\t<img style={styles.img} src={this.props.wish.url_photo}/>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div style={styles.avgPrice}>\n\t\t\t\t\t\t{`${this.props.wish.avg_price}€`}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div style={styles.tabs}>\n\t\t\t\t\t<Tabs style={styles.inlineTabs} onChange={this._handleSlideChange.bind(this)} value={this.state.slideIndex}>\n\t\t\t          <Tab style={{color:MainTheme.palette.alternateTextColor}} label=\"Comments\" value={0} />\n\t\t\t          <Tab style={{color:MainTheme.palette.alternateTextColor}} label=\"Propsals\" value={1} />\n\t\t\t        </Tabs>\n\t        \t\t<SwipeableViews style={styles.swipeableView} index={this.state.slideIndex} onChangeIndex={this._handleSlideChange.bind(this)}>\n\t\t\t\t\t\t<div style={styles.section}>\n\t\t\t\t\t\t\t<div style={styles.tabList}>\n\t\t\t\t\t\t\t\t{this._getCommentNodes()}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div style={styles.addSection}>\n\t\t\t\t\t\t\t\t<input style={styles.input} type=\"text\" value={this.state.comment} onChange={this._commentChanged.bind(this)} placeholder=\"comment\" />\n\t\t\t\t\t\t\t\t<button onClick={this._submitComment.bind(this)} style={styles.button} type=\"button\">Make a comment</button>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div style={styles.section}>\n\t\t\t\t\t\t\t<div style={styles.tabList}>\n\t\t\t\t\t\t\t\t{this._getProposalNodes()}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div style={styles.addSection}>\n\t\t\t\t\t\t\t\t<input style={styles.input} type=\"number\" value={this.state.proposal} onChange={this._proposalChanged.bind(this)} placeholder=\"proposal\" />\n\t\t\t\t\t\t\t\t<button onClick={this._submitProposal.bind(this)} style={styles.button} type=\"button\">Make a proposal</button>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t        </SwipeableViews>\n\t\t\t\t</div>\n\n\t\t\t\t<div style={styles.proposals}>\n\t\t\t\t</div>\n\t\t\t\t<div style={styles.comments}>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t);\n\t}\n};"
+  },
+  {
+    "__docId__": 77,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Wish",
+    "memberof": "app/components/wish/wish.js",
+    "longname": "app/components/wish/wish.js~Wish",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/wish/wish.js",
+    "importStyle": "Wish",
+    "description": "Wish React class",
+    "lineNumber": 16,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 78,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/wish/wish.js~Wish",
+    "longname": "app/components/wish/wish.js~Wish#constructor",
+    "access": null,
+    "description": "Class constructor.",
+    "lineNumber": 22,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "properties passed to component."
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 79,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/wish/wish.js~Wish",
+    "longname": "app/components/wish/wish.js~Wish#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 80,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getProposalNodes",
+    "memberof": "app/components/wish/wish.js~Wish",
+    "longname": "app/components/wish/wish.js~Wish#_getProposalNodes",
+    "access": null,
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 81,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getCommentNodes",
+    "memberof": "app/components/wish/wish.js~Wish",
+    "longname": "app/components/wish/wish.js~Wish#_getCommentNodes",
+    "access": null,
+    "description": null,
+    "lineNumber": 58,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 82,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_commentChanged",
+    "memberof": "app/components/wish/wish.js~Wish",
+    "longname": "app/components/wish/wish.js~Wish#_commentChanged",
+    "access": null,
+    "description": null,
+    "lineNumber": 85,
+    "undocument": true,
+    "params": [
+      {
+        "name": "event",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 83,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_submitComment",
+    "memberof": "app/components/wish/wish.js~Wish",
+    "longname": "app/components/wish/wish.js~Wish#_submitComment",
+    "access": null,
+    "description": null,
+    "lineNumber": 89,
+    "undocument": true,
+    "params": [
+      {
+        "name": "event",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 84,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_proposalChanged",
+    "memberof": "app/components/wish/wish.js~Wish",
+    "longname": "app/components/wish/wish.js~Wish#_proposalChanged",
+    "access": null,
+    "description": null,
+    "lineNumber": 98,
+    "undocument": true,
+    "params": [
+      {
+        "name": "event",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 85,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_submitProposal",
+    "memberof": "app/components/wish/wish.js~Wish",
+    "longname": "app/components/wish/wish.js~Wish#_submitProposal",
+    "access": null,
+    "description": null,
+    "lineNumber": 102,
+    "undocument": true,
+    "params": [
+      {
+        "name": "event",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 86,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_handleSlideChange",
+    "memberof": "app/components/wish/wish.js~Wish",
+    "longname": "app/components/wish/wish.js~Wish#_handleSlideChange",
+    "access": null,
+    "description": null,
+    "lineNumber": 110,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 87,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/wish/wish.js~Wish",
+    "longname": "app/components/wish/wish.js~Wish#render",
+    "access": null,
+    "description": "override",
+    "lineNumber": 117,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 88,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/wishlist/wishlist.js",
+    "memberof": null,
+    "longname": "app/components/wishlist/wishlist.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component}\t\t\t\tfrom 'react';\nimport {hashHistory}\t\t\t\t \tfrom 'react-router';\nimport {connect} \t\t\t\t\t\tfrom 'react-redux';\nimport ThemeManager  \t  \t\t\t\tfrom 'material-ui/lib/styles/theme-manager';\nimport MainTheme \t\t  \t\t\t\tfrom '../theme/mainTheme.js';\nimport Paper \t\t\t\t\t\t\tfrom 'material-ui/lib/paper';\nimport Badge \t\t\t\t\t\t\tfrom 'material-ui/lib/badge';\nimport CakeIcon \t\t \t\t\t\tfrom 'material-ui/lib/svg-icons/social/cake';\nimport CashIcon \t\t \t\t\t\tfrom 'material-ui/lib/svg-icons/editor/attach-money';\n\n/**\n * Wishlist React class\n * @extends {Component}\n */\nexport default class Wishlist extends Component{\n\n\t/**\n\t* Class constructor.\n\t* @param {object} props - properties passed to component.\n\t*/\n\tconstructor(props){\n\t\tsuper(props);\n\t}\n\n\t_goToDetailedView(){\n\t\thashHistory.push(`/wishlist/${this.props.list.id}`);\n\t}\n\n\t_getTitle(){\n\t\tconst maxChar = 12;\n\n\t\tif(this.props.list.title.length>maxChar){\n\t\t\tlet splitedTitleArray = this.props.list.title.split(\"\");\n\t\t\tsplitedTitleArray.splice(maxChar);\n\t\t\treturn `${splitedTitleArray.join(\"\")}...`;\n\t\t}\n\n\t\treturn this.props.list.title;\n\n\t}\n\n\t_getNbProposals(){\n\t\tlet nbProposals = 0\n\t\tthis.props.list.items.map((item)=>{\n\t\t\tnbProposals += item.propositions.length;\n\t\t})\n\t\treturn nbProposals;\n\t}\n\n\t\n\t\n\t/**\n\t* override\n\t*/\n\trender() {\n\t\tlet styles = {\n\t\t\tcontainer:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\",\n\t\t\t},\n\n\t\t\tname:{\n\t\t\t\tcursor:\"pointer\",\t\t\t\t\n\t\t\t\tmargin:\"auto\",\n\t\t\t\tmargin:10,\n\t\t\t\tfontSize:50,\n\t\t\t\tcolor:MainTheme.palette.textColor\n\t\t\t},\n\n\t\t\tdescriptionContainer:{\n\t\t\t},\n\n\t\t\tbadge:{\n\t\t\t\tposition:\"absolute\",\n\t\t\t\tbottom:0,\n\t\t\t\twidth:\"100%\",\n\t\t\t\tdisplay:\"flex\"\n\t\t\t},\n\n\t\t\tdescription:{\n\t\t\t\tmargin:10,\n\t\t\t\tfontSize:30\n\t\t\t},\n\n\t\t\tdescriptionTitle:{\n\t\t\t\tmargin:10\n\t\t\t}\n\t\t};\n\t\treturn (\n\t\t\t<Paper style={styles.container}>\n\t\t\t\t<div title={this.props.list.title} style={styles.name} onClick={this._goToDetailedView.bind(this)}>\n\t\t\t\t\t{this._getTitle()}\n\t\t\t\t</div>\n\t\t\t\t<div style={styles.descriptionTitle}>\n\t\t\t\t\tDescription\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div style={styles.description}>\n\t\t\t\t\t{this.props.list.description}\n\t\t\t\t</div>\n\t\t\t\t<div style={styles.badge}>\n\t\t\t\t\t<Badge badgeContent={this.props.list.items.length} primary={true}>\n\t\t\t\t      <CakeIcon />\n\t\t\t\t    </Badge>\n\t\t\t\t    <Badge badgeContent={this._getNbProposals()} primary={true}>\n\t\t\t\t      <CashIcon />\n\t\t\t\t    </Badge>\n\t\t\t\t</div>\n\t\t\t</Paper>\n\t\t\t\n\t\t);\n\t}\n};"
+  },
+  {
+    "__docId__": 89,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Wishlist",
+    "memberof": "app/components/wishlist/wishlist.js",
+    "longname": "app/components/wishlist/wishlist.js~Wishlist",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/wishlist/wishlist.js",
+    "importStyle": "Wishlist",
+    "description": "Wishlist React class",
+    "lineNumber": 15,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 90,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/wishlist/wishlist.js~Wishlist",
+    "longname": "app/components/wishlist/wishlist.js~Wishlist#constructor",
+    "access": null,
+    "description": "Class constructor.",
+    "lineNumber": 21,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "properties passed to component."
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 91,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_goToDetailedView",
+    "memberof": "app/components/wishlist/wishlist.js~Wishlist",
+    "longname": "app/components/wishlist/wishlist.js~Wishlist#_goToDetailedView",
+    "access": null,
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 92,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getTitle",
+    "memberof": "app/components/wishlist/wishlist.js~Wishlist",
+    "longname": "app/components/wishlist/wishlist.js~Wishlist#_getTitle",
+    "access": null,
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 93,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getNbProposals",
+    "memberof": "app/components/wishlist/wishlist.js~Wishlist",
+    "longname": "app/components/wishlist/wishlist.js~Wishlist#_getNbProposals",
+    "access": null,
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 94,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/wishlist/wishlist.js~Wishlist",
+    "longname": "app/components/wishlist/wishlist.js~Wishlist#render",
+    "access": null,
+    "description": "override",
+    "lineNumber": 55,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 95,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/components/wishlist/wishlistDetailed.js",
+    "memberof": null,
+    "longname": "app/components/wishlist/wishlistDetailed.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React, {Component}\t\t\t\tfrom 'react';\nimport {Config} \t\t\t\t\t\tfrom '../../app.config.js';\nimport {connect} \t\t\t\t\t\tfrom 'react-redux';\nimport {hashHistory} \t\t\t\t\tfrom 'react-router';\nimport ThemeManager  \t  \t\t\t\tfrom 'material-ui/lib/styles/theme-manager';\nimport MainTheme \t\t  \t\t\t\tfrom '../theme/mainTheme.js';\nimport Paper \t\t\t\t\t\t\tfrom 'material-ui/lib/paper';\nimport AddWishlistButton \t\t\t\tfrom '../buttons/addWishlistButton.js';\nimport WishlistApi \t\t\t\t\t\tfrom '../../models/wishlistApi/wishlistApi.js';\nimport AppStore \t\t\t\t\t\tfrom '../../stores/app/appStore.js';\nimport WishlistActioner \t\t\t\tfrom '../../models/actions/wishlistActioner.js';\nimport Wish \t\t\t\t\t\t\tfrom '../wish/wish.js';\n\n/**\n * Wishlist Detailed React class\n * @extends {Component}\n */\nexport class WishlistDetailed extends Component{\n\n\t/**\n\t* Class constructor.\n\t* @param {object} props - properties passed to component.\n\t*/\n\tconstructor(props){\n\t\tsuper(props);\n\n\t\tthis.state = {\n\t\t\tlist : null,\n\t\t\tisGuest : true,\n\t\t}\n\t}\n\n\t/**\n\t* Get the list of the provided id from the owned and guest lists\n\t* @param {string} id - the id\n\t* @returns {object} the list\n\t*/\n\t_getListFromId(id){\n\t\tlet lists = this.props.ownedWishlits.concat(this.props.guestWishlists).filter((list)=>{\n\t\t\treturn list.id == id;\n\t\t});\n\n\t\tif(lists.length <= 0){hashHistory.push(\"/home\")};\n\t\treturn lists[0];\n\t}\n\n\t_getList(){\n\t\tif(this.props.params.id){\n\t\t\treturn this._getListFromId(this.props.params.id);\n\t\t}else if(this.props.params.token){\n\t\t\tthis._fetchList(this.props.params.token);\n\t\t}\n\t}\n\n\t_fetchList(token){\n\t\tWishlistApi.fetchGuestWishlist(token).then((response)=>{\n\t\t\tif(response){\n\t\t\t\tthis.setState({list:WishlistApi.parse(response)}, ()=>{\n\t\t\t\t\tthis.setState({isGuest: this._isGuest()});\n\t\t\t\t});\n\t\t\t}else{\n\t\t\t\thashHistory.push(\"/home\")\n\t\t\t}\n\t\t}).catch((error)=>{\n\t\t\t\thashHistory.push(\"/home\")\n\t\t})\n\t}\n\n\t/**\n\t* Go to add wish \n\t*/\n\t_gotToAddWish(){\n\t\thashHistory.push(`/add_wish/${this.props.params.id}`);\n\t}\n\n\t_getWishlistNode(){\n\t\t\n\t\tlet styles = {\n\t\t\tcontainer:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\",\n\t\t\t},\n\t\t\tname:{\n\t\t\t\tcursor:\"pointer\",\t\t\t\t\n\t\t\t\tmargin:\"auto\",\n\t\t\t\tmargin:10,\n\t\t\t\tfontSize:50,\n\t\t\t\tcolor:MainTheme.palette.textColor\n\t\t\t},\n\t\t\tdescriptionContainer:{\n\t\t\t\n\t\t\t},\n\t\t\tdescription:{\n\t\t\t\tmargin:10,\n\t\t\t\tfontSize:30\n\t\t\t},\n\t\t\tdescriptionTitle:{\n\t\t\t\tmargin:10\n\t\t\t},\n\t\t\twishesContainer:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\tdisplay:\"flex\"\n\t\t\t},\n\t\t\twishes:{\n\t\t\t\tdisplay:\"table-caption\",\n\t\t\t\tmargin:\"auto\"\n\t\t\t}\n\t\t};\n\t\t\n\t\tif(this.state.list){\n\t\t\treturn(\n\t\t\t\t\t<Paper style={styles.container} zDepth={0}>\n\t\t\t\t\t\t<div title={this.state.list.title} style={styles.name}>\n\t\t\t\t\t\t\t{this.state.list.title}\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div style={styles.descriptionTitle}>\n\t\t\t\t\t\t\tDescription\t\t\t\t\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div style={styles.description}>\n\t\t\t\t\t\t\t{this.state.list.description}\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div style={styles.wishesContainer}>\n\t\t\t\t\t\t\t<div style={styles.wishes}>\n\t\t\t\t\t\t\t\t{this._getWishesNodes()}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</Paper>\n\t\t\t\t)\n\t\t}else{\n\t\t\treturn(\n\t\t\t\t\t<div style={styles.wishlist}>\n\t\t\t\t\t\twait\n\t\t\t\t\t</div>\n\t\t\t\t)\n\t\t}\n\n\t}\n\n\t_getWishesNodes(){\n\t\treturn this.state.list.items.map((wish, index)=>{\n\t\t\tlet style = {\n\t\t\t\tmargin:10\n\t\t\t}\n\t\t\treturn (\n\t\t\t\t<div key={index} style={style}>\n\t\t\t\t\t<Wish wishlist={this.state.list} wish={wish} />\n\t\t\t\t</div>\n\t\t\t)\n\t\t})\n\t}\n\n\t_getactions(){\n\t\tif(!this.state.isGuest){\n\t\t\treturn (\n\t\t\t\t\t<AddWishlistButton onClick={this._gotToAddWish.bind(this)} />\n\t\t\t\t)\n\t\t}\n\t\treturn null\n\n\t}\n\n\t_isGuest(){\n\t\tif(!this.state.list){return true};\n\t\tif(this.props.params.id){return false};\n\t\tif(this.props.params.token){\n\t\t\treturn this.state.list.guest_token == this.props.params.token \n\t\t}\n\t}\n\n\tcomponentDidMount(){\n\t\tthis.setState({list:this._getList()},()=>{\n\t\t\tthis.setState({isGuest:this._isGuest()});\n\t\t});\n\t}\n\t\n\t/**\n\t* override\n\t*/\n\trender() {\n\t\tlet styles = {\n\t\t\tcontainer:{\n\t\t\t\twidth:\"100%\",\n\t\t\t\theight:\"100%\",\n\t\t\t\tdisplay:\"flex\"\t\t\t\t\n\t\t\t}\n\t\t};\n\n\t\treturn (\n\t\t\t<div style={styles.container}>\n\t\t\t\t{this._getWishlistNode()}\n\t\t\t\t{this._getactions()}\n\t\t\t</div>\n\t\t);\n\t}\n};\n\n/**\n* Select the properties needed from the store.\n* @param {object} state - containing the all store properties.\n* @returns {object} the needed subset.\n*/\nfunction selectPropertyFromStore(state) {\n\treturn {\n\t\townedWishlits:state.WishlistsReducer.ownedWishlists,\n\t\tguestWishlists:state.WishlistsReducer.guestWishlists,\n\t\tuserId:state.WishlistsReducer.userId,\n\t\tname:state.WishlistsReducer.name,\n\t\temail:state.WishlistsReducer.email,\n\t}\n}\n\n/**\n* An extended verison of {WishlistDetailed} witch is connected to the store\n*/\nexport default connect(selectPropertyFromStore)(WishlistDetailed);"
+  },
+  {
+    "__docId__": 96,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "WishlistDetailed",
+    "memberof": "app/components/wishlist/wishlistDetailed.js",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/components/wishlist/wishlistDetailed.js",
+    "importStyle": "{WishlistDetailed}",
+    "description": "Wishlist Detailed React class",
+    "lineNumber": 18,
+    "interface": false,
+    "extends": [
+      "Component"
+    ]
+  },
+  {
+    "__docId__": 97,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#constructor",
+    "access": null,
+    "description": "Class constructor.",
+    "lineNumber": 24,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "props",
+        "description": "properties passed to component."
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 98,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "state",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 99,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getListFromId",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#_getListFromId",
+    "access": null,
+    "description": "Get the list of the provided id from the owned and guest lists",
+    "lineNumber": 38,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} the list"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "the id"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the list"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 100,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getList",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#_getList",
+    "access": null,
+    "description": null,
+    "lineNumber": 47,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 101,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_fetchList",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#_fetchList",
+    "access": null,
+    "description": null,
+    "lineNumber": 55,
+    "undocument": true,
+    "params": [
+      {
+        "name": "token",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 102,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_gotToAddWish",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#_gotToAddWish",
+    "access": null,
+    "description": "Go to add wish ",
+    "lineNumber": 72,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 103,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getWishlistNode",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#_getWishlistNode",
+    "access": null,
+    "description": null,
+    "lineNumber": 76,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 104,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getWishesNodes",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#_getWishesNodes",
+    "access": null,
+    "description": null,
+    "lineNumber": 139,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 105,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_getactions",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#_getactions",
+    "access": null,
+    "description": null,
+    "lineNumber": 152,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 106,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_isGuest",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#_isGuest",
+    "access": null,
+    "description": null,
+    "lineNumber": 162,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 107,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "componentDidMount",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#componentDidMount",
+    "access": null,
+    "description": null,
+    "lineNumber": 170,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 108,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed",
+    "longname": "app/components/wishlist/wishlistDetailed.js~WishlistDetailed#render",
+    "access": null,
+    "description": "override",
+    "lineNumber": 179,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 109,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "selectPropertyFromStore",
+    "memberof": "app/components/wishlist/wishlistDetailed.js",
+    "longname": "app/components/wishlist/wishlistDetailed.js~selectPropertyFromStore",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/components/wishlist/wishlistDetailed.js",
+    "importStyle": null,
+    "description": "Select the properties needed from the store.",
+    "lineNumber": 202,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} the needed subset."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
+        "description": "containing the all store properties."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the needed subset."
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 110,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/models/actions/abstractActioner.js",
+    "memberof": null,
+    "longname": "app/models/actions/abstractActioner.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 4,
+    "content": "/**\n* abstract actioner.\n*/\nexport default class AbstractActioner{\n\n\n}"
+  },
+  {
+    "__docId__": 111,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "AbstractActioner",
+    "memberof": "app/models/actions/abstractActioner.js",
+    "longname": "app/models/actions/abstractActioner.js~AbstractActioner",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/models/actions/abstractActioner.js",
+    "importStyle": "AbstractActioner",
+    "description": "abstract actioner.",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 112,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/models/actions/wishlistActioner.js",
+    "memberof": null,
+    "longname": "app/models/actions/wishlistActioner.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import AbstractActioner from './abstractActioner.js'\n\n/**\n * All wishlist action types \n * @type {Object}\n */\nexport let TYPES = {\n\tSET_OWNED_WISHLISTS:'SET_OWNED_WISHLIST',\n\tSET_GUEST_WISHLISTS:'SET_GUEST_WISHLISTS',\n\tADD_OWNED_WISHLIST:'ADD_OWNED_WISHLIST',\n\tADD_WISH:'ADD_WISH',\n\tSET_USER:'SET_USER',\n\tSET_WISH:'SET_WISH'\n};\n\n\n/**\n* Wishlist actioner.\n*/\nexport default class WishlistActioner extends AbstractActioner{\n\n\t/**\n\t* To get a set owned wishlists action\n\t* @params {array} wl - the array of lists to set\n\t* @returns {object} - the action \n\t*/\n\tstatic setOwnedWishlists(wl){\n\t\treturn {\n\t\t\ttype:TYPES.SET_OWNED_WISHLISTS,\n\t\t\tlists:wl\n\t\t}\n\t}\n\n\t/**\n\t* To get a set a wish action\n\t* @params {object} wl - the wishlist of the wish\n\t* @params {object} wl - the wish to set\n\t* @returns {object} - the action \n\t*/\n\tstatic setWish(wl, wish){\n\t\treturn {\n\t\t\ttype:TYPES.SET_WISH,\n\t\t\tlist:wl,\n\t\t\twish:wish\n\t\t}\n\t}\n\n\t/**\n\t* To get a set owned wishlists action\n\t* @params {array} wl - the array of lists to set\n\t* @returns {object} - the action \n\t*/\n\tstatic addWish(wl, wish){\n\t\treturn {\n\t\t\ttype:TYPES.ADD_WISH,\n\t\t\tlist:wl,\n\t\t\twish:wish\n\t\t}\n\t}\n\n\t/**\n\t* To get a set user action\n\t* @params {array} user - the user to set\n\t* @returns {object} - the action \n\t*/\n\tstatic setUser(user){\n\t\treturn {\n\t\t\ttype:TYPES.SET_USER,\n\t\t\tuser:user\n\t\t}\n\t}\n\n\t/**\n\t* To get a set guest wishlists action\n\t* @params {array} wl - the array of lists to set\n\t* @returns {object} - the action \n\t*/\n\tstatic setGuestWishlists(wl){\n\t\treturn {\n\t\t\ttype:TYPES.SET_GUEST_WISHLISTS,\n\t\t\tlists:wl\n\t\t}\n\t}\n\n\t/**\n\t* To get a add owned wishlist action\n\t* @params {object} wl - the lists to add\n\t* @returns {object} - the action \n\t*/\n\tstatic addOwnedWishlist(wl){\n\t\treturn {\n\t\t\ttype:TYPES.ADD_OWNED_WISHLIST,\n\t\t\tlist:wl\n\t\t}\n\t}\n\t\n}"
+  },
+  {
+    "__docId__": 113,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "TYPES",
+    "memberof": "app/models/actions/wishlistActioner.js",
+    "longname": "app/models/actions/wishlistActioner.js~TYPES",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/models/actions/wishlistActioner.js",
+    "importStyle": "{TYPES}",
+    "description": "All wishlist action types ",
+    "lineNumber": 7,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 114,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "WishlistActioner",
+    "memberof": "app/models/actions/wishlistActioner.js",
+    "longname": "app/models/actions/wishlistActioner.js~WishlistActioner",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/models/actions/wishlistActioner.js",
+    "importStyle": "WishlistActioner",
+    "description": "Wishlist actioner.",
+    "lineNumber": 20,
+    "interface": false,
+    "extends": [
+      "app/models/actions/abstractActioner.js~AbstractActioner"
+    ]
+  },
+  {
+    "__docId__": 115,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "setOwnedWishlists",
+    "memberof": "app/models/actions/wishlistActioner.js~WishlistActioner",
+    "longname": "app/models/actions/wishlistActioner.js~WishlistActioner.setOwnedWishlists",
+    "access": null,
+    "description": "To get a set owned wishlists action",
+    "lineNumber": 27,
+    "unknown": [
+      {
+        "tagName": "@params",
+        "tagValue": "{array} wl - the array of lists to set"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} - the action "
+      }
+    ],
+    "params": [
+      {
+        "name": "wl",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the action"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 116,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "setWish",
+    "memberof": "app/models/actions/wishlistActioner.js~WishlistActioner",
+    "longname": "app/models/actions/wishlistActioner.js~WishlistActioner.setWish",
+    "access": null,
+    "description": "To get a set a wish action",
+    "lineNumber": 40,
+    "unknown": [
+      {
+        "tagName": "@params",
+        "tagValue": "{object} wl - the wishlist of the wish"
+      },
+      {
+        "tagName": "@params",
+        "tagValue": "{object} wl - the wish to set"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} - the action "
+      }
+    ],
+    "params": [
+      {
+        "name": "wl",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "wish",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the action"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 117,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "addWish",
+    "memberof": "app/models/actions/wishlistActioner.js~WishlistActioner",
+    "longname": "app/models/actions/wishlistActioner.js~WishlistActioner.addWish",
+    "access": null,
+    "description": "To get a set owned wishlists action",
+    "lineNumber": 53,
+    "unknown": [
+      {
+        "tagName": "@params",
+        "tagValue": "{array} wl - the array of lists to set"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} - the action "
+      }
+    ],
+    "params": [
+      {
+        "name": "wl",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "wish",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the action"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 118,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "setUser",
+    "memberof": "app/models/actions/wishlistActioner.js~WishlistActioner",
+    "longname": "app/models/actions/wishlistActioner.js~WishlistActioner.setUser",
+    "access": null,
+    "description": "To get a set user action",
+    "lineNumber": 66,
+    "unknown": [
+      {
+        "tagName": "@params",
+        "tagValue": "{array} user - the user to set"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} - the action "
+      }
+    ],
+    "params": [
+      {
+        "name": "user",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the action"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 119,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "setGuestWishlists",
+    "memberof": "app/models/actions/wishlistActioner.js~WishlistActioner",
+    "longname": "app/models/actions/wishlistActioner.js~WishlistActioner.setGuestWishlists",
+    "access": null,
+    "description": "To get a set guest wishlists action",
+    "lineNumber": 78,
+    "unknown": [
+      {
+        "tagName": "@params",
+        "tagValue": "{array} wl - the array of lists to set"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} - the action "
+      }
+    ],
+    "params": [
+      {
+        "name": "wl",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the action"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 120,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "addOwnedWishlist",
+    "memberof": "app/models/actions/wishlistActioner.js~WishlistActioner",
+    "longname": "app/models/actions/wishlistActioner.js~WishlistActioner.addOwnedWishlist",
+    "access": null,
+    "description": "To get a add owned wishlist action",
+    "lineNumber": 90,
+    "unknown": [
+      {
+        "tagName": "@params",
+        "tagValue": "{object} wl - the lists to add"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} - the action "
+      }
+    ],
+    "params": [
+      {
+        "name": "wl",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the action"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 121,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/models/cookieManager/cookieManager.js",
+    "memberof": null,
+    "longname": "app/models/cookieManager/cookieManager.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import Cookie from'cookie';\n\n/**\n * CookieManger class\n */\nexport default class CookieManager{\n\t\n\t/**\n\t * Class constructor\n\t */\n\tconstructor(){\n\t\n\t}\n\n\t/**\n\t * To save an object into the cookie\n\t * @param {object} object - the object you want to save in the cookie\n\t */\n\tstatic saveObject(object){\n\t\tlet serializedCookie = \"\";\n\t\tObject.keys(object).map((key)=>{\n\t\t\tlet serializedCookie = Cookie.serialize(key, object[key]);\n\t\t\tdocument.cookie= serializedCookie;\n\t\t});\n\t}\n\n\t/**\n\t * To save a cookie\n\t * @param {string} key - the key you want to save in the cookie\n\t * @param {string} value - the value you want to save in the cookie\n\t * @param {string} expires - the expiration date of the cookie second\n\t */\n\tstatic save(key, value, expires){\n\t\tlet options = {};\n\t\tif(expires != null){\n\t\t\tlet now = new Date();\t\n\t\t\tnow.setSeconds(now.getSeconds() + parseInt(expires))\n\t\t\toptions = {\n\t\t\t\texpires:(value != null)?new Date(0):now\n\t\t\t}\n\t\t}\n\t\tlet serializedCookie = Cookie.serialize(key, value,options);\n\t\tdocument.cookie= serializedCookie;\n\t}\n\n\t/**\n\t * To remove a cookie\n\t * @param {string} key - the key of the cookie you want to delete\n\t */\n\tstatic remove(key){\n\t\tCookieManager.save(key, null, 0);\n\t}\n\n\t/**\n\t * To remove a cookie\n\t * @param {Array} keys - the keys of the cookies you want to get\n\t * @returns {object} the key value association of the requested cookies \n\t */\n\tstatic get(keys){\n\t\tlet parsedCookie = Cookie.parse(document.cookie);\n\t\tlet subset = {};\n\t\tkeys.map((key)=>{\n\t\t\tsubset[key] = parsedCookie[key];\n\t\t});\n\t\treturn subset;\n\t}\n\n}"
+  },
+  {
+    "__docId__": 122,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "CookieManager",
+    "memberof": "app/models/cookieManager/cookieManager.js",
+    "longname": "app/models/cookieManager/cookieManager.js~CookieManager",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/models/cookieManager/cookieManager.js",
+    "importStyle": "CookieManager",
+    "description": "CookieManger class",
+    "lineNumber": 6,
+    "interface": false
+  },
+  {
+    "__docId__": 123,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "app/models/cookieManager/cookieManager.js~CookieManager",
+    "longname": "app/models/cookieManager/cookieManager.js~CookieManager#constructor",
+    "access": null,
+    "description": "Class constructor",
+    "lineNumber": 11,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 124,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "saveObject",
+    "memberof": "app/models/cookieManager/cookieManager.js~CookieManager",
+    "longname": "app/models/cookieManager/cookieManager.js~CookieManager.saveObject",
+    "access": null,
+    "description": "To save an object into the cookie",
+    "lineNumber": 19,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": "the object you want to save in the cookie"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 125,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "save",
+    "memberof": "app/models/cookieManager/cookieManager.js~CookieManager",
+    "longname": "app/models/cookieManager/cookieManager.js~CookieManager.save",
+    "access": null,
+    "description": "To save a cookie",
+    "lineNumber": 33,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "the key you want to save in the cookie"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "the value you want to save in the cookie"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "expires",
+        "description": "the expiration date of the cookie second"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 126,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "remove",
+    "memberof": "app/models/cookieManager/cookieManager.js~CookieManager",
+    "longname": "app/models/cookieManager/cookieManager.js~CookieManager.remove",
+    "access": null,
+    "description": "To remove a cookie",
+    "lineNumber": 50,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "the key of the cookie you want to delete"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 127,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "get",
+    "memberof": "app/models/cookieManager/cookieManager.js~CookieManager",
+    "longname": "app/models/cookieManager/cookieManager.js~CookieManager.get",
+    "access": null,
+    "description": "To remove a cookie",
+    "lineNumber": 59,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{object} the key value association of the requested cookies "
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keys",
+        "description": "the keys of the cookies you want to get"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": "the key value association of the requested cookies"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 128,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/models/wishlistApi/wishlistApi.js",
+    "memberof": null,
+    "longname": "app/models/wishlistApi/wishlistApi.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import xhttp \t\t\t\t\tfrom 'xhttp/native';\nimport {Config} \t\t\t\tfrom '../../app.config.js';\nimport {hashHistory} \t\t\tfrom 'react-router';\nimport CookieManager \t\t\tfrom '../cookieManager/cookieManager.js';\n\nexport default class WishlistApi {\n\t\n\t/*\n\t* Send a log request with the given credentials\n\t* @param {string} name - the name\n\t* @param {string} email - the email\n\t* @returns {promise} the http promise\n\t*/\n\tstatic log(name, email){\n\n\t\treturn xhttp({\n\t\t  url: `${Config.api.root}${Config.api.users}`,\n\t\t  method:'post',\n\t\t  data: {\n\t\t  \temail:email,\n\t\t  \tname:name\n\t\t  },\n\t\t  headers:{\n\t\t  \t'Content-Type':'application/x-www-form-urlencoded',\n\t\t  }\n\n\t\t})\n\n\t}\n\n\t/*\n\t* fetch guest wishlist request with the given token\n\t* @param {string} token - the token\n\t* @returns {promise} the http promise\n\t*/\n\tstatic fetchGuestWishlist(token){\n\n\t\treturn xhttp({\n\t\t  url: `${Config.api.root}${Config.api.wishlists}${token}`,\n\t\t  method:'get',\n\t\t  data: {},\n\t\t  headers:{\n\t\t  \t'Content-Type':'application/x-www-form-urlencoded',\n\t\t  }\n\n\t\t})\n\n\t}\n\n\t/*\n\t* Send a add wishlist request\n\t* @param {string} name - the name\n\t* @param {string} description - the description\n\t* @returns {promise} the http promise\n\t*/\n\tstatic addWish(url_photo, avg_price, token){\n\t\treturn xhttp({\n\t\t  url: `${Config.api.root}${Config.api.wishlists}${token}/items/`,\n\t\t  method:'post',\n\t\t  data: {\n\t\t  \turl_photo:url_photo,\n\t\t  \tavg_price:avg_price,\n\t\t  },\n\t\t  headers:{\n\t\t  \t'Content-Type':'application/x-www-form-urlencoded',\n\t\t  }\n\n\t\t}).catch(WishlistApi.requestFailed);\n\n\t}\n\n\t/*\n\t* Post a comment on a wishlist request\n\t* @param {string} content - the comment content\n\t* @param {number} itemId - the item id\n\t* @param {string} token - the wishlist guest token \n\t* @returns {promise} the http promise\n\t*/\n\tstatic addComment(content, itemId, token){\n\t\treturn xhttp({\n\t\t  url: `${Config.api.root}${Config.api.wishlists}${token}/items/${itemId}/comments`,\n\t\t  method:'post',\n\t\t  data: {\n\t\t  \tcontent:content,\n\t\t  \tuser_id:CookieManager.get([\"userId\"])[\"userId\"]\n\t\t  },\n\t\t  headers:{\n\t\t  \t'Content-Type':'application/x-www-form-urlencoded',\n\t\t  }\n\n\t\t}).catch(WishlistApi.requestFailed);\n\n\t}\n\n\t/*\n\t* Post a proposition on a wishlist request\n\t* @param {number} price - the price\n\t* @param {number} itemId - the item id\n\t* @param {string} token - the wishlist guest token \n\t* @returns {promise} the http promise\n\t*/\n\tstatic addProposal(price, itemId, token){\n\t\treturn xhttp({\n\t\t  url: `${Config.api.root}${Config.api.wishlists}${token}/items/${itemId}/propositions`,\n\t\t  method:'post',\n\t\t  data: {\n\t\t  \tprice:price,\n\t\t  \tuser_id:CookieManager.get([\"userId\"])[\"userId\"]\n\t\t  },\n\t\t  headers:{\n\t\t  \t'Content-Type':'application/x-www-form-urlencoded',\n\t\t  }\n\n\t\t}).catch(WishlistApi.requestFailed);\n\n\t}\n\n\t/*\n\t* Send a add wishlist request\n\t* @param {string} name - the name\n\t* @param {string} description - the description\n\t* @returns {promise} the http promise\n\t*/\n\tstatic addWishlist(name, description){\n\t\treturn xhttp({\n\t\t  url: `${Config.api.root}${Config.api.wishlists}`,\n\t\t  method:'post',\n\t\t  data: {\n\t\t  \tdescription:description,\n\t\t  \ttitle:name,\n\t\t  \tuser_id:CookieManager.get([\"userId\"])[\"userId\"]\n\t\t  },\n\t\t  headers:{\n\t\t  \t'Content-Type':'application/x-www-form-urlencoded',\n\t\t  }\n\n\t\t}).catch(WishlistApi.requestFailed);\n\n\t}\n\n\t/*\n\t* Parse the response properly into an object\n\t* @param {object} response - the object wich needs to parse it fields\n\t* @returns {object} the parsed response\n\t*/\n\tstatic parse(response){\n\t\tlet parsedResponse = {};\n\t\tfor(let key in response){\n\t\t\tif(WishlistApi._isValidJSON(response[key])){\n\t\t\t\tparsedResponse[key] = JSON.parse(response[key])\n\t\t\t}else{\n\t\t\t\tparsedResponse[key] = response[key]\n\t\t\t}\n\t\t}\n\t\treturn parsedResponse;\n\t}\n\n\t/*\n\t* Test if is a valid json\n\t* @param {object} element - the object wich needs to be tested\n\t* @returns {boolean} the reponse\n\t*/\n\tstatic _isValidJSON(element){\n\t\ttry{\n\t\t\tlet parsed = JSON.parse(element);\n\t\t\treturn true;\n\t\t}catch(error){\n\t\t\treturn false;\n\t\t}\n\t\treturn false;\n\t}\n\n\t/*\n\t* If a request fails\n\t* @param {object} error - the error\n\t*/\n\tstatic requestFailed(error){\n\t\tCookieManager.remove(\"userId\");\n\t\tCookieManager.remove(\"email\");\n\t\tCookieManager.remove(\"name\");\n\t\thashHistory.push('/auth');\n\t}\n\n\n}\n"
+  },
+  {
+    "__docId__": 129,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "WishlistApi",
+    "memberof": "app/models/wishlistApi/wishlistApi.js",
+    "longname": "app/models/wishlistApi/wishlistApi.js~WishlistApi",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/models/wishlistApi/wishlistApi.js",
+    "importStyle": "WishlistApi",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 130,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "log",
+    "memberof": "app/models/wishlistApi/wishlistApi.js~WishlistApi",
+    "longname": "app/models/wishlistApi/wishlistApi.js~WishlistApi.log",
+    "access": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "name",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "email",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 131,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "fetchGuestWishlist",
+    "memberof": "app/models/wishlistApi/wishlistApi.js~WishlistApi",
+    "longname": "app/models/wishlistApi/wishlistApi.js~WishlistApi.fetchGuestWishlist",
+    "access": null,
+    "description": null,
+    "lineNumber": 36,
+    "undocument": true,
+    "params": [
+      {
+        "name": "token",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 132,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "addWish",
+    "memberof": "app/models/wishlistApi/wishlistApi.js~WishlistApi",
+    "longname": "app/models/wishlistApi/wishlistApi.js~WishlistApi.addWish",
+    "access": null,
+    "description": null,
+    "lineNumber": 56,
+    "undocument": true,
+    "params": [
+      {
+        "name": "url_photo",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "avg_price",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "token",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 133,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "addComment",
+    "memberof": "app/models/wishlistApi/wishlistApi.js~WishlistApi",
+    "longname": "app/models/wishlistApi/wishlistApi.js~WishlistApi.addComment",
+    "access": null,
+    "description": null,
+    "lineNumber": 79,
+    "undocument": true,
+    "params": [
+      {
+        "name": "content",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "itemId",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "token",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 134,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "addProposal",
+    "memberof": "app/models/wishlistApi/wishlistApi.js~WishlistApi",
+    "longname": "app/models/wishlistApi/wishlistApi.js~WishlistApi.addProposal",
+    "access": null,
+    "description": null,
+    "lineNumber": 102,
+    "undocument": true,
+    "params": [
+      {
+        "name": "price",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "itemId",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "token",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 135,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "addWishlist",
+    "memberof": "app/models/wishlistApi/wishlistApi.js~WishlistApi",
+    "longname": "app/models/wishlistApi/wishlistApi.js~WishlistApi.addWishlist",
+    "access": null,
+    "description": null,
+    "lineNumber": 124,
+    "undocument": true,
+    "params": [
+      {
+        "name": "name",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "description",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 136,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "parse",
+    "memberof": "app/models/wishlistApi/wishlistApi.js~WishlistApi",
+    "longname": "app/models/wishlistApi/wishlistApi.js~WishlistApi.parse",
+    "access": null,
+    "description": null,
+    "lineNumber": 146,
+    "undocument": true,
+    "params": [
+      {
+        "name": "response",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 137,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "_isValidJSON",
+    "memberof": "app/models/wishlistApi/wishlistApi.js~WishlistApi",
+    "longname": "app/models/wishlistApi/wishlistApi.js~WishlistApi._isValidJSON",
+    "access": null,
+    "description": null,
+    "lineNumber": 163,
+    "undocument": true,
+    "params": [
+      {
+        "name": "element",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 138,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "requestFailed",
+    "memberof": "app/models/wishlistApi/wishlistApi.js~WishlistApi",
+    "longname": "app/models/wishlistApi/wishlistApi.js~WishlistApi.requestFailed",
+    "access": null,
+    "description": null,
+    "lineNumber": 177,
+    "undocument": true,
+    "params": [
+      {
+        "name": "error",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 139,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/reducers/app/appReducer.js",
+    "memberof": null,
+    "longname": "app/reducers/app/appReducer.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import { combineReducers } \t\tfrom 'redux';\nimport WishlistsReducer \t\t\tfrom '../wishlist/wishlistReducer.js';\n\nexport default combineReducers({\n  WishlistsReducer:WishlistsReducer,\n})"
+  },
+  {
+    "__docId__": 140,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/reducers/wishlist/wishlistReducer.js",
+    "memberof": null,
+    "longname": "app/reducers/wishlist/wishlistReducer.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import { TYPES as wishlistActionType } from '../../models/actions/wishlistActioner.js';\n\nconst initialState = {\n\tuserId:null,\n\temail:null,\n\tname:null,\n\townedWishlists:[],\n\tguestWishlists:[],\n}\n\n\n/**\n* Call on action recieved.\n* @param {object} state - the current state, default value is the inital state.\n* @param {object} action - the performed action.\n*/\nexport default function WishlistsReducer(state = initialState, action){\n\n\t\tswitch (action.type) {\n\n\t\tcase wishlistActionType.SET_OWNED_WISHLIST:\n\n\t\t\tvar newState = Object.assign({}, state,state);\n\t\t\tnewState.ownedWishlists = action.lists;\n\t\t\treturn Object.assign({}, state,newState);\n\n\t\tcase wishlistActionType.ADD_WISH:\n\n\t\t\tvar newState = Object.assign({}, state,state);\n\t\t\tnewState.ownedWishlists = newState.ownedWishlists.map((wl)=>{\n\t\t\t\tif(action.list.id == wl.id){\n\t\t\t\t\twl.items.push(action.wish);\n\t\t\t\t}\n\t\t\t\treturn wl;\n\t\t\t})\n\t\t\treturn Object.assign({}, state,newState);\n\n\t\tcase wishlistActionType.SET_WISH:\n\n\t\t\tvar newState = Object.assign({}, state,state);\n\t\t\tnewState.ownedWishlists = newState.ownedWishlists.map((wl)=>{\n\t\t\t\tif(action.list.id == wl.id){\n\t\t\t\t\twl.items = wl.items.map((wish)=>{\n\t\t\t\t\t\tif(wish.id == action.wish.id){\n\t\t\t\t\t\t\treturn action.wish\n\t\t\t\t\t\t}\n\t\t\t\t\t\treturn wish;\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t\treturn wl;\n\t\t\t})\n\t\t\tnewState.guestWishlists = newState.guestWishlists.map((wl)=>{\n\t\t\t\tif(action.list.id == wl.id){\n\t\t\t\t\twl.items = wl.items.map((wish)=>{\n\t\t\t\t\t\tif(wish.id == action.wish.id){\n\t\t\t\t\t\t\treturn action.wish\n\t\t\t\t\t\t}\n\t\t\t\t\t\treturn wish;\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t\treturn wl;\n\t\t\t})\n\t\t\treturn Object.assign({}, state,newState);\n\n\t\tcase wishlistActionType.SET_GUEST_WISHLISTS:\n\n\t\t\tvar newState = Object.assign({}, state,state);\n\t\t\tnewState.guestWishlists = action.lists;\n\t\t\treturn Object.assign({}, state,newState);\n\n\t\tcase wishlistActionType.ADD_OWNED_WISHLIST:\n\n\t\t\tvar newState = Object.assign({}, state,state);\n\t\t\tnewState.ownedWishlists.push(action.list);\n\t\t\treturn Object.assign({}, state,newState);\n\n\t\tcase wishlistActionType.SET_USER:\n\n\t\t\tvar newState = Object.assign({}, state,state);\n\t\t\tnewState.ownedWishlists = action.user.wishlists;\n\t\t\tnewState.userId = action.user.id;\n\t\t\tnewState.email = action.user.email;\n\t\t\tnewState.name = action.user.name;\n\t\t\treturn Object.assign({}, state,newState);\n\n\t\tdefault:\n\t\t\treturn state;\n\t\t};\n}\n"
+  },
+  {
+    "__docId__": 141,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "initialState",
+    "memberof": "app/reducers/wishlist/wishlistReducer.js",
+    "longname": "app/reducers/wishlist/wishlistReducer.js~initialState",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/reducers/wishlist/wishlistReducer.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 142,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "WishlistsReducer",
+    "memberof": "app/reducers/wishlist/wishlistReducer.js",
+    "longname": "app/reducers/wishlist/wishlistReducer.js~WishlistsReducer",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/reducers/wishlist/wishlistReducer.js",
+    "importStyle": "WishlistsReducer",
+    "description": "Call on action recieved.",
+    "lineNumber": 17,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
+        "description": "the current state, default value is the inital state."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "action",
+        "description": "the performed action."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 143,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/server/server.js",
+    "memberof": null,
+    "longname": "app/server/server.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 28,
+    "content": "/*const express = require('express')\nconst path = require('path')\nconst port = process.env.PORT || 8080\nconst app = express()\n\n\n\n\n// serve static assets normally\napp.use(express.static(__dirname))\n\n// handle every other route with index.html, which will contain\n// a script tag to your application's JavaScript file(s).\napp.get('*', function (request, response){\n  response.sendFile(path.resolve(__dirname, './', 'index.html'))\n})\n\n\n/*app.use(function(req, res, next) {\n  var router = Router.create({location: req.url, routes: routes})\n  router.run(function(Handler, state) {\n    var html = React.renderToString(<Handler/>)\n    return res.render('react_page', {html: html})\n  })\n})*/\n\n\nvar express = require('express')\nvar React = require('react')\nvar Router = require('react-router')\n\nimport {router as routes} from'../app.routes.js';\n\nvar app = express()\n\napp.use(function(req, res, next) {\n  var router = Router.create({location: req.url, routes: routes})\n  router.run(function(Handler, state) {\n    var html = React.renderToString(<Handler/>)\n    return res.render('react_page', {html: html})\n  })\n})\n\n\napp.listen(port)\nconsole.log(\"server started on port \" + port)"
+  },
+  {
+    "__docId__": 144,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "express",
+    "memberof": "app/server/server.js",
+    "longname": "app/server/server.js~express",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/server/server.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 145,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "React",
+    "memberof": "app/server/server.js",
+    "longname": "app/server/server.js~React",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/server/server.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 146,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "Router",
+    "memberof": "app/server/server.js",
+    "longname": "app/server/server.js~Router",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/server/server.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 147,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "app",
+    "memberof": "app/server/server.js",
+    "longname": "app/server/server.js~app",
+    "access": null,
+    "export": false,
+    "importPath": "wishlist/app/server/server.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 148,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "app/stores/app/appStore.js",
+    "memberof": null,
+    "longname": "app/stores/app/appStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import { createStore } \t\tfrom 'redux'\nimport AppReducer \t\t\tfrom '../../reducers/app/appReducer.js'\n\n/**\n * the AppStore.\n * @type {class}\n */\nlet AppStore = createStore(AppReducer);\nexport default AppStore;"
+  },
+  {
+    "__docId__": 149,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "AppStore",
+    "memberof": "app/stores/app/appStore.js",
+    "longname": "app/stores/app/appStore.js~AppStore",
+    "access": null,
+    "export": true,
+    "importPath": "wishlist/app/stores/app/appStore.js",
+    "importStyle": "AppStore",
+    "description": "the AppStore.",
+    "lineNumber": 8,
+    "type": {
+      "nullable": null,
+      "types": [
+        "class"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 151,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 152,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 153,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 154,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 155,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 156,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 157,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 158,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 159,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 160,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 161,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 162,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 163,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 164,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 165,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 166,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 167,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 168,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 169,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 170,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 171,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 172,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 173,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 174,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 175,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 176,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 177,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 178,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 179,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 180,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 181,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 182,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 183,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 184,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 185,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 186,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 187,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 188,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 189,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 190,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 191,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 192,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 193,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 194,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 195,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 196,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 197,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 199,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 200,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 201,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 202,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 203,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 204,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 205,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 206,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  }
+]

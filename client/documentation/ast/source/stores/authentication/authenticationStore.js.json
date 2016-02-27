@@ -1,0 +1,523 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "createStore",
+            "range": [
+              9,
+              20
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 20
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "createStore",
+            "range": [
+              9,
+              20
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 9
+              },
+              "end": {
+                "line": 1,
+                "column": 20
+              }
+            }
+          },
+          "range": [
+            9,
+            20
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 9
+            },
+            "end": {
+              "line": 1,
+              "column": 20
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "redux",
+        "raw": "'redux'",
+        "range": [
+          31,
+          38
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 31
+          },
+          "end": {
+            "line": 1,
+            "column": 38
+          }
+        }
+      },
+      "range": [
+        0,
+        39
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "AuthenticationReducer",
+            "range": [
+              46,
+              67
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 7
+              },
+              "end": {
+                "line": 2,
+                "column": 28
+              }
+            }
+          },
+          "range": [
+            46,
+            67
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 7
+            },
+            "end": {
+              "line": 2,
+              "column": 28
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "../../reducers/authentication/authenticationReducer.js",
+        "raw": "'../../reducers/authentication/authenticationReducer.js'",
+        "range": [
+          73,
+          129
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 34
+          },
+          "end": {
+            "line": 2,
+            "column": 90
+          }
+        },
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * the AuthenticationStore.\n * @type {class}\n ",
+            "range": [
+              131,
+              183
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 0
+              },
+              "end": {
+                "line": 7,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "range": [
+        39,
+        184
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "AuthenticationStore",
+            "range": [
+              188,
+              207
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 4
+              },
+              "end": {
+                "line": 8,
+                "column": 23
+              }
+            }
+          },
+          "init": {
+            "type": "CallExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "createStore",
+              "range": [
+                210,
+                221
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 26
+                },
+                "end": {
+                  "line": 8,
+                  "column": 37
+                }
+              }
+            },
+            "arguments": [
+              {
+                "type": "Identifier",
+                "name": "AuthenticationReducer",
+                "range": [
+                  222,
+                  243
+                ],
+                "loc": {
+                  "start": {
+                    "line": 8,
+                    "column": 38
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 59
+                  }
+                }
+              }
+            ],
+            "range": [
+              210,
+              244
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 26
+              },
+              "end": {
+                "line": 8,
+                "column": 60
+              }
+            }
+          },
+          "range": [
+            188,
+            244
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 4
+            },
+            "end": {
+              "line": 8,
+              "column": 60
+            }
+          }
+        }
+      ],
+      "kind": "let",
+      "range": [
+        184,
+        245
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 61
+        }
+      },
+      "leadingComments": [],
+      "name": "_",
+      "trailingComments": []
+    },
+    {
+      "type": "Identifier",
+      "declaration": {
+        "type": "Identifier",
+        "name": "AuthenticationStore",
+        "range": [
+          261,
+          280
+        ],
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 15
+          },
+          "end": {
+            "line": 9,
+            "column": 34
+          }
+        }
+      },
+      "range": [
+        246,
+        281
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 35
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "AuthenticationStore",
+              "range": [
+                188,
+                207
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 4
+                },
+                "end": {
+                  "line": 8,
+                  "column": 23
+                }
+              }
+            },
+            "init": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "createStore",
+                "range": [
+                  210,
+                  221
+                ],
+                "loc": {
+                  "start": {
+                    "line": 8,
+                    "column": 26
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 37
+                  }
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "AuthenticationReducer",
+                  "range": [
+                    222,
+                    243
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 8,
+                      "column": 38
+                    },
+                    "end": {
+                      "line": 8,
+                      "column": 59
+                    }
+                  }
+                }
+              ],
+              "range": [
+                210,
+                244
+              ],
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 26
+                },
+                "end": {
+                  "line": 8,
+                  "column": 60
+                }
+              }
+            },
+            "range": [
+              188,
+              244
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 4
+              },
+              "end": {
+                "line": 8,
+                "column": 60
+              }
+            }
+          }
+        ],
+        "kind": "let",
+        "range": [
+          184,
+          245
+        ],
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 0
+          },
+          "end": {
+            "line": 8,
+            "column": 61
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * the AuthenticationStore.\n * @type {class}\n ",
+            "range": [
+              131,
+              183
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 0
+              },
+              "end": {
+                "line": 7,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+        246,
+        281
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 35
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    281
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 9,
+      "column": 35
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n * the AuthenticationStore.\n * @type {class}\n ",
+      "range": [
+        131,
+        183
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 3
+        }
+      }
+    }
+  ]
+}

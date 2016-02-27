@@ -1,0 +1,7 @@
+{
+  "source": "./app",
+  "destination": "./documentation",
+   "manual": {
+    "overview": ["./manual/wishlist.md"]
+  }
+}

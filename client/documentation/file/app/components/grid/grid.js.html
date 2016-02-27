@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">app/components/grid/grid.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/app.routes.js~Router.html">Router</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-router">router</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/app</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/app/app.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/authentication</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/authentication/abstractSigningForm.js~AbstractSigningForm.html">AbstractSigningForm</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/authentication/authenticationFormContainer.js~AuthenticationFormContainer.html">AuthenticationFormContainer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/authentication/signInForm.js~SignInForm.html">SignInForm</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/authentication/signUpForm.js~SignUpForm.html">SignUpForm</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/buttons</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/buttons/SPDAddButton.js~SPDAddButton.html">SPDAddButton</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/dialogs</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/dialogs/SPDAddDialog.js~SPDAddDialog.html">SPDAddDialog</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/grid</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/grid/cell.js~Cell.html">Cell</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/grid/grid.js~Grid.html">Grid</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/home</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/home/home.js~Home.html">Home</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">models/actions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/actions/abstractActioner.js~AbstractActioner.html">AbstractActioner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/actions/authenticationActioner.js~AuthenticationActioner.html">AuthenticationActioner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/actions/homeActioner.js~HomeActioner.html">HomeActioner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTION_ERRORS">CONNECTION_ERRORS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONNECTION_STEPS">CONNECTION_STEPS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPES">TYPES</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPES">TYPES</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">models/authentication</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/authentication/authentication.js~Authentication.html">Authentication</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers/authentication</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AuthenticationReducer">AuthenticationReducer</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers/home</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-HomeReducer">HomeReducer</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">stores/app</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-AppStore">AppStore</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">stores/authentication</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-AuthenticationStore">AuthenticationStore</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">stores/home</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HomeStore">HomeStore</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">app/components/grid/grid.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, {Component} from &apos;react&apos;;
+import {Provider}		  from &apos;react-redux&apos;;
+import MainTheme 		  from &apos;../theme/mainTheme.js&apos;
+import ThemeManager  	  from &apos;material-ui/lib/styles/theme-manager&apos;
+import Cell 			  from &apos;./cell.js&apos;
+
+/**
+ * Grid React class
+ * @extends {Component}
+ */
+export default class Grid extends Component{
+	
+	/**
+	* Class constructor.
+	*/
+	constructor(){
+		super();
+	}
+
+	/**
+     * @type {object}
+	* defining the child context types
+     */
+	static get childContextTypes(){
+        return {
+			muiTheme: React.PropTypes.object,
+		};
+    }
+
+    /**
+	* get the child context.
+	* @returns {object} wich specify the child context
+	*/
+	getChildContext() {
+		return {
+			muiTheme: ThemeManager.getMuiTheme(MainTheme),
+		};
+	}
+
+	/**
+	* specify how to render the component.
+	* @returns {html} representing the component
+	*/
+	render(){
+
+		let cellNodes = this.props.cells.map((cell)=&gt;{
+			return (
+				&lt;Cell key={cell.key} data={cell.data} config={cell.config}/&gt;	
+			);
+		})
+
+		return (
+		  &lt;div&gt;
+		    {cellNodes}
+		  &lt;/div&gt;
+		);
+	}
+};</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.3)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

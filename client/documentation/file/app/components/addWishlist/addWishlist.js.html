@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">app/components/addWishlist/addWishlist.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/app.routes.js~Router.html">Router</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-router">router</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/addWish</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/addWish/addWish.js~AddWish.html">AddWish</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/addWishlist</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/addWishlist/addWishlist.js~AddWishlist.html">AddWishlist</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/app</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/app/app.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/authentication</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/authentication/authentication.js~Authentication.html">Authentication</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/buttons</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/buttons/addWishlistButton.js~AddWishlistButton.html">AddWishlistButton</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/footer</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/footer/lovelyFooter.js~LovelyFooter.html">LovelyFooter</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/grid</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/grid/wishlistGrid.js~WishlistGrid.html">WishlistGrid</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/home</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/home/home.js~Home.html">Home</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/wish</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/wish/wish.js~Wish.html">Wish</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/wishlist</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/wishlist/wishlist.js~Wishlist.html">Wishlist</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/components/wishlist/wishlistDetailed.js~WishlistDetailed.html">WishlistDetailed</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">models/actions</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/actions/abstractActioner.js~AbstractActioner.html">AbstractActioner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/actions/wishlistActioner.js~WishlistActioner.html">WishlistActioner</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TYPES">TYPES</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">models/cookieManager</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/cookieManager/cookieManager.js~CookieManager.html">CookieManager</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">models/wishlistApi</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/models/wishlistApi/wishlistApi.js~WishlistApi.html">WishlistApi</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers/wishlist</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-WishlistsReducer">WishlistsReducer</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">stores/app</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-AppStore">AppStore</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">app/components/addWishlist/addWishlist.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, {Component}				from &apos;react&apos;;
+import {connect} 						from &apos;react-redux&apos;;
+import {hashHistory} 					from &apos;react-router&apos;;
+import ThemeManager  	  				from &apos;material-ui/lib/styles/theme-manager&apos;;
+import MainTheme 		  				from &apos;../theme/mainTheme.js&apos;;
+import WishlistApi 						from &apos;../../models/wishlistApi/wishlistApi.js&apos;;
+import AppStore 						from &apos;../../stores/app/appStore.js&apos;;
+import WishlistActioner 				from &apos;../../models/actions/wishlistActioner.js&apos;;
+
+
+/**
+ * add Wishlist  React class
+ * @extends {Component}
+ */
+export class AddWishlist extends Component{
+
+	/**
+	* Class constructor.
+	* @param {object} props - properties passed to component.
+	*/
+	constructor(props){
+		super(props);
+		this.state = {
+			title:&quot;Add a wishlist&quot;,
+			name:&quot;&quot;,
+			desciption:&quot;&quot;
+		}
+	}
+
+	/**
+	* Handle the changes of the name input
+	* @param {object} event - the triggered event
+	*/
+	_nameChanged(event){
+		this.setState({name:event.target.value});
+	}
+
+	/**
+	* Handle the changes of the description input
+	* @param {object} event - the triggered event
+	*/
+	_descriptionChanged(event){
+		this.setState({desciption:event.target.value});
+	}
+
+	/**
+	* Handle the button click
+	* @param {object} event - the triggered event
+	*/
+	_submit(event){
+		if(this.state.name &amp;&amp; this.state.desciption){
+			WishlistApi.addWishlist(this.state.name, this.state.desciption).then((response, error)=&gt;{
+				if(response){
+					AppStore.dispatch(WishlistActioner.addOwnedWishlist(response));
+					this.setState({name:null, desciption:null});
+					hashHistory.push(&apos;/home&apos;)
+				}
+			})
+		}
+	}
+	
+	
+	/**
+	* override
+	*/
+	render() {
+		let styles = {
+			container:{
+				width:&quot;100%&quot;,
+				height:&quot;100%&quot;,
+				fontFamily:MainTheme.fontFamily,
+				fontSize:&quot;60px&quot;,
+				position:&quot;absolute&quot;,
+				top:0,
+				bottom:0,
+				display:&quot;flex&quot;,
+				backgroundColor:MainTheme.palette.backgroundColor,
+				color:MainTheme.palette.textColor
+			},
+			form:{
+				margin:&quot;auto&quot;,
+				textAlign:&quot;center&quot;,
+				width:250
+			},
+			title:{
+				display:&quot;block&quot;,
+				marginBottom:10,
+				lineHeight:1,
+				borderBottom:`3px solid ${MainTheme.palette.alternateTextColor}`
+			},
+			input:{
+				display:&quot;block&quot;,
+				boxSizing: &quot;border-box&quot;,
+				marginBottom:18,
+				width:&quot;100%&quot;,
+				padding:8,
+				fontSize:18,
+				borderRadius:5,
+				borderWidth:0,
+				color:MainTheme.palette.textColor,
+				boxShadow: &apos;0px 0px 10px 0px rgba(42,42,42,.75)&apos;,
+			},
+			buttonContainer:{
+				width:&quot;100%&quot;,
+				height:&quot;100%&quot;,
+				display:&quot;flex&quot;,
+			},
+			button:{
+				margin:&quot;auto&quot;,
+				cursor:&quot;pointer&quot;,
+				color:MainTheme.palette.textColor,
+				backgroundColor:&quot;white&quot;,
+				borderRadius:5,
+				fontSize:18,
+				padding:8,
+				paddingLeft:14,
+				paddingRight:14,
+				borderWidth:0,
+				boxShadow: &apos;0px 0px 10px 0px rgba(42,42,42,.75)&apos;,
+			},
+			inputContainer:{
+
+			}
+		};
+		return (
+			&lt;div style={styles.container}&gt;
+				&lt;div style={styles.form}&gt;
+					&lt;div style={styles.title}&gt;{this.state.title}&lt;/div&gt;
+					&lt;div style={styles.inputContainer}&gt;
+						&lt;input style={styles.input} type=&quot;text&quot; value={this.state.name} onChange={this._nameChanged.bind(this)} placeholder=&quot;NAME&quot; /&gt;
+						&lt;input style={styles.input} type=&quot;email&quot; value={this.state.desciption} onChange={this._descriptionChanged.bind(this)} placeholder=&quot;DESCRIPTION&quot; /&gt;
+					&lt;/div&gt;
+					&lt;div style={styles.buttonContainer}&gt;
+						&lt;button onClick={this._submit.bind(this)} style={styles.button} type=&quot;button&quot;&gt;Make a wish!&lt;/button&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		);
+	}
+};
+
+/**
+* Select the properties needed from the store.
+* @param {object} state - containing the all store properties.
+* @returns {object} the needed subset.
+*/
+function selectPropertyFromStore(state) {
+	return {
+		ownedWishlits:state.WishlistsReducer.ownedWishlists,
+		guestWishlists:state.WishlistsReducer.guestWishlists,
+		userId:state.WishlistsReducer.userId,
+		name:state.WishlistsReducer.name,
+		email:state.WishlistsReducer.email,
+	}
+}
+
+/**
+* An extended verison of {WishlistDetailed} witch is connected to the store
+*/
+export default connect(selectPropertyFromStore)(AddWishlist);</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

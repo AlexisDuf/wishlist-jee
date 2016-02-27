@@ -1,0 +1,833 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "AbstractActioner",
+            "range": [
+              7,
+              23
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 23
+              }
+            }
+          },
+          "range": [
+            7,
+            23
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 23
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./abstractActioner.js",
+        "raw": "'./abstractActioner.js'",
+        "range": [
+          29,
+          52
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 29
+          },
+          "end": {
+            "line": 1,
+            "column": 52
+          }
+        },
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * All home action types \n * @type {Object}\n ",
+            "range": [
+              54,
+              105
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 6,
+                "column": 3
+              }
+            }
+          }
+        ]
+      },
+      "range": [
+        0,
+        106
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "TYPES",
+              "range": [
+                117,
+                122
+              ],
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 11
+                },
+                "end": {
+                  "line": 7,
+                  "column": 16
+                }
+              }
+            },
+            "init": {
+              "type": "ObjectExpression",
+              "properties": [
+                {
+                  "type": "Property",
+                  "key": {
+                    "type": "Identifier",
+                    "name": "OPEN_ADD_DIALOG",
+                    "range": [
+                      128,
+                      143
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 8,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 8,
+                        "column": 16
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "Literal",
+                    "value": "OPEN_ADD_DIALOG",
+                    "raw": "'OPEN_ADD_DIALOG'",
+                    "range": [
+                      144,
+                      161
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 8,
+                        "column": 17
+                      },
+                      "end": {
+                        "line": 8,
+                        "column": 34
+                      }
+                    }
+                  },
+                  "kind": "init",
+                  "method": false,
+                  "shorthand": false,
+                  "computed": false,
+                  "range": [
+                    128,
+                    161
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 8,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 8,
+                      "column": 34
+                    }
+                  }
+                }
+              ],
+              "range": [
+                125,
+                164
+              ],
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 19
+                },
+                "end": {
+                  "line": 9,
+                  "column": 1
+                }
+              }
+            },
+            "range": [
+              117,
+              164
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 11
+              },
+              "end": {
+                "line": 9,
+                "column": 1
+              }
+            }
+          }
+        ],
+        "kind": "let",
+        "range": [
+          113,
+          165
+        ],
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 7
+          },
+          "end": {
+            "line": 9,
+            "column": 2
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * All home action types \n * @type {Object}\n ",
+            "range": [
+              54,
+              105
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 6,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "*\n* Home actioner.\n",
+            "range": [
+              167,
+              190
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 0
+              },
+              "end": {
+                "line": 13,
+                "column": 2
+              }
+            }
+          }
+        ]
+      },
+      "specifiers": [],
+      "source": null,
+      "range": [
+        106,
+        165
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 2
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * All home action types \n * @type {Object}\n ",
+          "range": [
+            54,
+            105
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n* Home actioner.\n",
+          "range": [
+            167,
+            190
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 0
+            },
+            "end": {
+              "line": 13,
+              "column": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "HomeActioner",
+          "range": [
+            212,
+            224
+          ],
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 21
+            },
+            "end": {
+              "line": 14,
+              "column": 33
+            }
+          }
+        },
+        "superClass": {
+          "type": "Identifier",
+          "name": "AbstractActioner",
+          "range": [
+            233,
+            249
+          ],
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 42
+            },
+            "end": {
+              "line": 14,
+              "column": 58
+            }
+          }
+        },
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "openAddDialog",
+                "range": [
+                  404,
+                  417
+                ],
+                "loc": {
+                  "start": {
+                    "line": 21,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 21
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "isOpen",
+                    "range": [
+                      418,
+                      424
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 21,
+                        "column": 22
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 28
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "ObjectExpression",
+                        "properties": [
+                          {
+                            "type": "Property",
+                            "key": {
+                              "type": "Identifier",
+                              "name": "type",
+                              "range": [
+                                441,
+                                445
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 23,
+                                  "column": 3
+                                },
+                                "end": {
+                                  "line": 23,
+                                  "column": 7
+                                }
+                              }
+                            },
+                            "value": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "TYPES",
+                                "range": [
+                                  446,
+                                  451
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 23,
+                                    "column": 8
+                                  },
+                                  "end": {
+                                    "line": 23,
+                                    "column": 13
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "OPEN_ADD_DIALOG",
+                                "range": [
+                                  452,
+                                  467
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 23,
+                                    "column": 14
+                                  },
+                                  "end": {
+                                    "line": 23,
+                                    "column": 29
+                                  }
+                                }
+                              },
+                              "range": [
+                                446,
+                                467
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 23,
+                                  "column": 8
+                                },
+                                "end": {
+                                  "line": 23,
+                                  "column": 29
+                                }
+                              }
+                            },
+                            "kind": "init",
+                            "method": false,
+                            "shorthand": false,
+                            "computed": false,
+                            "range": [
+                              441,
+                              467
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 23,
+                                "column": 3
+                              },
+                              "end": {
+                                "line": 23,
+                                "column": 29
+                              }
+                            }
+                          },
+                          {
+                            "type": "Property",
+                            "key": {
+                              "type": "Identifier",
+                              "name": "open",
+                              "range": [
+                                472,
+                                476
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 24,
+                                  "column": 3
+                                },
+                                "end": {
+                                  "line": 24,
+                                  "column": 7
+                                }
+                              }
+                            },
+                            "value": {
+                              "type": "Identifier",
+                              "name": "isOpen",
+                              "range": [
+                                478,
+                                484
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 24,
+                                  "column": 9
+                                },
+                                "end": {
+                                  "line": 24,
+                                  "column": 15
+                                }
+                              }
+                            },
+                            "kind": "init",
+                            "method": false,
+                            "shorthand": false,
+                            "computed": false,
+                            "range": [
+                              472,
+                              484
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 24,
+                                "column": 3
+                              },
+                              "end": {
+                                "line": 24,
+                                "column": 15
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          436,
+                          489
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 22,
+                            "column": 9
+                          },
+                          "end": {
+                            "line": 25,
+                            "column": 3
+                          }
+                        }
+                      },
+                      "range": [
+                        429,
+                        491
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 22,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 1
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    425,
+                    492
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 21,
+                      "column": 29
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 2
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  417,
+                  492
+                ],
+                "loc": {
+                  "start": {
+                    "line": 21,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 2
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                397,
+                492
+              ],
+              "loc": {
+                "start": {
+                  "line": 21,
+                  "column": 1
+                },
+                "end": {
+                  "line": 26,
+                  "column": 2
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n\t* To get an open add dialog action.\n\t* @param {boolean} isOpen - whether or not the add dialog is ope\n\t* @returns {object} the action\n\t",
+                  "range": [
+                    253,
+                    395
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
+              "static": true
+            }
+          ],
+          "range": [
+            249,
+            495
+          ],
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 58
+            },
+            "end": {
+              "line": 28,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          206,
+          495
+        ],
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 15
+          },
+          "end": {
+            "line": 28,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n* Home actioner.\n",
+            "range": [
+              167,
+              190
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 0
+              },
+              "end": {
+                "line": 13,
+                "column": 2
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+        191,
+        495
+      ],
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 0
+        },
+        "end": {
+          "line": 28,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n* Home actioner.\n",
+          "range": [
+            167,
+            190
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 0
+            },
+            "end": {
+              "line": 13,
+              "column": 2
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    495
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 28,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n * All home action types \n * @type {Object}\n ",
+      "range": [
+        54,
+        105
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n* Home actioner.\n",
+      "range": [
+        167,
+        190
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 13,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n\t* To get an open add dialog action.\n\t* @param {boolean} isOpen - whether or not the add dialog is ope\n\t* @returns {object} the action\n\t",
+      "range": [
+        253,
+        395
+      ],
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 1
+        },
+        "end": {
+          "line": 20,
+          "column": 3
+        }
+      }
+    }
+  ]
+}
