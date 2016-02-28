@@ -1,18 +1,22 @@
-#__Title: Wishlist JEE REST API__
- 
+#__Wishlist JEE REST API__
+
 *DELMAIRE Matthieu - DUFOUR Alexis -  WASSON Paul*
 
 
-### HOW RUN PROJECT
+### HOW TO RUN API
 
-* Go to rest-example folder: mvn install 
-* Then: mvn tomee:run 
+* Go to rest-example folder: mvn install
+* Then: mvn tomee:run
+
+### RUN CLIENT
+
+* Refer to README in client folder
 
 ### END POINT
 
 * REST Application: http://localhost:8080/wishlist-jee/                                                                              
     * Service URI: http://localhost:8080/wishlist-jee/api/users -> Pojo org.wishlist.rest.service.AuthRestService     
-        * POST http://localhost:8080/wishlist-jee/api/users/create -> Response create(String, String) 
+        * POST http://localhost:8080/wishlist-jee/api/users/create -> Response create(String, String)
     * Service URI: http://localhost:8080/wishlist-jee/api/wishlists -> Pojo org.wishlist.rest.service.WishListRestService
         * DELETE http://localhost:8080/wishlist-jee/api/wishlists/{wishlist_token} -> Response deleteWishList(String)                            
         * DELETE http://localhost:8080/wishlist-jee/api/wishlists/{wishlist_token}/items/{item_id} ->  Response deleteItem(String, long)                          
