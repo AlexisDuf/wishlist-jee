@@ -93,6 +93,28 @@ export default class WishlistApi {
 	}
 
 	/*
+	* Delete a comment on a wishlist request
+	* @param {object} comment - the comment
+	* @param {number} itemId - the item id
+	* @param {string} token - the wishlist guest token 
+	* @returns {promise} the http promise
+	*/
+	static removeComment(comment, itemId, token){
+		return xhttp({
+		  url: `${Config.api.root}${Config.api.wishlists}${token}/items/${itemId}/comments/${comment.id}`,
+		  method:'delete',
+		  data: {
+		  	user_id:CookieManager.get(["userId"])["userId"]
+		  },
+		  headers:{
+		  	'Content-Type':'application/x-www-form-urlencoded',
+		  }
+
+		}).catch(WishlistApi.requestFailed);
+
+	}
+
+	/*
 	* Post a proposition on a wishlist request
 	* @param {number} price - the price
 	* @param {number} itemId - the item id

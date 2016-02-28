@@ -8,6 +8,8 @@ import WishlistActioner 				from '../../models/actions/wishlistActioner.js';
 import Tabs 							from 'material-ui/lib/tabs/tabs';
 import Tab 								from 'material-ui/lib/tabs/tab';
 import SwipeableViews 					from 'react-swipeable-views';
+import IconButton 						from 'material-ui/lib/icon-button';
+import Colors 							from 'material-ui/lib/styles/colors'
 
 /**
  * Wish React class
@@ -31,7 +33,8 @@ export default class Wish extends Component{
 	_getProposalNodes(){
 		let styles = {
 			commentContainer:{
-				margin:10
+				margin:10,
+				display:"flex"
 			},
 			nameContainer:{
 				textTransform:"uppercase",
@@ -39,26 +42,41 @@ export default class Wish extends Component{
 			},
 			contentContainer:{
 				marginTop:5
+			},
+			cancelIcon:{
+				color:Colors.red800,
+			},
+			deletContainer:{
+				margin:"auto",
+				marginTop:0,
+				marginRight:0,
+				width:"15%"
 			}
 		}
 		return this.props.wish.propositions.map((proposition, index)=>{
 			return (
 				<div key={index} style={styles.commentContainer}>
-					<div style={styles.nameContainer}>
-						{proposition.creator.name}
-					</div>
-					<div style={styles.contentContainer}>
-						{`${proposition.price}€`}
+					<div>
+						<div style={styles.nameContainer}>
+							{proposition.creator.name}
+						</div>
+						<div style={styles.contentContainer}>
+							{`${proposition.price}€`}
+						</div>
 					</div>
 				</div>
 			)
+					/*<div style={styles.deletContainer}>
+						<IconButton title="delete" onClick={(event)=>{this._deleteProposal(proposal)}} iconStyle={styles.cancelIcon} iconClassName="material-icons">clear</IconButton>
+					</div>*/
 		});
 	}
 
 	_getCommentNodes(){
 		let styles = {
 			commentContainer:{
-				margin:10
+				margin:10,
+				display:"flex"
 			},
 			nameContainer:{
 				textTransform:"uppercase",
@@ -66,20 +84,45 @@ export default class Wish extends Component{
 			},
 			contentContainer:{
 				marginTop:5
+			},
+			cancelIcon:{
+				color:Colors.red800,
+			},
+			deletContainer:{
+				margin:"auto",
+				marginTop:0,
+				marginRight:0,
+				width:"15%"
 			}
 		}
 		return this.props.wish.comments.map((comment, index)=>{
 			return (
 				<div key={index} style={styles.commentContainer}>
-					<div style={styles.nameContainer}>
-						{comment.creator.name}
-					</div>
-					<div style={styles.contentContainer}>
-						{comment.content}
+					<div>
+						<div style={styles.nameContainer}>
+							{comment.creator.name}
+						</div>
+						<div style={styles.contentContainer}>
+							{comment.content}
+						</div>
 					</div>
 				</div>
 			)
+					/*<div style={styles.deletContainer}>
+						<IconButton title="delete" onClick={(event)=>{this._deleteComment(comment)}} iconStyle={styles.cancelIcon} iconClassName="material-icons">clear</IconButton>
+					</div>*/
 		});
+	}
+
+	_deleteComment(comment){
+		if(!comment){return};
+		WishlistApi.removeComment(comment, this.props.wish.id, this.props.wishlist.admin_token).then((response)=>{
+			AppStore.dispatch(WishlistActioner.setWish(this.props.wishlist, response));
+		})
+	}
+
+	_deleteProposal(proposal){
+
 	}
 
 	_commentChanged(event){
@@ -87,7 +130,6 @@ export default class Wish extends Component{
 	}
 
 	_submitComment(event){
-
 		if(!(this.state.comment.length >= 0)){return};
 		WishlistApi.addComment(this.state.comment, this.props.wish.id, this.props.wishlist.guest_token).then((response)=>{
 			AppStore.dispatch(WishlistActioner.setWish(this.props.wishlist, response));
@@ -197,7 +239,7 @@ export default class Wish extends Component{
 				<div style={styles.tabs}>
 					<Tabs style={styles.inlineTabs} onChange={this._handleSlideChange.bind(this)} value={this.state.slideIndex}>
 			          <Tab style={{color:MainTheme.palette.alternateTextColor}} label="Comments" value={0} />
-			          <Tab style={{color:MainTheme.palette.alternateTextColor}} label="Propsals" value={1} />
+			          <Tab style={{color:MainTheme.palette.alternateTextColor}} label="Proposals" value={1} />
 			        </Tabs>
 	        		<SwipeableViews style={styles.swipeableView} index={this.state.slideIndex} onChangeIndex={this._handleSlideChange.bind(this)}>
 						<div style={styles.section}>

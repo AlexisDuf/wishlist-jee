@@ -55,8 +55,10 @@ export class WishlistDetailed extends Component{
 	_fetchList(token){
 		WishlistApi.fetchGuestWishlist(token).then((response)=>{
 			if(response){
-				this.setState({list:WishlistApi.parse(response)}, ()=>{
+				this.setState({list:response}, ()=>{
 					this.setState({isGuest: this._isGuest()});
+					AppStore.dispatch(WishlistActioner.setGuestWishlists([response]));
+
 				});
 			}else{
 				hashHistory.push("/home")
@@ -118,6 +120,12 @@ export class WishlistDetailed extends Component{
 						</div>
 						<div style={styles.description}>
 							{this.state.list.description}
+						</div>
+						<div style={styles.descriptionTitle}>
+							Link				
+						</div>
+						<div style={styles.description}>
+							{`${Config.adress}guest_wishlist/${this.state.list.guest_token}`}
 						</div>
 						<div style={styles.wishesContainer}>
 							<div style={styles.wishes}>
@@ -184,7 +192,7 @@ export class WishlistDetailed extends Component{
 				display:"flex"				
 			}
 		};
-
+		console.log(this.props)
 		return (
 			<div style={styles.container}>
 				{this._getWishlistNode()}
